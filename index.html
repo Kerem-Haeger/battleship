@@ -11,12 +11,20 @@
 <body>
     <!-- Header always visible with title and options -->
     <header>
-
+        <h1 class="title">Battleship</h1>
     </header>
 
     <!-- Main containing game area -->
     <main>
-
+        <div class="game-area">
+            <div class="player-inventory"></div>
+            <div class="player-area sea">
+                <input type="checkbox" data-type="a1" id="a1" class="player-area-button">
+                <input type="checkbox" data-type="b1" id="b1" class="player-area-button">
+            </div>
+            <div class="computer-area sea"></div>
+            <div class="computer-inventory"></div>
+        </div>
     </main>
 
     <!-- Footer for social media links and copyright -->
