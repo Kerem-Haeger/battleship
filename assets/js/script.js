@@ -15,7 +15,7 @@ const createBoard = (boardId) => {
 
 const handleCellClick = (cell) => {
     console.log("Cell clicked:", cell.id);
-    cell.style.backgroundColor = "red"; // Example of changing tile color
+    cell.style.backgroundColor = "red";
 };
 
 createBoard("player-board");
