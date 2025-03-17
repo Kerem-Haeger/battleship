@@ -82,7 +82,7 @@ let occupiedCells = new Set(); // To store all occupied cells (for checking over
  * 
  * Ships can only be placed if they fully fit on the board (placed is false by default)
  */
-function computerPlaceShips() {
+function computerPlaceShips() { // To add later: difficulty can be changed with more or less ships
     for (let i = 0; i <= 2; i++) { // Loop for 3 ships
         let shipDirection = Math.floor(Math.random() * 2); // 0 for horizontal, 1 for vertical
         let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
