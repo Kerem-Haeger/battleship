@@ -63,3 +63,22 @@ createBoard("player-board");
 createBoard("computer-board");
 
 addCellEventListeners();
+
+let shipPosition1 = "";
+/**
+ * Computer to place ships at random
+ * For now this is just a template to see if it works
+ * 
+ * to add: length of the ship, so it doesn't leave the board
+ * to add: store the position of the ship to access outside of function
+ */
+function computerPlaceShips() {
+    let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
+    let horizontal = letters[Math.floor(Math.random() * 10)];
+    let vertical = Math.floor(Math.random() * 10 + 1);
+    shipPosition1 = `${horizontal}${vertical}`;
+    console.log(shipPosition1);
+}
+
+computerPlaceShips();
+console.log("Ship 1 placed at:", shipPosition1);
