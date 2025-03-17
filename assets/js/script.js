@@ -30,7 +30,6 @@ function handleConfirm() {
     if (playerName === "") {
         alert("Please enter your name"); // Avoid user not entering a name
     } else {
-        console.log(playerName);
         let modal = bootstrap.Modal.getInstance(document.getElementById("staticBackdrop"));
         modal.hide(); // Manually close the modal
         document.getElementById("enteredName").innerText = playerName;
