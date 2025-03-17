@@ -32,15 +32,14 @@ const addCellEventListeners = () => {
         cell.addEventListener("click", function (e) {
             console.log("Cell clicked:", e.target.id);
             // Use this later to handle miss/hit events etc!
-            // Not sure if the closest board is still needed
 
-            if (e.target.id.includes("player-board")) {
-                let cell = document.getElementById(e.target.id);
-                cell.style.backgroundColor = "red";
+            if (e.target.id.startsWith("player-")) { // Check for "player-" prefix
+                e.target.style.backgroundColor = "red"; // Change cell color - temporary to see if it works!
             }
         });
     });
 };
+
 
 /**
  * Closes the modal and sets the player name to what was entered
