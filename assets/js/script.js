@@ -16,7 +16,9 @@ const createBoard = (boardId) => {
         for (let col = 1; col <= 10; col++) {
             const cell = document.createElement("div");
             cell.classList.add("cell"); // Add the class cell so it can be styled by CSS
-            cell.id = `${letters[row]}${col}`; // e.g., a1, b2
+
+            // Add a board-specific prefix to the cell ID (e.g., "player-" or "pc-")
+            cell.id = `${boardId}-${letters[row]}${col}`; // e.g., player-a1, pc-a1
             board.appendChild(cell);
             // Store the cell in the array
             cells.push(cell);
@@ -47,8 +49,10 @@ function handleConfirm() {
         let modal = bootstrap.Modal.getInstance(document.getElementById("staticBackdrop"));
         modal.hide(); // Manually close the modal
         document.getElementById("enteredName").innerText = playerName;
+        computerPlaceShips(); // Once modal is closed, computer places ships
+        colorShipCells("computer-board"); // Color the cells only in the computer board (pc- prefix)
     }
-}
+};
 
 // Modal can be closed by button click or Enter key
 document.querySelector(".btn-secondary").addEventListener("click", handleConfirm);
@@ -114,7 +118,28 @@ function computerPlaceShips() {
             }
         }
     }
-}
+};
 
-computerPlaceShips();
+/**
+ * Function to color ship cells
+ * 
+ * this is temporary but might be called when the game is over to reveal the board
+ */
+function colorShipCells(boardId) {
+    const board = document.getElementById(boardId);
+
+    // Loop over the shipPosition array, which contains the ships' coordinates
+    shipPosition.forEach(ship => {
+        ship.forEach(cellId => {
+            // Update the cell ID to include the boardId prefix
+            const cell = document.getElementById(`${boardId}-${cellId}`); // e.g., "player-a1", "computer-board-a1"
+
+            // Only color the cell if it's part of the specified board
+            if (cell && board.contains(cell)) {
+                cell.style.backgroundColor = "red";
+            }
+        });
+    });
+};
+
 console.log(shipPosition);
