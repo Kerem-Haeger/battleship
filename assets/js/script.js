@@ -3,6 +3,9 @@ document.addEventListener("DOMContentLoaded", function () {
     myModal.show(); // Opens the modal on page load
 });
 
+/**
+ * Creates player and user board to avoid HTML being crowded by divs
+ */
 const createBoard = (boardId) => {
     const board = document.getElementById(boardId);
     const letters = "abcdefghij";
@@ -18,15 +21,27 @@ const createBoard = (boardId) => {
     }
 };
 
-document.querySelector(".btn-secondary").addEventListener("click", function () {
-    let playerName = document.getElementById("player-name").value;
+/**
+ * Closes the modal and sets the player name to what was entered
+ */
+function handleConfirm() {
+    let playerName = document.getElementById("player-name").value.trim(); // Trim removes extra spaces
+
     if (playerName === "") {
-        alert("Please enter your name");
+        alert("Please enter your name"); // Avoid user not entering a name
     } else {
         console.log(playerName);
         let modal = bootstrap.Modal.getInstance(document.getElementById("staticBackdrop"));
         modal.hide(); // Manually close the modal
         document.getElementById("enteredName").innerText = playerName;
+    }
+}
+
+document.querySelector(".btn-secondary").addEventListener("click", handleConfirm);
+
+document.getElementById("player-name").addEventListener("keypress", function (event) {
+    if (event.key === "Enter") {
+        handleConfirm();
     }
 });
 
