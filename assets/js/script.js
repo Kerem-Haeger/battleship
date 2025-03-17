@@ -1,11 +1,13 @@
+/**
+ * On loading the user is presented with an obligatory modal to enter their name
+ */
 document.addEventListener("DOMContentLoaded", function () {
     var myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
-    myModal.show(); // Opens the modal on page load
+    myModal.show();
 });
 
-/**
- * Creates player and user board to avoid HTML being crowded by divs
- */
+const cells = []; // Array to store references to the cells
+
 const createBoard = (boardId) => {
     const board = document.getElementById(boardId);
     const letters = "abcdefghij";
@@ -13,12 +15,22 @@ const createBoard = (boardId) => {
     for (let row = 0; row < 10; row++) {
         for (let col = 1; col <= 10; col++) {
             const cell = document.createElement("div");
-            cell.classList.add("cell"); // Add the class cell so can be styled by CSS
+            cell.classList.add("cell"); // Add the class cell so it can be styled by CSS
             cell.id = `${letters[row]}${col}`; // e.g., a1, b2
-            // cell.addEventListener("click", (e) => handleCellClick(e.target));
             board.appendChild(cell);
+            // Store the cell in the array
+            cells.push(cell);
         }
     }
+};
+
+// Add event listeners
+const addCellEventListeners = () => {
+    cells.forEach(cell => {
+        cell.addEventListener("click", function () {
+            console.log("Cell clicked:", cell.id);
+        });
+    });
 };
 
 /**
@@ -36,6 +48,7 @@ function handleConfirm() {
     }
 }
 
+// Modal can be closed by button click or Enter key
 document.querySelector(".btn-secondary").addEventListener("click", handleConfirm);
 
 document.getElementById("player-name").addEventListener("keypress", function (event) {
@@ -46,3 +59,5 @@ document.getElementById("player-name").addEventListener("keypress", function (ev
 
 createBoard("player-board");
 createBoard("computer-board");
+
+addCellEventListeners();
