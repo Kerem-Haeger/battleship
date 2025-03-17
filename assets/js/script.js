@@ -1,3 +1,8 @@
+document.addEventListener("DOMContentLoaded", function () {
+    var myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+    myModal.show(); // Opens the modal on page load
+});
+
 const createBoard = (boardId) => {
     const board = document.getElementById(boardId);
     const letters = "abcdefghij";
