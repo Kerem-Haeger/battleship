@@ -23,3 +23,14 @@
 .cell:hover {
     background-color: gray;
 }
+
+.game-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    flex-wrap: wrap;
+}
+
+.board-container {
+    text-align: center;
+}
