@@ -1,11 +1,13 @@
 /* Google Fonts import */
 @import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Stencil:opsz,wght@10..72,100..900&display=swap');
 
+/* Global styles */
 * {
     font-family: "Big Shoulders Stencil", sans-serif;
     ;
 }
 
+/* Style header element */
 header {
     display: flex;
     justify-content: space-between;
@@ -24,6 +26,7 @@ header span {
     align-self: center;
 }
 
+/* Style board and game area */
 .board {
     display: grid;
     grid-template-columns: repeat(10, 30px);
