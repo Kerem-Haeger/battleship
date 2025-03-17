@@ -7,7 +7,7 @@ const createBoard = (boardId) => {
             const cell = document.createElement("div");
             cell.classList.add("cell"); // Add the class cell so can be styled by CSS
             cell.id = `${letters[row]}${col}`; // e.g., a1, b2
-            cell.addEventListener("click", (e) => handleCellClick(e.target));
+            // cell.addEventListener("click", (e) => handleCellClick(e.target));
             board.appendChild(cell);
         }
     }
