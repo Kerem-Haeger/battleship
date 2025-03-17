@@ -26,6 +26,7 @@ document.querySelector(".btn-secondary").addEventListener("click", function () {
         console.log(playerName);
         let modal = bootstrap.Modal.getInstance(document.getElementById("staticBackdrop"));
         modal.hide(); // Manually close the modal
+        document.getElementById("enteredName").innerText = playerName;
     }
 });
 
