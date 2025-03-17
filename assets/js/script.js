@@ -124,7 +124,9 @@ function computerPlaceShips() {
     }
 };
 
-// Function to check if the new ship overlaps or touches another ship
+/**
+ * Function to check if the new ship overlaps or touches another ship
+ */
 function hasOverlapOrTouch(newShip) {
     // Check if any of the cells in the new ship are already occupied
     for (let cell of newShip) {
