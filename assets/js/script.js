@@ -18,5 +18,16 @@ const createBoard = (boardId) => {
     }
 };
 
+document.querySelector(".btn-secondary").addEventListener("click", function () {
+    let playerName = document.getElementById("player-name").value;
+    if (playerName === "") {
+        alert("Please enter your name");
+    } else {
+        console.log(playerName);
+        let modal = bootstrap.Modal.getInstance(document.getElementById("staticBackdrop"));
+        modal.hide(); // Manually close the modal
+    }
+});
+
 createBoard("player-board");
 createBoard("computer-board");
