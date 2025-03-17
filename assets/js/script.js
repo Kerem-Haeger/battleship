@@ -13,10 +13,5 @@ const createBoard = (boardId) => {
     }
 };
 
-const handleCellClick = (cell) => {
-    console.log("Cell clicked:", cell.id);
-    cell.style.backgroundColor = "red";
-};
-
 createBoard("player-board");
 createBoard("computer-board");
