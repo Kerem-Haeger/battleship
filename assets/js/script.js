@@ -68,18 +68,51 @@ let shipPosition = []; // This will store the Computer's ship starting points
 
 /**
  * Computer to place ships at random
- * For now this is just a template to see if it works
  * 
- * to add: length of the ship, so it doesn't leave the board
- * 
- * to add: store the position of the ship to access outside of function
+ * Ships can only be placed if they fully fit on the board (placed is false by default)
  */
 function computerPlaceShips() {
-    for (i = 0; i <= 2; i++) {
+    for (let i = 0; i <= 2; i++) {
+        let shipDirection = Math.floor(Math.random() * 2); // 0 for horizontal, 1 for vertical
         let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
-        let horizontal = letters[Math.floor(Math.random() * 10)];
-        let vertical = Math.floor(Math.random() * 10 + 1);
-        shipPosition[i] = `${horizontal}${vertical}`;
+
+        let placed = false; // Flag to track whether the ship was successfully placed
+
+        // Try until a valid position is found
+        while (!placed) {
+            if (shipDirection === 0) { // Horizontal ship placement
+                let horizontal = letters[Math.floor(Math.random() * 10)];
+                let vertical = Math.floor(Math.random() * 10) + 1;
+
+                // Ensure the horizontal ship doesn't go out of bounds (must fit 3 tiles)
+                let horizontalIndex = letters.indexOf(horizontal);
+
+                // Check if the ship can fit 3 tiles horizontally (if at "i", it can't extend to 3 tiles)
+                if (horizontalIndex <= 7) { // There must be enough space for 3 cells
+                    shipPosition[i] = [
+                        `${horizontal}${vertical}`,
+                        `${letters[horizontalIndex + 1]}${vertical}`,
+                        `${letters[horizontalIndex + 2]}${vertical}`
+                    ];
+                    placed = true; // Valid placement
+                    console.log("Horizontal ship placed:", shipPosition[i]);
+                }
+            } else { // Vertical ship placement
+                let horizontal = letters[Math.floor(Math.random() * 10)];
+                let vertical = Math.floor(Math.random() * 10) + 1;
+
+                // Ensure the vertical ship doesn't go out of bounds (must fit 3 tiles)
+                if (vertical <= 8) { // There must be enough space for 3 cells
+                    shipPosition[i] = [
+                        `${horizontal}${vertical}`,
+                        `${horizontal}${vertical + 1}`,
+                        `${horizontal}${vertical + 2}`
+                    ];
+                    placed = true; // Valid placement
+                    console.log("Vertical ship placed:", shipPosition[i]);
+                }
+            }
+        }
     }
 }
 
