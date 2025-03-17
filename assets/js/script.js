@@ -30,10 +30,14 @@ const createBoard = (boardId) => {
 const addCellEventListeners = () => {
     cells.forEach(cell => {
         cell.addEventListener("click", function (e) {
-            const clickedBoard = e.target.closest(".board").id; // Make distinction between the two boards
             console.log("Cell clicked:", e.target.id);
             // Use this later to handle miss/hit events etc!
             // Not sure if the closest board is still needed
+
+            if (e.target.id.includes("player-board")) {
+                let cell = document.getElementById(e.target.id);
+                cell.style.backgroundColor = "red";
+            }
         });
     });
 };
@@ -184,3 +188,7 @@ function colorShipCells(boardId) {
         });
     });
 };
+
+function userPlaceShips() {
+
+}
