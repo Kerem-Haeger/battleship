@@ -58,7 +58,7 @@ function handleConfirm() {
         modal.hide(); // Manually close the modal
         document.getElementById("enteredName").innerText = playerName;
         computerPlaceShips(); // Once modal is closed, computer places ships
-        colorShipCells("computer-board"); // Color the cells only in the computer board (pc- prefix)
+        colorShipCells("computer-board"); // Color the cells only in the computer board
     };
 };
 
