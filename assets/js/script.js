@@ -172,7 +172,7 @@ function colorShipCells(boardId) {
     shipPosition.forEach(ship => {
         ship.forEach(cellId => {
             // Update the cell ID to include the boardId prefix
-            const cell = document.getElementById(`${boardId}-${cellId}`); // e.g., "player-a1", "computer-board-a1"
+            const cell = document.getElementById(`${boardId}-${cellId}`);
 
             // Only color the cell if it's part of the specified board
             if (cell && board.contains(cell)) {
