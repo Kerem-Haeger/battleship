@@ -184,5 +184,3 @@ function colorShipCells(boardId) {
         });
     });
 };
-
-console.log(shipPosition);
