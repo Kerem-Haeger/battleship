@@ -26,6 +26,12 @@ header span {
     align-self: center;
 }
 
+/* Modal style */
+#player-name {
+    display: block;
+    margin: 0 auto;
+}
+
 /* Style board and game area */
 main h2 {
     padding-top: 1em;
