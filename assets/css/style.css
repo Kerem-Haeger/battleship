@@ -27,12 +27,19 @@ header span {
 }
 
 /* Modal style */
+.modal-content,
+.modal-body>input {
+    letter-spacing: 0.05em;
+    /* change later! */
+}
+
 #player-name {
     display: block;
     margin: 0 auto;
 }
 
 .start-button {
+    letter-spacing: 0.05em;
     border-radius: 0;
     background-color: darkslategray;
 }
@@ -40,6 +47,7 @@ header span {
 /* Style board and game area */
 main h2 {
     padding-top: 1em;
+    letter-spacing: 0.05em;
     ;
 }
 
