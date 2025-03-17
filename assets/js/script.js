@@ -33,9 +33,13 @@ const addCellEventListeners = () => {
             console.log("Cell clicked:", e.target.id);
             // Use this later to handle miss/hit events etc!
 
+            //let playerHasPlacedAll = false;
+
+            //while (!playerHasPlacedAll) {
             if (e.target.id.startsWith("player-")) { // Check for "player-" prefix
                 e.target.style.backgroundColor = "red"; // Change cell color - temporary to see if it works!
-            }
+            };
+            //};
         });
     });
 };
@@ -55,7 +59,7 @@ function handleConfirm() {
         document.getElementById("enteredName").innerText = playerName;
         computerPlaceShips(); // Once modal is closed, computer places ships
         colorShipCells("computer-board"); // Color the cells only in the computer board (pc- prefix)
-    }
+    };
 };
 
 // Modal can be closed by button click or Enter key
@@ -64,7 +68,7 @@ document.querySelector(".btn-secondary").addEventListener("click", handleConfirm
 document.getElementById("player-name").addEventListener("keypress", function (event) {
     if (event.key === "Enter") {
         handleConfirm();
-    }
+    };
 });
 
 createBoard("player-board");
@@ -103,7 +107,7 @@ function computerPlaceShips() { // To add later: difficulty can be changed with 
                         `${letters[horizontalIndex + 1]}${vertical}`,
                         `${letters[horizontalIndex + 2]}${vertical}`
                     ];
-                }
+                };
             } else { // Vertical ship placement
                 // Ensure the vertical ship doesn't go out of bounds (must fit 3 tiles)
                 if (vertical <= 8) {
@@ -112,8 +116,8 @@ function computerPlaceShips() { // To add later: difficulty can be changed with 
                         `${horizontal}${vertical + 1}`,
                         `${horizontal}${vertical + 2}`
                     ];
-                }
-            }
+                };
+            };
 
             // Check if the new ship overlaps or touches another ship
             if (newShip.length === 3 && !hasOverlapOrTouch(newShip)) {
@@ -123,9 +127,9 @@ function computerPlaceShips() { // To add later: difficulty can be changed with 
                 newShip.forEach(cell => occupiedCells.add(cell));
                 placed = true; // Valid placement
                 console.log("Ship placed at:", newShip);
-            }
-        }
-    }
+            };
+        };
+    };
 };
 
 /**
@@ -136,8 +140,8 @@ function hasOverlapOrTouch(newShip) {
     for (let cell of newShip) {
         if (occupiedCells.has(cell)) {
             return true; // Overlap detected
-        }
-    }
+        };
+    };
 
     // Check if any of the surrounding cells (buffer zone) are occupied (to avoid ships touching each other)
     for (let cell of newShip) {
@@ -157,11 +161,11 @@ function hasOverlapOrTouch(newShip) {
                     let bufferCell = `${newLetter}${newNumber}`;
                     if (occupiedCells.has(bufferCell)) {
                         return true; // Touching detected
-                    }
-                }
-            }
-        }
-    }
+                    };
+                };
+            };
+        };
+    };
 
     return false; // No overlap or touching
 };
@@ -183,11 +187,11 @@ function colorShipCells(boardId) {
             // Only color the cell if it's part of the specified board
             if (cell && board.contains(cell)) {
                 cell.style.backgroundColor = "red";
-            }
+            };
         });
     });
 };
 
 function userPlaceShips() {
 
-}
+};
