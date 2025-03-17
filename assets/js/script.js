@@ -27,8 +27,10 @@ const createBoard = (boardId) => {
 // Add event listeners
 const addCellEventListeners = () => {
     cells.forEach(cell => {
-        cell.addEventListener("click", function () {
-            console.log("Cell clicked:", cell.id);
+        cell.addEventListener("click", function (e) {
+            const clickedBoard = e.target.closest(".board").id;
+            console.log("Cell clicked:", e.target.id, "Board:", clickedBoard);
+            // Use this later to handle miss/hit events etc!
         });
     });
 };
