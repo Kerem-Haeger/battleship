@@ -30,7 +30,13 @@ header span {
 .modal-content,
 .modal-body>input {
     letter-spacing: 0.05em;
+    border-radius: 0;
     /* change later! */
+}
+
+.modal-footer,
+.modal-header {
+    border-width: 0;
 }
 
 #player-name {
@@ -42,6 +48,7 @@ header span {
     letter-spacing: 0.05em;
     border-radius: 0;
     background-color: darkslategray;
+    margin: auto;
 }
 
 /* Style board and game area */
