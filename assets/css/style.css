@@ -51,6 +51,16 @@ header span {
     margin: auto;
 }
 
+/* Header style */
+.options-wheel {
+    transition: transform 0.5s ease;
+    /* Smooth transition */
+}
+
+.options-wheel:hover {
+    transform: rotate(120deg);
+}
+
 /* Style board and game area */
 main h2 {
     padding-top: 1em;
