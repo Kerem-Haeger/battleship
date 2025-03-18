@@ -192,12 +192,12 @@ let shipOrientation = "horizontal"; // Default orientation
 
 // Prevent right-click menu on the board
 document.getElementById("player-board").addEventListener("contextmenu", (e) => {
-    e.preventDefault(); // Prevents the browser context menu
+    e.preventDefault();
 });
 
 // Function to toggle orientation when right-clicked
 document.getElementById("player-board").addEventListener("contextmenu", (e) => {
-    e.preventDefault(); // Prevents the default right-click menu
+    e.preventDefault();
     shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal"; // Toggle orientation
     console.log("Orientation switched to:", shipOrientation);
 });
@@ -206,8 +206,8 @@ document.getElementById("player-board").addEventListener("contextmenu", (e) => {
 document.getElementById("player-board").addEventListener("click", (e) => {
     if (!e.target.classList.contains("cell")) return;
 
-    if (playerShipCount >= 3) {
-        console.log("You have already placed all 3 ships!");
+    if (playerShipCount >= 3) { // Could be a variable later, so player can decide how many ships to place
+        console.log("You have already placed all 3 ships!"); // instead of console log, this will make the start game button visible
         return; // Stop placing more ships
     }
 
