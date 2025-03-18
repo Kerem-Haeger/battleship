@@ -261,14 +261,18 @@ document.getElementById("player-board").addEventListener("contextmenu", (e) => {
     e.preventDefault();
 });
 
-// Function to toggle orientation when right-clicked
+/**
+ * Function to toggle orientation when right-clicked
+ */
 document.getElementById("player-board").addEventListener("contextmenu", (e) => {
     e.preventDefault();
     shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal"; // Toggle orientation
     console.log("Orientation switched to:", shipOrientation);
 });
 
-// Function to place ship on left-click (Limited to 3 ships)
+/**
+ * Function to place ship on left-click (Limited to 3 ships)
+ */
 document.getElementById("player-board").addEventListener("click", (e) => {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 
@@ -278,13 +282,13 @@ document.getElementById("player-board").addEventListener("click", (e) => {
         return; // Stop further placements if the player has placed 3 ships
     };
 
-    // Get the cell ID (e.g., a1)
+    // Get the cell ID
     let cellId = e.target.id.replace("player-board-", "");
     let [row, col] = cellId.split(/(\d+)/);
     col = parseInt(col);
 
     let newShip = [];
-    let letters = "abcdefghij"; // Row letters
+    let letters = "abcdefghij";
     let rowIndex = letters.indexOf(row);
 
     // Horizontal placement
@@ -292,9 +296,9 @@ document.getElementById("player-board").addEventListener("click", (e) => {
         newShip = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
     } else { // Vertical placement
         newShip = [
-            `${letters[rowIndex]}${col}`, // e.g., a1
-            `${letters[rowIndex + 1]}${col}`, // e.g., b1
-            `${letters[rowIndex + 2]}${col}` // e.g., c1
+            `${letters[rowIndex]}${col}`,
+            `${letters[rowIndex + 1]}${col}`,
+            `${letters[rowIndex + 2]}${col}`
         ];
     };
 
@@ -308,8 +312,8 @@ document.getElementById("player-board").addEventListener("click", (e) => {
     newShip.forEach(cell => {
         let shipCell = document.getElementById(`player-board-${cell}`);
         if (shipCell) {
-            shipCell.style.backgroundColor = "blue"; // Indicate ship placement
-            placedCells.push(cell); // Store placed ship cells
+            shipCell.style.backgroundColor = "blue";
+            placedCells.push(cell);
         };
     });
 
@@ -317,17 +321,20 @@ document.getElementById("player-board").addEventListener("click", (e) => {
     console.log(`Ship ${playerShipCount}/3 placed at:`, newShip);
 
     if (playerShipCount >= 3) {
-        document.querySelector(".start-game").disabled = false; // Enable the button
+        document.querySelector(".start-game").removeAttribute("disabled"); // Enable the button
+        // Use removeAttribute to ensure it stays enabled
     };
 });
 
-// Function to check if the placement is valid (no overlap)
+/**
+ * Function to check if the placement is valid (no overlap)
+ */
 function isValidPlacement(ship) {
     // Check if any of the cells in the new ship are already occupied
     for (let cell of ship) {
         if (placedCells.includes(cell)) {
-            return false; // Ship overlaps an existing one
+            return false;
         };
     };
-    return true; // Placement is valid if no overlap
+    return true;
 };
