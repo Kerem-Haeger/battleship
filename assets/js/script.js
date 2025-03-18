@@ -290,10 +290,18 @@ document.getElementById("player-board").addEventListener("click", (e) => {
     let letters = "abcdefghij";
     let rowIndex = letters.indexOf(row);
 
-    // Horizontal placement
+    // **Out-of-bounds check**
     if (shipOrientation === "horizontal") {
+        if (col > 8) { // Prevent horizontal overflow (since ship is 3 cells long)
+            console.log("Invalid placement! Ship goes out of bounds horizontally.");
+            return;
+        };
         newShip = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
     } else { // Vertical placement
+        if (rowIndex > 7) { // Prevent vertical overflow (since ship is 3 cells long)
+            console.log("Invalid placement! Ship goes out of bounds vertically.");
+            return;
+        };
         newShip = [
             `${letters[rowIndex]}${col}`,
             `${letters[rowIndex + 1]}${col}`,
@@ -321,7 +329,6 @@ document.getElementById("player-board").addEventListener("click", (e) => {
 
     if (playerShipCount >= 3) {
         document.querySelector(".start-game").removeAttribute("disabled"); // Enable the button
-        // Use removeAttribute to ensure it stays enabled
     };
 });
 
