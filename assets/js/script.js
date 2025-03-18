@@ -260,18 +260,15 @@ document.getElementById("player-board").addEventListener("contextmenu", (e) => {
     e.preventDefault();
 });
 
-/**
- * Function to toggle orientation when right-clicked
- */
+
+// Function to toggle orientation when right-clicked
 document.getElementById("player-board").addEventListener("contextmenu", (e) => {
     e.preventDefault();
     shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal"; // Toggle orientation
     console.log("Orientation switched to:", shipOrientation);
 });
 
-/**
- * Function to place ship on left-click (Limited to 3 ships)
- */
+// Function to place ship on left-click (Limited to 3 ships)
 document.getElementById("player-board").addEventListener("click", (e) => {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 
