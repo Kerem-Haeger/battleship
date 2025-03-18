@@ -4,6 +4,8 @@
 document.addEventListener("DOMContentLoaded", function () {
     var nameModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
     nameModal.show();
+    document.getElementById("turnButton").disabled = true;
+    // Disable start button until all ships are placed
 });
 
 const cells = []; // Array to store references to the cells
@@ -328,7 +330,7 @@ document.getElementById("player-board").addEventListener("click", (e) => {
     console.log(`Ship ${playerShipCount}/3 placed at:`, newShip);
 
     if (playerShipCount >= 3) {
-        document.querySelector(".start-game").removeAttribute("disabled"); // Enable the button
+        document.getElementById("turnButton").disabled = false; // Enable the button
     };
 });
 
@@ -344,3 +346,14 @@ function isValidPlacement(ship) {
     };
     return true;
 };
+
+document.getElementById("turnButton").addEventListener("click", function () {
+    let button = this;
+
+    button.disabled = true;
+
+    setTimeout(() => {
+        button.innerText = "End Turn";
+        button.disabled = false;
+    }, 1000);
+});
