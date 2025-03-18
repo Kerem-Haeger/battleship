@@ -54,9 +54,9 @@ header span {
 /* Header style */
 .options-wheel {
     transition: transform 0.5s ease;
-    /* Smooth transition */
 }
 
+/* Totate options wheel on mouseover */
 .options-wheel:hover {
     transform: rotate(120deg);
 }

@@ -192,6 +192,74 @@ function colorShipCells(boardId) {
     });
 };
 
-function userPlaceShips() {
+// User placing ships below!
 
-};
+let playerShips = []; // Stores player ship positions
+let shipOrientation = "horizontal"; // Default orientation
+
+// Prevent right-click menu on the board
+document.getElementById("player-board").addEventListener("contextmenu", (e) => {
+    e.preventDefault(); // Prevents the browser context menu
+});
+
+// Function to toggle orientation when right-clicked
+document.getElementById("player-board").addEventListener("contextmenu", (e) => {
+    e.preventDefault(); // Prevents the default right-click menu
+    shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal"; // Toggle orientation
+    console.log("Orientation switched to:", shipOrientation);
+});
+
+// check from here below, not working!
+
+// Function to place ship on left-click
+document.getElementById("player-board").addEventListener("click", (e) => {
+    if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
+
+    let cellId = e.target.id.replace("player-", ""); // Get cell ID (e.g., "a1")
+    let [row, col] = cellId.split(/(\d+)/);
+    col = parseInt(col);
+
+    let newShip = [];
+    let letters = "abcdefghij"; // Row letters
+    let rowIndex = letters.indexOf(row);
+
+    // Horizontal placement
+    if (shipOrientation === "horizontal") {
+        if (col > 8) return; // Prevent ship from going out of bounds
+        newShip = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
+
+        // Vertical placement (Fixed)
+    } else {
+        if (rowIndex > 7) return; // Prevent ship from going out of bounds
+        newShip = [
+            `${letters[rowIndex]}${col}`, // e.g., a1
+            `${letters[rowIndex + 1]}${col}`, // e.g., b1
+            `${letters[rowIndex + 2]}${col}` // e.g., c1
+        ];
+    }
+
+    // Check if ship placement is valid (no overlap)
+    if (!isValidPlacement(newShip)) {
+        console.log("Invalid placement! Overlapping or out of bounds.");
+        return;
+    }
+
+    // Place the ship (color the cells)
+    newShip.forEach(cell => {
+        let shipCell = document.getElementById(`player-${cell}`);
+        if (shipCell) shipCell.style.backgroundColor = "blue"; // Indicate ship placement
+    });
+
+    playerShips.push(newShip); // Store placed ship
+    console.log("Ship placed at:", newShip);
+});
+
+// Function to check if the placement is valid (no overlap)
+function isValidPlacement(ship) {
+    for (let cell of ship) {
+        if (playerShips.flat().includes(cell)) {
+            return false; // Ship overlaps an existing one
+        }
+    }
+    return true;
+}
