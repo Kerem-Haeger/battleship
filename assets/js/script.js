@@ -184,6 +184,72 @@ function colorShipCells(boardId) {
     });
 };
 
+// Highlighting cells on hover before placing ships
+
+let shipCellsToHighlight = []; // Store the cells to be highlighted
+let placedCells = []; // Store the cells that have ships placed
+
+document.getElementById("player-board").addEventListener("mousemove", (e) => {
+    if (!e.target.classList.contains("cell")) return; // Ensure a cell is hovered
+
+    // Get the cell ID (e.g., a1)
+    let cellId = e.target.id.replace("player-board-", "");
+    let [row, col] = cellId.split(/(\d+)/);
+    col = parseInt(col);
+
+    // Clear previously highlighted cells (excluding placed ships)
+    shipCellsToHighlight.forEach(cell => {
+        if (!placedCells.includes(cell)) { // Don't clear cells where ships are placed
+            let highlightedCell = document.getElementById(`player-board-${cell}`);
+            if (highlightedCell) {
+                highlightedCell.style.backgroundColor = ""; // Reset the color
+            }
+        }
+    });
+
+    // Reset the array of highlighted cells
+    shipCellsToHighlight = [];
+
+    // Highlight cells based on orientation
+    if (shipOrientation === "horizontal") {
+        // Highlight 3 horizontal cells (even beyond the board)
+        for (let i = 0; i < 3; i++) {
+            let newCell = `${row}${col + i}`;
+            shipCellsToHighlight.push(newCell);
+            let cellToHighlight = document.getElementById(`player-board-${newCell}`);
+            if (cellToHighlight && !placedCells.includes(newCell)) {
+                cellToHighlight.style.backgroundColor = "lightgray"; // Highlight potential cells
+            }
+        }
+    } else if (shipOrientation === "vertical") {
+        // Highlight 3 vertical cells (even beyond the board)
+        let letters = "abcdefghij";
+        let rowIndex = letters.indexOf(row);
+        for (let i = 0; i < 3; i++) {
+            let newRow = letters[rowIndex + i];
+            let newCell = `${newRow}${col}`;
+            shipCellsToHighlight.push(newCell);
+            let cellToHighlight = document.getElementById(`player-board-${newCell}`);
+            if (cellToHighlight && !placedCells.includes(newCell)) {
+                cellToHighlight.style.backgroundColor = "lightgray"; // Highlight potential cells
+            }
+        }
+    }
+});
+
+// Reset all cells when mouse leaves the board
+document.getElementById("player-board").addEventListener("mouseleave", () => {
+    // Only reset non-placed cells
+    shipCellsToHighlight.forEach(cell => {
+        if (!placedCells.includes(cell)) { // Don't clear placed ship cells
+            let highlightedCell = document.getElementById(`player-board-${cell}`);
+            if (highlightedCell) {
+                highlightedCell.style.backgroundColor = ""; // Reset color
+            }
+        }
+    });
+});
+
 // User placing ships below!
 
 let playerShips = []; // Stores player ship positions
@@ -204,60 +270,60 @@ document.getElementById("player-board").addEventListener("contextmenu", (e) => {
 
 // Function to place ship on left-click (Limited to 3 ships)
 document.getElementById("player-board").addEventListener("click", (e) => {
-    if (!e.target.classList.contains("cell")) return;
+    if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 
-    if (playerShipCount >= 3) { // Could be a variable later, so player can decide how many ships to place
-        console.log("You have already placed all 3 ships!"); // instead of console log, this will make the start game button visible
-        return; // Stop placing more ships
-    };
+    // Check if the player has already placed 3 ships
+    if (playerShipCount >= 3) {
+        console.log("You have already placed all 3 ships!");
+        return; // Stop further placements if the player has placed 3 ships
+    }
 
+    // Get the cell ID (e.g., a1)
     let cellId = e.target.id.replace("player-board-", "");
     let [row, col] = cellId.split(/(\d+)/);
     col = parseInt(col);
 
     let newShip = [];
-    let letters = "abcdefghij";
+    let letters = "abcdefghij"; // Row letters
     let rowIndex = letters.indexOf(row);
 
     // Horizontal placement
     if (shipOrientation === "horizontal") {
-        if (col > 8) return; // Prevent ship from going out of bounds
         newShip = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
-
-        // Vertical placement
-    } else {
-        if (rowIndex > 7) return; // Prevent ship from going out of bounds
+    } else { // Vertical placement
         newShip = [
-            `${letters[rowIndex]}${col}`,
-            `${letters[rowIndex + 1]}${col}`,
-            `${letters[rowIndex + 2]}${col}`
+            `${letters[rowIndex]}${col}`, // e.g., a1
+            `${letters[rowIndex + 1]}${col}`, // e.g., b1
+            `${letters[rowIndex + 2]}${col}` // e.g., c1
         ];
-    };
+    }
 
     // Check if ship placement is valid (no overlap)
     if (!isValidPlacement(newShip)) {
         console.log("Invalid placement! Overlapping or out of bounds.");
         return;
-    };
+    }
 
     // Place the ship (color the cells)
     newShip.forEach(cell => {
         let shipCell = document.getElementById(`player-board-${cell}`);
-        if (shipCell) shipCell.style.backgroundColor = "blue";
+        if (shipCell) {
+            shipCell.style.backgroundColor = "blue"; // Indicate ship placement
+            placedCells.push(cell); // Store placed ship cells
+        }
     });
 
-    playerShips.push(newShip);
-    playerShipCount++;
+    playerShipCount++; // Increment the ship count after placing a ship
     console.log(`Ship ${playerShipCount}/3 placed at:`, newShip);
 });
 
-
 // Function to check if the placement is valid (no overlap)
 function isValidPlacement(ship) {
+    // Check if any of the cells in the new ship are already occupied
     for (let cell of ship) {
-        if (playerShips.flat().includes(cell)) {
-            return false;
+        if (placedCells.includes(cell)) {
+            return false; // Ship overlaps an existing one
         }
     }
-    return true;
-};
+    return true; // Placement is valid if no overlap
+}
