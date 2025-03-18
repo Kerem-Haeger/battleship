@@ -352,10 +352,13 @@ function isValidPlacement(ship) {
     return true;
 };
 
+// Will be used later, for now disables button for computer to take turn
 document.getElementById("turnButton").addEventListener("click", function () {
     let button = this;
 
     button.disabled = true;
+
+    // This is where the function for the computer turn should be called
 
     setTimeout(() => {
         button.innerText = "End Turn";
