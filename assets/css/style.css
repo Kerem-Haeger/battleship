@@ -116,6 +116,6 @@ main h2 {
     font-size: 1.5em;
     border-radius: 0;
     background-color: darkslategray;
-    margin: auto;
+    margin: 1.5em auto;
     display: block;
 }
