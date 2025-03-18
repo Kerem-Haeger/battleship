@@ -2,8 +2,8 @@
  * On loading the user is presented with an obligatory modal to enter their name
  */
 document.addEventListener("DOMContentLoaded", function () {
-    var myModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
-    myModal.show();
+    var nameModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+    nameModal.show();
 });
 
 const cells = []; // Array to store references to the cells
