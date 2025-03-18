@@ -187,7 +187,7 @@ function colorShipCells(boardId) {
 // Highlighting cells on hover before placing ships
 
 let shipCellsToHighlight = []; // Store the cells to be highlighted
-let placedCells = []; // Store the cells that have ships placed
+let computerShips = []; // Store the cells that have ships placed
 
 document.getElementById("player-board").addEventListener("mousemove", (e) => {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is hovered
@@ -199,7 +199,7 @@ document.getElementById("player-board").addEventListener("mousemove", (e) => {
 
     // Clear previously highlighted cells (excluding placed ships)
     shipCellsToHighlight.forEach(cell => {
-        if (!placedCells.includes(cell)) { // Don't clear cells where ships are placed
+        if (!computerShips.includes(cell)) { // Don't clear cells where ships are placed
             let highlightedCell = document.getElementById(`player-board-${cell}`);
             if (highlightedCell) {
                 highlightedCell.style.backgroundColor = ""; // Reset the color
@@ -217,7 +217,7 @@ document.getElementById("player-board").addEventListener("mousemove", (e) => {
             let newCell = `${row}${col + i}`;
             shipCellsToHighlight.push(newCell);
             let cellToHighlight = document.getElementById(`player-board-${newCell}`);
-            if (cellToHighlight && !placedCells.includes(newCell)) {
+            if (cellToHighlight && !computerShips.includes(newCell)) {
                 cellToHighlight.style.backgroundColor = "lightgray"; // Highlight potential cells
             }
         }
@@ -230,7 +230,7 @@ document.getElementById("player-board").addEventListener("mousemove", (e) => {
             let newCell = `${newRow}${col}`;
             shipCellsToHighlight.push(newCell);
             let cellToHighlight = document.getElementById(`player-board-${newCell}`);
-            if (cellToHighlight && !placedCells.includes(newCell)) {
+            if (cellToHighlight && !computerShips.includes(newCell)) {
                 cellToHighlight.style.backgroundColor = "lightgray"; // Highlight potential cells
             }
         }
@@ -241,7 +241,7 @@ document.getElementById("player-board").addEventListener("mousemove", (e) => {
 document.getElementById("player-board").addEventListener("mouseleave", () => {
     // Only reset non-placed cells
     shipCellsToHighlight.forEach(cell => {
-        if (!placedCells.includes(cell)) { // Don't clear placed ship cells
+        if (!computerShips.includes(cell)) { // Don't clear placed ship cells
             let highlightedCell = document.getElementById(`player-board-${cell}`);
             if (highlightedCell) {
                 highlightedCell.style.backgroundColor = ""; // Reset color
