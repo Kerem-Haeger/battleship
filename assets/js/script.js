@@ -276,7 +276,7 @@ document.getElementById("player-board").addEventListener("click", (e) => {
     if (playerShipCount >= 3) {
         console.log("You have already placed all 3 ships!");
         return; // Stop further placements if the player has placed 3 ships
-    }
+    };
 
     // Get the cell ID (e.g., a1)
     let cellId = e.target.id.replace("player-board-", "");
@@ -296,13 +296,13 @@ document.getElementById("player-board").addEventListener("click", (e) => {
             `${letters[rowIndex + 1]}${col}`, // e.g., b1
             `${letters[rowIndex + 2]}${col}` // e.g., c1
         ];
-    }
+    };
 
     // Check if ship placement is valid (no overlap)
     if (!isValidPlacement(newShip)) {
         console.log("Invalid placement! Overlapping or out of bounds.");
         return;
-    }
+    };
 
     // Place the ship (color the cells)
     newShip.forEach(cell => {
@@ -310,11 +310,15 @@ document.getElementById("player-board").addEventListener("click", (e) => {
         if (shipCell) {
             shipCell.style.backgroundColor = "blue"; // Indicate ship placement
             placedCells.push(cell); // Store placed ship cells
-        }
+        };
     });
 
     playerShipCount++; // Increment the ship count after placing a ship
     console.log(`Ship ${playerShipCount}/3 placed at:`, newShip);
+
+    if (playerShipCount >= 3) {
+        document.querySelector(".start-game").disabled = false; // Enable the button
+    };
 });
 
 // Function to check if the placement is valid (no overlap)
@@ -323,7 +327,7 @@ function isValidPlacement(ship) {
     for (let cell of ship) {
         if (placedCells.includes(cell)) {
             return false; // Ship overlaps an existing one
-        }
-    }
+        };
+    };
     return true; // Placement is valid if no overlap
-}
+};

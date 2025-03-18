@@ -110,3 +110,11 @@ main h2 {
 .board-container {
     text-align: center;
 }
+
+.start-game {
+    letter-spacing: 0.05em;
+    border-radius: 0;
+    background-color: darkslategray;
+    margin: auto;
+    display: block;
+}
