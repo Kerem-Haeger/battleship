@@ -26,7 +26,9 @@ const createBoard = (boardId) => {
     }
 };
 
-// Add event listeners
+
+/**
+ * // Add event listeners
 const addCellEventListeners = () => {
     cells.forEach(cell => {
         cell.addEventListener("click", function (e) {
@@ -35,6 +37,7 @@ const addCellEventListeners = () => {
         });
     });
 };
+ */
 
 
 /**
@@ -66,7 +69,7 @@ document.getElementById("player-name").addEventListener("keypress", function (ev
 createBoard("player-board");
 createBoard("computer-board");
 
-addCellEventListeners();
+//addCellEventListeners();
 
 let shipPosition = []; // This will store the Computer's ship starting points
 let occupiedCells = new Set(); // To store all occupied cells (for checking overlap and proximity)
@@ -261,14 +264,14 @@ document.getElementById("player-board").addEventListener("contextmenu", (e) => {
 });
 
 
-// Function to toggle orientation when right-clicked
+// Toggle orientation when right-clicked
 document.getElementById("player-board").addEventListener("contextmenu", (e) => {
     e.preventDefault();
     shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal"; // Toggle orientation
     console.log("Orientation switched to:", shipOrientation);
 });
 
-// Function to place ship on left-click (Limited to 3 ships)
+// Place ship on left-click (Limited to 3 ships)
 document.getElementById("player-board").addEventListener("click", (e) => {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 
