@@ -8,6 +8,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Disable start button until all ships are placed
 });
 
+// Disable the start button until player enters any name/character
+document.getElementById("player-name").addEventListener("input", function () {
+    let startButton = document.querySelector(".start-button");
+    startButton.disabled = this.value.trim() === "";
+});
+
 const cells = []; // Array to store references to the cells
 
 const createBoard = (boardId) => {
@@ -40,7 +46,6 @@ const addCellEventListeners = () => {
     });
 };
  */
-
 
 /**
  * Closes the modal and sets the player name to what was entered
