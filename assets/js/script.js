@@ -2,7 +2,7 @@
  * On loading the user is presented with an obligatory modal to enter their name
  */
 document.addEventListener("DOMContentLoaded", function () {
-    var nameModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
+    let nameModal = new bootstrap.Modal(document.getElementById("staticBackdrop"));
     nameModal.show();
     document.getElementById("turnButton").disabled = true;
     // Disable start button until all ships are placed
@@ -14,7 +14,7 @@ document.getElementById("player-name").addEventListener("input", function () {
     startButton.disabled = this.value.trim() === "";
 });
 
-const cells = []; // Array to store references to the cells
+let cells = []; // Array to store references to the cells
 
 const createBoard = (boardId) => {
     const board = document.getElementById(boardId);
