@@ -131,6 +131,7 @@ export function userPlaceShips() {
         newShip.forEach(cell => {
             let shipCell = document.getElementById(`player-board-${cell}`);
             if (shipCell) {
+                // To be changed to an image or something!
                 shipCell.style.backgroundColor = "blue";
                 placedCells.push(cell);
             };

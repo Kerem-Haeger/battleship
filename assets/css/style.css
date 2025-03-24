@@ -46,7 +46,7 @@ header span {
     transition: transform 0.5s ease;
 }
 
-/* Totate options wheel on mouseover */
+/* Rotate options wheel on mouseover */
 .options-wheel:hover {
     transform: rotate(120deg);
 }
@@ -55,7 +55,6 @@ header span {
 main h2 {
     padding-top: 1em;
     letter-spacing: 0.05em;
-    ;
 }
 
 .board {
@@ -108,4 +107,13 @@ main h2 {
     background-color: darkslategray;
     margin: 1.5em auto;
     display: block;
+}
+
+/* Footer */
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 1em;
 }
