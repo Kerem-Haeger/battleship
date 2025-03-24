@@ -2,7 +2,7 @@ import {
     shipPosition
 } from './game.js';
 
-let cells = []; // Array to store references to the cells
+export let cells = []; // Array to store references to the cells
 
 export function createBoard(boardId) {
     const board = document.getElementById(boardId);

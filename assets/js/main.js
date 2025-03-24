@@ -12,7 +12,6 @@ import {
     highlightUserCells
 } from './events.js'
 
-
 createBoard("player-board");
 createBoard("computer-board");
 
