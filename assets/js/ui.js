@@ -4,6 +4,9 @@ import {
 
 export let cells = []; // Array to store references to the cells
 
+/**
+ * Function to create the playing boards
+ */
 export function createBoard(boardId) {
     const board = document.getElementById(boardId);
     const letters = "abcdefghij";
