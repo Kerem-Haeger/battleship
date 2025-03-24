@@ -27,17 +27,7 @@ header span {
 }
 
 /* Modal style */
-.modal-content,
-.modal-body>input {
-    letter-spacing: 0.05em;
-    border-radius: 0;
-    /* change later! */
-}
 
-.modal-footer,
-.modal-header {
-    border-width: 0;
-}
 
 #player-name {
     display: block;
