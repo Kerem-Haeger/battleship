@@ -135,8 +135,11 @@ export function userPlaceShips() {
             };
         });
 
+        playerShips.push(newShip); // Add new ship to player ships array
+
         playerShipCount++; // Increment the ship count after placing a ship
         console.log(`Ship ${playerShipCount}/3 placed at:`, newShip);
+        console.log("Current player ships:", playerShips); // Debugging log
 
         if (playerShipCount >= 3) {
             document.getElementById("turnButton").disabled = false; // Enable the button
