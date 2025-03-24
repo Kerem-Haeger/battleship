@@ -1,3 +1,11 @@
+import {
+    isValidPlacement
+} from './utils.js'
+
+import {
+    placedCells
+} from "./events.js";
+
 export let shipPosition = []; // This will store the Computer's ship starting points
 export let occupiedCells = new Set(); // To store all occupied cells (for checking overlap and proximity)
 
@@ -89,4 +97,83 @@ function hasOverlapOrTouch(newShip) {
     };
 
     return false; // No overlap or touching
+};
+
+export let playerShips = []; // Stores player ship positions
+export let playerShipCount = 0; // Tracks how many ships have been placed
+export let shipOrientation = "horizontal"; // Default orientation
+
+export function userPlaceShips() {
+    // Prevent right-click menu on the board
+    document.getElementById("player-board").addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+    });
+
+    // Toggle orientation when right-clicked
+    document.getElementById("player-board").addEventListener("contextmenu", (e) => {
+        e.preventDefault();
+        shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal"; // Toggle orientation
+        console.log("Orientation switched to:", shipOrientation);
+    });
+
+    // Place ship on left-click (Limited to 3 ships)
+    document.getElementById("player-board").addEventListener("click", (e) => {
+        if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
+
+        // Check if the player has already placed 3 ships
+        if (playerShipCount >= 3) {
+            console.log("You have already placed all 3 ships!");
+            return; // Stop further placements if the player has placed 3 ships
+        };
+
+        // Get the cell ID
+        let cellId = e.target.id.replace("player-board-", "");
+        let [row, col] = cellId.split(/(\d+)/);
+        col = parseInt(col);
+
+        let newShip = [];
+        let letters = "abcdefghij";
+        let rowIndex = letters.indexOf(row);
+
+        // **Out-of-bounds check**
+        if (shipOrientation === "horizontal") {
+            if (col > 8) { // Prevent horizontal overflow (since ship is 3 cells long)
+                console.log("Invalid placement! Ship goes out of bounds horizontally.");
+                return;
+            };
+            newShip = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
+        } else { // Vertical placement
+            if (rowIndex > 7) { // Prevent vertical overflow (since ship is 3 cells long)
+                console.log("Invalid placement! Ship goes out of bounds vertically.");
+                return;
+            };
+            newShip = [
+                `${letters[rowIndex]}${col}`,
+                `${letters[rowIndex + 1]}${col}`,
+                `${letters[rowIndex + 2]}${col}`
+            ];
+        };
+
+        // Check if ship placement is valid (no overlap)
+        if (!isValidPlacement(newShip)) {
+            console.log("Invalid placement! Overlapping or out of bounds.");
+            return;
+        };
+
+        // Place the ship (color the cells)
+        newShip.forEach(cell => {
+            let shipCell = document.getElementById(`player-board-${cell}`);
+            if (shipCell) {
+                shipCell.style.backgroundColor = "blue";
+                placedCells.push(cell);
+            };
+        });
+
+        playerShipCount++; // Increment the ship count after placing a ship
+        console.log(`Ship ${playerShipCount}/3 placed at:`, newShip);
+
+        if (playerShipCount >= 3) {
+            document.getElementById("turnButton").disabled = false; // Enable the button
+        };
+    });
 };
