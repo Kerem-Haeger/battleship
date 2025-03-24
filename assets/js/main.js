@@ -19,6 +19,7 @@ createBoard("player-board");
 createBoard("computer-board");
 
 computerPlaceShips();
+// This should be removed for the game, it is only for debugging!
 colorShipCells("computer-board");
 
 highlightUserCells();
