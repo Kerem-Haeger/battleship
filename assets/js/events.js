@@ -29,8 +29,8 @@ export function highlightUserCells() {
                 let highlightedCell = document.getElementById(`player-board-${cell}`);
                 if (highlightedCell) {
                     highlightedCell.style.backgroundColor = ""; // Reset the color
-                }
-            }
+                };
+            };
         });
 
         // Reset the array of highlighted cells
@@ -45,8 +45,8 @@ export function highlightUserCells() {
                 let cellToHighlight = document.getElementById(`player-board-${newCell}`);
                 if (cellToHighlight && !placedCells.includes(newCell)) {
                     cellToHighlight.style.backgroundColor = "lightgray"; // Highlight potential cells
-                }
-            }
+                };
+            };
         } else if (shipOrientation === "vertical") {
             // Highlight 3 vertical cells (even beyond the board)
             let letters = "abcdefghij";
@@ -58,9 +58,9 @@ export function highlightUserCells() {
                 let cellToHighlight = document.getElementById(`player-board-${newCell}`);
                 if (cellToHighlight && !placedCells.includes(newCell)) {
                     cellToHighlight.style.backgroundColor = "lightgray"; // Highlight potential cells
-                }
-            }
-        }
+                };
+            };
+        };
     });
 
     // Reset all cells when mouse leaves the board
@@ -71,8 +71,8 @@ export function highlightUserCells() {
                 let highlightedCell = document.getElementById(`player-board-${cell}`);
                 if (highlightedCell) {
                     highlightedCell.style.backgroundColor = ""; // Reset color
-                }
-            }
+                };
+            };
         });
     });
 };
