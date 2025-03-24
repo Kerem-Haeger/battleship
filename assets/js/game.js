@@ -4,7 +4,8 @@ import {
 } from './utils.js'
 
 import {
-    placedCells
+    placedCells,
+    highlightUserCells
 } from './events.js';
 
 export let shipPosition = []; // This will store the Computer's ship starting points

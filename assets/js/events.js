@@ -1,5 +1,6 @@
 import {
-    shipOrientation
+    shipOrientation,
+    playerShipCount
 } from './game.js'
 
 // Highlighting cells on hover before placing ships
@@ -13,6 +14,9 @@ export let placedCells = []; // Store the cells that have ships placed
 export function highlightUserCells() {
     document.getElementById("player-board").addEventListener("mousemove", (e) => {
         if (!e.target.classList.contains("cell")) return; // Ensure a cell is hovered
+
+        // Ensure to only "preview" the placement, when the player still has ships to place
+        if (playerShipCount >= 3) return;
 
         // Get the cell ID (e.g., a1)
         let cellId = e.target.id.replace("player-board-", "");
