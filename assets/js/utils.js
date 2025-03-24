@@ -1,6 +1,6 @@
 import {
     placedCells
-} from "./events.js";
+} from './events.js';
 
 import {
     occupiedCells

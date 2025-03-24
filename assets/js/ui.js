@@ -1,6 +1,6 @@
 import {
     shipPosition
-} from "./game.js";
+} from './game.js';
 
 let cells = []; // Array to store references to the cells
 

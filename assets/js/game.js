@@ -5,7 +5,7 @@ import {
 
 import {
     placedCells
-} from "./events.js";
+} from './events.js';
 
 export let shipPosition = []; // This will store the Computer's ship starting points
 export let occupiedCells = new Set(); // To store all occupied cells (for checking overlap and proximity)
