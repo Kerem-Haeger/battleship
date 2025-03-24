@@ -3,6 +3,9 @@ import {
     playerShipCount
 } from './game.js'
 
+// Here should be an event listener for the modal button to call a
+// function to run the game
+
 // Highlighting cells on hover before placing ships
 
 export let shipCellsToHighlight = []; // Store the cells to be highlighted
