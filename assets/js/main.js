@@ -13,6 +13,7 @@ import {
 } from './events.js'
 
 
+
 // These will be called when the player presses "Start" in the startup/instruction modal
 createBoard("player-board");
 createBoard("computer-board");

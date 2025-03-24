@@ -70,10 +70,6 @@ export let shipOrientation = "horizontal"; // Default orientation
  * Function to let the user place ships
  */
 export function userPlaceShips() {
-    // Prevent right-click menu on the board
-    document.getElementById("player-board").addEventListener("contextmenu", (e) => {
-        e.preventDefault();
-    });
 
     // Toggle orientation when right-clicked
     document.getElementById("player-board").addEventListener("contextmenu", (e) => {
