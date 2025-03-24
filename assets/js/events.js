@@ -7,6 +7,9 @@ import {
 export let shipCellsToHighlight = []; // Store the cells to be highlighted
 export let placedCells = []; // Store the cells that have ships placed
 
+/**
+ * Function to highlight the cells the user places ships on
+ */
 export function highlightUserCells() {
     document.getElementById("player-board").addEventListener("mousemove", (e) => {
         if (!e.target.classList.contains("cell")) return; // Ensure a cell is hovered

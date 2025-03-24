@@ -66,6 +66,9 @@ export let playerShips = []; // Stores player ship positions
 export let playerShipCount = 0; // Tracks how many ships have been placed
 export let shipOrientation = "horizontal"; // Default orientation
 
+/**
+ * Function to let the user place ships
+ */
 export function userPlaceShips() {
     // Prevent right-click menu on the board
     document.getElementById("player-board").addEventListener("contextmenu", (e) => {
