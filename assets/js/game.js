@@ -139,7 +139,9 @@ export function userPlaceShips() {
         console.log("Current player ships:", playerShips); // Debugging log
 
         if (playerShipCount >= 3) {
-            document.getElementById("turn-button").disabled = false; // Enable the button
+            let gameTurn = document.getElementById("turn-button");
+            gameTurn.style.visibility = "visible";
+            // document.getElementById("turn-button").disabled = false; // Enable the button
         };
     });
 };
