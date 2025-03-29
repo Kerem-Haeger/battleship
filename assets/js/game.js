@@ -139,9 +139,12 @@ export function userPlaceShips() {
         console.log("Current player ships:", playerShips); // Debugging log
 
         if (playerShipCount >= 3) {
+            // Add hover effect on computer board
+            document.getElementById("computer-board").classList.add("computer-board-active");
+
+            // Enable "Start Game" button
             let gameTurn = document.getElementById("turn-button");
             gameTurn.style.visibility = "visible";
-            // document.getElementById("turn-button").disabled = false; // Enable the button
         };
     });
 };

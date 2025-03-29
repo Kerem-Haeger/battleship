@@ -78,7 +78,7 @@ main h2 {
     cursor: pointer;
 }
 
-#computer-board .cell:hover {
+.computer-board-active .cell:hover {
     background-color: gray;
 }
 
