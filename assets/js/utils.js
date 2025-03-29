@@ -56,3 +56,13 @@ export function isValidPlacement(ship) {
     };
     return true;
 };
+
+/**
+ * Checks if a given cell contains a ship.
+ * @param {string} cellId - The cell ID to check (e.g., "a1").
+ * @param {Array} shipArray - The array containing ship positions (playerShips or computerShips).
+ * @returns {boolean} - Returns true if the cell contains a ship, otherwise false.
+ */
+export function isShipAtCell(cellId, shipArray) {
+    return shipArray.some(ship => ship.includes(cellId)); // Returns true if the cell exists in any ship
+};

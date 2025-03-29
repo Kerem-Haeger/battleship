@@ -76,3 +76,24 @@ export function highlightUserCells() {
         });
     });
 };
+
+import {
+    isShipAtCell
+} from './utils.js';
+import {
+    shipPosition
+} from './game.js';
+
+document.getElementById("computer-board").addEventListener("click", (e) => {
+    if (!e.target.classList.contains("cell")) return;
+
+    let cellId = e.target.id.replace("computer-board-", ""); // Extract ID without board prefix
+
+    if (isShipAtCell(cellId, shipPosition)) {
+        console.log(`Hit! Ship found at ${cellId}`);
+        e.target.style.backgroundColor = "red"; // Example hit effect
+    } else {
+        console.log(`Miss at ${cellId}`);
+        e.target.style.backgroundColor = "gray"; // Example miss effect
+    }
+});
