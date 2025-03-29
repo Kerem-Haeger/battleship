@@ -1,6 +1,8 @@
 import {
     isValidPlacement,
-    hasOverlapOrTouch
+    hasOverlapOrTouch,
+    isShipAtCell,
+    getRandomCell
 } from './utils.js'
 
 import {
@@ -147,4 +149,16 @@ export function userPlaceShips() {
             gameTurn.style.visibility = "visible";
         };
     });
+};
+
+function computerAttack() {
+    let randomCell = getRandomCell("player-board"); // Function to get a random cell (implement separately)
+
+    if (isShipAtCell(randomCell, playerShips)) {
+        console.log(`Computer hit your ship at ${randomCell}!`);
+        document.getElementById(`${randomCell}`).style.backgroundColor = "red";
+    } else {
+        console.log(`Computer missed at ${randomCell}.`);
+        document.getElementById(`${randomCell}`).style.backgroundColor = "gray";
+    };
 };

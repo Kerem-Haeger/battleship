@@ -59,10 +59,18 @@ export function isValidPlacement(ship) {
 
 /**
  * Checks if a given cell contains a ship.
- * @param {string} cellId - The cell ID to check (e.g., "a1").
- * @param {Array} shipArray - The array containing ship positions (playerShips or computerShips).
- * @returns {boolean} - Returns true if the cell contains a ship, otherwise false.
  */
 export function isShipAtCell(cellId, shipArray) {
     return shipArray.some(ship => ship.includes(cellId)); // Returns true if the cell exists in any ship
+};
+
+/**
+ * Generates a random cell ID for the game board.
+ */
+export function getRandomCell(boardId) {
+    const letters = "abcdefghij";
+    const randomLetter = letters[Math.floor(Math.random() * letters.length)];
+    const randomNumber = Math.floor(Math.random() * 10) + 1;
+
+    return `${boardId}-${randomLetter}${randomNumber}`;
 };

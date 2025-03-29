@@ -1,7 +1,12 @@
 import {
     shipOrientation,
-    playerShipCount
+    playerShipCount,
+    shipPosition
 } from './game.js'
+
+import {
+    isShipAtCell
+} from './utils.js';
 
 // Highlighting cells on hover before placing ships
 
@@ -77,13 +82,6 @@ export function highlightUserCells() {
     });
 };
 
-import {
-    isShipAtCell
-} from './utils.js';
-import {
-    shipPosition
-} from './game.js';
-
 document.getElementById("computer-board").addEventListener("click", (e) => {
     if (!e.target.classList.contains("cell")) return;
 
@@ -95,5 +93,5 @@ document.getElementById("computer-board").addEventListener("click", (e) => {
     } else {
         console.log(`Miss at ${cellId}`);
         e.target.style.backgroundColor = "gray"; // Example miss effect
-    }
+    };
 });
