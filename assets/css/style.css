@@ -78,7 +78,7 @@ main h2 {
     cursor: pointer;
 }
 
-#player-board .cell:hover {
+#computer-board .cell:hover {
     /* Only change hover style on player board for now */
     background-color: gray;
 }
