@@ -79,13 +79,12 @@ main h2 {
 }
 
 #computer-board .cell:hover {
-    /* Only change hover style on player board for now */
     background-color: gray;
 }
 
 /* Color ship cells when they are red */
 #computer-board .cell {
-    transition: background-color 0.3s ease;
+    transition: background-color 0.1s ease;
     /* Smooth color transition */
 }
 
