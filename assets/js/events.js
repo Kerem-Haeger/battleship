@@ -1,7 +1,8 @@
 import {
     shipOrientation,
     playerShipCount,
-    shipPosition
+    shipPosition,
+    computerAttack
 } from './game.js'
 
 import {
@@ -94,4 +95,8 @@ document.getElementById("computer-board").addEventListener("click", (e) => {
         console.log(`Miss at ${cellId}`);
         e.target.style.backgroundColor = "gray"; // Example miss effect
     };
+});
+
+document.getElementById("turn-button").addEventListener("click", (e) => {
+    computerAttack();
 });

@@ -64,7 +64,7 @@ export function computerPlaceShips() { // To add later: difficulty can be change
     };
 };
 
-export let playerShips = []; // Stores player ship positions
+export const playerShips = []; // Stores player ship positions
 export let playerShipCount = 0; // Tracks how many ships have been placed
 export let shipOrientation = "horizontal"; // Default orientation
 
@@ -151,7 +151,7 @@ export function userPlaceShips() {
     });
 };
 
-function computerAttack() {
+export function computerAttack() {
     let randomCell = getRandomCell("player-board"); // Function to get a random cell (implement separately)
 
     if (isShipAtCell(randomCell, playerShips)) {
