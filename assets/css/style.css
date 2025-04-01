@@ -93,6 +93,7 @@ main h2 {
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
+    padding-bottom: 75px;
 }
 
 .board-container {
@@ -110,7 +111,7 @@ main h2 {
 
 /* Footer */
 footer {
-    position: absolute;
+    position: fixed;
     bottom: 0;
     width: 100%;
     text-align: center;
