@@ -93,7 +93,9 @@ export function playerAttack() {
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };
 
-// Player attack event listener
+/**
+ * Player attack event listener
+ */
 export function playerAttackListener(e) {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 

@@ -10,8 +10,6 @@ import {
     playerAttack
 } from './events.js';
 
-window.playerShips = [];
-
 export let shipPosition = []; // This will store the Computer's ship starting points
 export let occupiedCells = new Set(); // To store all occupied cells (for checking overlap and proximity)
 
@@ -147,14 +145,11 @@ export function userPlaceShips() {
             // Add hover effect on computer board
             document.getElementById("computer-board").classList.add("computer-board-active");
             playerAttack();
-            // Enable "Start Game" button
-            //let gameTurn = document.getElementById("turn-button");
-            //gameTurn.style.visibility = "visible";
         };
     });
 };
 
-let guessedCells = new Set(); // Set to track already guessed cells
+let guessedCells = new Set(); // Track already guessed cells
 
 export function computerAttack() {
     setTimeout(() => {
