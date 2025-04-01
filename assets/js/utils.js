@@ -1,9 +1,11 @@
 import {
-    placedCells
+    placedCells,
+    playerAttackListener
 } from './events.js';
 
 import {
-    occupiedCells
+    occupiedCells,
+    computerAttack
 } from './game.js'
 
 /**
@@ -74,4 +76,38 @@ export function getRandomCell(boardId) {
     const randomNumber = Math.floor(Math.random() * 10) + 1;
 
     return `${boardId}-${randomLetter}${randomNumber}`;
+};
+
+export let canPlayerAttack = true; // Control player attack ability
+
+/**
+ * Switch the turn to the computer's turn and disable player attack
+ */
+export function switchTurn() {
+    // Disable player attack during computer's turn
+    disablePlayerAttack();
+
+    computerAttack(); // The computer attacks
+
+    // After the computer attacks, switch turn back to player
+    setTimeout(() => {
+        enablePlayerAttack(); // Enable player to attack again after a delay (for the sake of gameplay flow)
+        console.log("It's the player's turn again!");
+    }, 1500); // Delay to simulate the computer’s thinking process
+};
+
+/**
+ * Disable player attack
+ */
+export function disablePlayerAttack() {
+    canPlayerAttack = false; // Set flag to prevent player attacks
+    document.getElementById("computer-board").removeEventListener("click", playerAttackListener);
+};
+
+/**
+ * Enable player attack
+ */
+export function enablePlayerAttack() {
+    canPlayerAttack = true; // Set flag to allow player attacks
+    document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };

@@ -6,7 +6,11 @@ import {
 } from './game.js'
 
 import {
-    isShipAtCell
+    isShipAtCell,
+    switchTurn,
+    disablePlayerAttack,
+    enablePlayerAttack,
+    canPlayerAttack
 } from './utils.js';
 
 // Highlighting cells on hover before placing ships
@@ -83,26 +87,9 @@ export function highlightUserCells() {
     });
 };
 
-/*
-document.getElementById("computer-board").addEventListener("click", (e) => {
-    if (!e.target.classList.contains("cell")) return;
-
-    let cellId = e.target.id.replace("computer-board-", ""); // Extract ID without board prefix
-
-    if (isShipAtCell(cellId, shipPosition)) {
-        console.log(`Hit! Ship found at ${cellId}`);
-        e.target.style.backgroundColor = "red"; // Example hit effect
-    } else {
-        console.log(`Miss at ${cellId}`);
-        e.target.style.backgroundColor = "gray"; // Example miss effect
-    };
-});
-*/
-
-let currentTurn = "player";
-let canPlayerAttack = true; // Flag to control player attack ability
-
-// Player attack function
+/** 
+ * Player attack function
+ */
 export function playerAttack() {
     if (!canPlayerAttack) return; // Prevent attack if it's not the player's turn
 
@@ -110,7 +97,7 @@ export function playerAttack() {
 };
 
 // Player attack event listener
-function playerAttackListener(e) {
+export function playerAttackListener(e) {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 
     let cellId = e.target.id.replace("computer-board-", ""); // Extract ID without board prefix
@@ -125,30 +112,4 @@ function playerAttackListener(e) {
     };
 
     switchTurn();
-};
-
-// Switch the turn to the computer's turn and disable player attack
-function switchTurn() {
-    // Disable player attack during computer's turn
-    disablePlayerAttack();
-
-    computerAttack(); // The computer attacks
-
-    // After the computer attacks, switch turn back to player
-    setTimeout(() => {
-        enablePlayerAttack(); // Enable player to attack again after a delay (for the sake of gameplay flow)
-        console.log("It's the player's turn again!");
-    }, 1500); // Delay to simulate the computer’s thinking process
-};
-
-// Disable player attack
-function disablePlayerAttack() {
-    canPlayerAttack = false; // Set flag to prevent player attacks
-    document.getElementById("computer-board").removeEventListener("click", playerAttackListener);
-};
-
-// Enable player attack
-function enablePlayerAttack() {
-    canPlayerAttack = true; // Set flag to allow player attacks
-    document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };
