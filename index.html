@@ -23,35 +23,38 @@
         <span class="settings options-wheel"><i class="fa-sharp-duotone fa-solid fa-gear"></i></span>
     </header>
 
-    <!-- Modal will be called on page load through javascript -->
-    <!-- Modal -->
-    <div role="dialog" class="modal fade" id="static-backdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-        tabindex="-1" aria-labelledby="static-backdrop-label" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h2 class="modal-title fs-5" id="static-backdrop-label">Welcome to Battleship!</h2>
-                </div>
-                <div class="modal-body">
-                    <h3>Instructions</h3>
-                    <p>1 - Place your ships! <strong><em>Left clicking</em></strong> on your board places a ship,
-                        <strong><em>right clicking</em></strong>
-                        changes orientation (horizontal/vertical)</p>
-                    <p>2 - Click the "Start Game" Button to start the game - the computer will take the first guess!</p>
-                    <p>3 - When it's your turn, click on a cell of the computer board to make a guess!</p>
-                    <p>4 - Step 4</p>
-                </div>
-                <div class="modal-footer">
-                    <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-                    <button type="button" id="got-it" class="btn btn-secondary start-button">Got it! Start
-                        game!</button>
-                </div>
-            </div>
-        </div>
-    </div>
+
 
     <!-- Main containing game area -->
     <main>
+        <!-- Modal will be called on page load through javascript -->
+        <!-- Modal -->
+        <div role="dialog" class="modal fade" id="static-backdrop" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="static-backdrop-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="static-backdrop-label">Welcome to Battleship!</h2>
+                    </div>
+                    <div class="modal-body">
+                        <h3>Instructions</h3>
+                        <p>1 - Place your ships! <strong><em>Left clicking</em></strong> on your board places a ship,
+                            <strong><em>right clicking</em></strong>
+                            changes orientation (horizontal/vertical)</p>
+                        <p>2 - Click the "Start Game" Button to start the game - the computer will take the first guess!
+                        </p>
+                        <p>3 - When it's your turn, click on a cell of the computer board to make a guess!</p>
+                        <p>4 - Step 4</p>
+                    </div>
+                    <div class="modal-footer">
+                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                        <button type="button" id="got-it" class="btn btn-secondary start-button">Got it! Start
+                            game!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
         <section>
             <div class="game-area">
                 <div class="game-container">
