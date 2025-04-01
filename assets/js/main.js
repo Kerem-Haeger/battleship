@@ -27,7 +27,6 @@ document.addEventListener("DOMContentLoaded", function () {
         // This should be removed for the game, it is only for debugging!
         // colorShipCells("computer-board");
         instructionModal.hide();
-        //gameTurn.style.visibility = "hidden"; // Hide the button until player is done placing ships
     });
 });
 
