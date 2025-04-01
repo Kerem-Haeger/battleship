@@ -1,6 +1,6 @@
 import {
     createBoard,
-    colorShipCells
+    colorShipCells // leave for now, but needs removing later
 } from './ui.js';
 
 import {

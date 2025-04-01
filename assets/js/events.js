@@ -2,14 +2,11 @@ import {
     shipOrientation,
     playerShipCount,
     shipPosition,
-    computerAttack
 } from './game.js'
 
 import {
     isShipAtCell,
     switchTurn,
-    disablePlayerAttack,
-    enablePlayerAttack,
     canPlayerAttack
 } from './utils.js';
 
