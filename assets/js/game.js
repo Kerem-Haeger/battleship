@@ -6,7 +6,8 @@ import {
 } from './utils.js'
 
 import {
-    placedCells
+    placedCells,
+    playerAttack
 } from './events.js';
 
 window.playerShips = [];
@@ -145,10 +146,10 @@ export function userPlaceShips() {
         if (playerShipCount >= 3) {
             // Add hover effect on computer board
             document.getElementById("computer-board").classList.add("computer-board-active");
-
+            playerAttack();
             // Enable "Start Game" button
-            let gameTurn = document.getElementById("turn-button");
-            gameTurn.style.visibility = "visible";
+            //let gameTurn = document.getElementById("turn-button");
+            //gameTurn.style.visibility = "visible";
         };
     });
 };
@@ -156,21 +157,23 @@ export function userPlaceShips() {
 let guessedCells = new Set(); // Set to track already guessed cells
 
 export function computerAttack() {
-    let randomCell;
+    setTimeout(() => {
+        let randomCell;
 
-    // Keep generating random cells until we find one that hasn't been guessed yet
-    do {
-        randomCell = getRandomCell("player-board");
-    } while (guessedCells.has(randomCell)); // Check if the cell has already been guessed
+        // Keep generating random cells until we find one that hasn't been guessed yet
+        do {
+            randomCell = getRandomCell("player-board");
+        } while (guessedCells.has(randomCell)); // Check if the cell has already been guessed
 
-    // Mark the cell as guessed
-    guessedCells.add(randomCell);
+        // Mark the cell as guessed
+        guessedCells.add(randomCell);
 
-    if (isShipAtCell(randomCell, playerShips)) {
-        console.log(`Computer hit your ship at ${randomCell}!`);
-        document.getElementById(`${randomCell}`).style.backgroundColor = "red";
-    } else {
-        console.log(`Computer missed at ${randomCell}.`);
-        document.getElementById(`${randomCell}`).style.backgroundColor = "gray";
-    };
+        if (isShipAtCell(randomCell, playerShips)) {
+            console.log(`Computer hit your ship at ${randomCell}!`);
+            document.getElementById(`${randomCell}`).style.backgroundColor = "red";
+        } else {
+            console.log(`Computer missed at ${randomCell}.`);
+            document.getElementById(`${randomCell}`).style.backgroundColor = "gray";
+        };
+    }, 1000);
 };
