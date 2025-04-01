@@ -153,8 +153,18 @@ export function userPlaceShips() {
     });
 };
 
+let guessedCells = new Set(); // Set to track already guessed cells
+
 export function computerAttack() {
-    let randomCell = getRandomCell("player-board"); // Function to get a random cell (implement separately)
+    let randomCell;
+
+    // Keep generating random cells until we find one that hasn't been guessed yet
+    do {
+        randomCell = getRandomCell("player-board");
+    } while (guessedCells.has(randomCell)); // Check if the cell has already been guessed
+
+    // Mark the cell as guessed
+    guessedCells.add(randomCell);
 
     if (isShipAtCell(randomCell, playerShips)) {
         console.log(`Computer hit your ship at ${randomCell}!`);
