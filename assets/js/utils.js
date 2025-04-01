@@ -65,7 +65,6 @@ export function isShipAtCell(cellId, shipArray) {
     return shipArray.some(ship => ship.includes(cell)); // Returns true if the cell exists in any ship
 };
 
-
 /**
  * Generates a random cell ID for the game board.
  */

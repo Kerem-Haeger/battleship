@@ -137,7 +137,6 @@ export function userPlaceShips() {
         });
 
         playerShips.push(newShip); // Add new ship to player ships array
-        window.playerShips.push(newShip);
 
         playerShipCount++; // Increment the ship count after placing a ship
         console.log(`Ship ${playerShipCount}/3 placed at:`, newShip);
@@ -154,15 +153,10 @@ export function userPlaceShips() {
     });
 };
 
-console.log("playerShips type:", typeof window.playerShips);
-console.log("playerShips content:", window.playerShips);
-
 export function computerAttack() {
     let randomCell = getRandomCell("player-board"); // Function to get a random cell (implement separately)
-    console.log("Computer attacks:", randomCell); // Log for debugging!
-    console.log("Checking against ships:", window.playerShips); // Log for debugging!
 
-    if (isShipAtCell(randomCell, window.playerShips)) {
+    if (isShipAtCell(randomCell, playerShips)) {
         console.log(`Computer hit your ship at ${randomCell}!`);
         document.getElementById(`${randomCell}`).style.backgroundColor = "red";
     } else {
