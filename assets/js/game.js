@@ -64,7 +64,7 @@ export function computerPlaceShips() { // To add later: difficulty can be change
     };
 };
 
-export const playerShips = []; // Stores player ship positions
+export let playerShips = []; // Stores player ship positions
 export let playerShipCount = 0; // Tracks how many ships have been placed
 export let shipOrientation = "horizontal"; // Default orientation
 
