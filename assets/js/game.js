@@ -151,33 +151,71 @@ export function userPlaceShips() {
 
 let guessedCells = new Set(); // Track already guessed cells
 let hitCounterComputer = 0; // Track cells hit by computer so the game can end
+let priorityTargets = []; // Stores cells to prioritize (adjacent to hits)
 
 export function computerAttack() {
     setTimeout(() => {
-        let randomCell;
+        let targetCell;
 
-        // Keep generating random cells until we find one that hasn't been guessed yet
-        do {
-            randomCell = getRandomCell("player-board");
-        } while (guessedCells.has(randomCell)); // Check if the cell has already been guessed
+        // If there are priority targets (adjacent cells from a previous hit), attack them first
+        if (priorityTargets.length > 0) {
+            targetCell = priorityTargets.shift(); // Get the next priority target
+        } else {
+            // Otherwise, pick a random cell that hasn't been guessed
+            do {
+                targetCell = getRandomCell("player-board");
+            } while (guessedCells.has(targetCell));
+        }
 
         // Mark the cell as guessed
-        guessedCells.add(randomCell);
+        guessedCells.add(targetCell);
 
-        if (isShipAtCell(randomCell, playerShips)) {
-            console.log(`Computer hit your ship at ${randomCell}!`);
-            document.getElementById(`${randomCell}`).style.backgroundColor = "red";
+        if (isShipAtCell(targetCell, playerShips)) {
+            console.log(`Computer hit your ship at ${targetCell}!`);
+            document.getElementById(`${targetCell}`).style.backgroundColor = "red";
             hitCounterComputer++;
             console.log(`Computer has hit ${hitCounterComputer} cells!`);
+
+            // Add adjacent cells to priority list (if they haven't been guessed yet)
+            addAdjacentCells(targetCell);
 
             // Track computer hits, alert for now, call function later
             if (hitCounterComputer === 9) {
                 alert("Computer wins!");
-            };
-
+            }
         } else {
-            console.log(`Computer missed at ${randomCell}.`);
-            document.getElementById(`${randomCell}`).style.backgroundColor = "gray";
-        };
+            console.log(`Computer missed at ${targetCell}.`);
+            document.getElementById(`${targetCell}`).style.backgroundColor = "gray";
+        }
     }, 1000);
+};
+
+/**
+ * Add adjacent cells of a hit cell to priorityTargets
+ */
+function addAdjacentCells(cell) {
+    let letters = "abcdefghij"; // Board row labels
+
+    // Remove "player-board-" prefix to get just "a1", "b3", etc.
+    let cleanCell = cell.replace("player-board-", "");
+
+    let row = cleanCell[0]; // Letter part of the coordinate
+    let col = parseInt(cleanCell.slice(1)); // Number part of the coordinate
+
+    let rowIndex = letters.indexOf(row);
+    let possibleCells = [];
+
+    // Check all four possible adjacent cells
+    if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`); // Up
+    if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`); // Down
+    if (col > 1) possibleCells.push(`${row}${col - 1}`); // Left
+    if (col < 10) possibleCells.push(`${row}${col + 1}`); // Right
+
+    // Add only unguessed cells to the priority target list with correct ID format
+    possibleCells.forEach(adjCell => {
+        let formattedCell = `player-board-${adjCell}`; // Re-add the prefix
+        if (!guessedCells.has(formattedCell)) {
+            priorityTargets.push(formattedCell);
+        };
+    });
 };

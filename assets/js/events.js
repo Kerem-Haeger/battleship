@@ -105,7 +105,7 @@ export function playerAttackListener(e) {
     if (e.target.style.backgroundColor === "red" || e.target.style.backgroundColor === "gray") {
         alert("Cell already clicked. Choose another cell.");
         return; // Exit the function to prevent duplicate clicks
-    }
+    };
 
     let cellId = e.target.id.replace("computer-board-", ""); // Extract ID without board prefix
 
@@ -119,11 +119,12 @@ export function playerAttackListener(e) {
         // Track ships hit by player and end game (alert for now, call function later)
         if (hitCounterPlayer === 9) {
             alert("Player wins!");
-        }
+        };
+
     } else {
         console.log(`Miss at ${cellId}`);
         e.target.style.backgroundColor = "gray"; // Example miss effect
-    }
+    };
 
     switchTurn();
 };
