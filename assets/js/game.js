@@ -190,6 +190,8 @@ export function computerAttack() {
     }, 1000);
 };
 
+let currentHitChain = []; // Tracks the current ship being hit
+
 /**
  * Add adjacent cells of a hit cell to priorityTargets
  */
@@ -211,10 +213,23 @@ function addAdjacentCells(cell) {
     if (col > 1) possibleCells.push(`${row}${col - 1}`); // Left
     if (col < 10) possibleCells.push(`${row}${col + 1}`); // Right
 
+    // Track hits in the current ship chain
+    if (!currentHitChain.includes(cell)) {
+        currentHitChain.push(cell);
+    };
+
+    // **If 3 hits are recorded in a row, reset priority targets**
+    if (currentHitChain.length === 3) {
+        console.log("Ship sunk! Resetting priority targets.");
+        priorityTargets.length = 0; // Clear priority targets
+        currentHitChain = []; // Reset hit chain tracking
+        return; // Stop adding new targets
+    };
+
     // Add only unguessed cells to the priority target list with correct ID format
     possibleCells.forEach(adjCell => {
         let formattedCell = `player-board-${adjCell}`; // Re-add the prefix
-        if (!guessedCells.has(formattedCell)) {
+        if (!guessedCells.has(formattedCell) && !priorityTargets.includes(formattedCell)) {
             priorityTargets.push(formattedCell);
         };
     });
