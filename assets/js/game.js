@@ -150,6 +150,7 @@ export function userPlaceShips() {
 };
 
 let guessedCells = new Set(); // Track already guessed cells
+let hitCounterComputer = 0;
 
 export function computerAttack() {
     setTimeout(() => {
@@ -166,9 +167,16 @@ export function computerAttack() {
         if (isShipAtCell(randomCell, playerShips)) {
             console.log(`Computer hit your ship at ${randomCell}!`);
             document.getElementById(`${randomCell}`).style.backgroundColor = "red";
+            hitCounterComputer = hitCounterComputer + 1;
+            console.log(`Computer has hit ${hitCounterComputer} cells!`);
         } else {
             console.log(`Computer missed at ${randomCell}.`);
             document.getElementById(`${randomCell}`).style.backgroundColor = "gray";
         };
     }, 1000);
+};
+
+if (hitCounterComputer === 9) {
+    alert("Computer wins!");
+    // Game End mechanic to be implemented
 };
