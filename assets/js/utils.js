@@ -87,11 +87,11 @@ export function switchTurn() {
     // Disable player attack during computer's turn
     disablePlayerAttack();
 
-    computerAttack(); // The computer attacks
+    computerAttack();
 
     // After the computer attacks, switch turn back to player
     setTimeout(() => {
-        enablePlayerAttack(); // Enable player to attack again after a delay (for the sake of gameplay flow)
+        enablePlayerAttack();
         console.log("It's the player's turn again!");
     }, 1010); // Delay to simulate the computer’s thinking process
 };
@@ -100,7 +100,7 @@ export function switchTurn() {
  * Disable player attack
  */
 export function disablePlayerAttack() {
-    canPlayerAttack = false; // Set flag to prevent player attacks
+    canPlayerAttack = false;
     document.getElementById("computer-board").removeEventListener("click", playerAttackListener);
 };
 
@@ -108,6 +108,6 @@ export function disablePlayerAttack() {
  * Enable player attack
  */
 export function enablePlayerAttack() {
-    canPlayerAttack = true; // Set flag to allow player attacks
+    canPlayerAttack = true;
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };
