@@ -152,6 +152,8 @@ export function userPlaceShips() {
 let guessedCells = new Set(); // Track already guessed cells
 let hitCounterComputer = 0; // Track cells hit by computer so the game can end
 let priorityTargets = []; // Stores cells to prioritize (adjacent to hits)
+let currentHitChain = []; // Tracks the current ship being hit
+let hitShipDirection = ""; // Will hold the direction (horizontal/vertical) of the hit ship
 
 export function computerAttack() {
     setTimeout(() => {
@@ -165,7 +167,7 @@ export function computerAttack() {
             do {
                 targetCell = getRandomCell("player-board");
             } while (guessedCells.has(targetCell));
-        }
+        };
 
         // Mark the cell as guessed
         guessedCells.add(targetCell);
@@ -182,15 +184,13 @@ export function computerAttack() {
             // Track computer hits, alert for now, call function later
             if (hitCounterComputer === 9) {
                 alert("Computer wins!");
-            }
+            };
         } else {
             console.log(`Computer missed at ${targetCell}.`);
             document.getElementById(`${targetCell}`).style.backgroundColor = "gray";
-        }
+        };
     }, 1000);
 };
-
-let currentHitChain = []; // Tracks the current ship being hit
 
 /**
  * Add adjacent cells of a hit cell to priorityTargets
@@ -207,12 +207,6 @@ function addAdjacentCells(cell) {
     let rowIndex = letters.indexOf(row);
     let possibleCells = [];
 
-    // Check all four possible adjacent cells
-    if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`); // Up
-    if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`); // Down
-    if (col > 1) possibleCells.push(`${row}${col - 1}`); // Left
-    if (col < 10) possibleCells.push(`${row}${col + 1}`); // Right
-
     // Track hits in the current ship chain
     if (!currentHitChain.includes(cell)) {
         currentHitChain.push(cell);
@@ -223,7 +217,40 @@ function addAdjacentCells(cell) {
         console.log("Ship sunk! Resetting priority targets.");
         priorityTargets.length = 0; // Clear priority targets
         currentHitChain = []; // Reset hit chain tracking
+        hitShipDirection = ""; // Reset ship direction
         return; // Stop adding new targets
+    };
+
+    // If two adjacent cells are hit, determine direction (horizontal or vertical)
+    if (currentHitChain.length === 2) {
+        let firstHit = currentHitChain[0].replace("player-board-", "");
+        let secondHit = currentHitChain[1].replace("player-board-", "");
+
+        if (firstHit[0] === secondHit[0]) {
+            hitShipDirection = 'horizontal'; // Horizontal ship
+        } else if (firstHit[1] === secondHit[1]) {
+            hitShipDirection = 'vertical'; // Vertical ship
+        };
+    };
+
+    // If two hits are in the same row (horizontal), continue guessing in that row
+    if (hitShipDirection === 'horizontal') {
+        if (col > 1) possibleCells.push(`${row}${col - 1}`); // Left
+        if (col < 10) possibleCells.push(`${row}${col + 1}`); // Right
+    };
+
+    // If two hits are in the same column (vertical), continue guessing in that column
+    if (hitShipDirection === 'vertical') {
+        if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`); // Up
+        if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`); // Down
+    };
+
+    // Otherwise, check all four possible adjacent cells
+    if (hitShipDirection === "") {
+        if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`); // Up
+        if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`); // Down
+        if (col > 1) possibleCells.push(`${row}${col - 1}`); // Left
+        if (col < 10) possibleCells.push(`${row}${col + 1}`); // Right
     };
 
     // Add only unguessed cells to the priority target list with correct ID format
