@@ -93,6 +93,8 @@ export function playerAttack() {
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };
 
+let hitCounterPlayer = 0; // Track cells hit by player
+
 /**
  * Player attack event listener
  */
@@ -105,6 +107,14 @@ export function playerAttackListener(e) {
     if (isShipAtCell(cellId, shipPosition)) {
         console.log(`Hit! Ship found at ${cellId}`);
         e.target.style.backgroundColor = "red"; // Example hit effect
+        hitCounterPlayer = hitCounterPlayer + 1;
+        console.log(`Player has hit ${hitCounterPlayer} cells!`);
+
+        // Track ships hit by player and end game (alert for now, call function later)
+        if (hitCounterPlayer === 9) {
+            alert("Player wins!");
+        };
+
     } else {
         console.log(`Miss at ${cellId}`);
         e.target.style.backgroundColor = "gray"; // Example miss effect

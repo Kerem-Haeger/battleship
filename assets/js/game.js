@@ -150,7 +150,7 @@ export function userPlaceShips() {
 };
 
 let guessedCells = new Set(); // Track already guessed cells
-let hitCounterComputer = 0;
+let hitCounterComputer = 0; // Track cells hit by computer so the game can end
 
 export function computerAttack() {
     setTimeout(() => {
@@ -169,14 +169,15 @@ export function computerAttack() {
             document.getElementById(`${randomCell}`).style.backgroundColor = "red";
             hitCounterComputer = hitCounterComputer + 1;
             console.log(`Computer has hit ${hitCounterComputer} cells!`);
+
+            // Track computer hits, alert for now, call function later
+            if (hitCounterComputer === 9) {
+                alert("Computer wins!");
+            };
+
         } else {
             console.log(`Computer missed at ${randomCell}.`);
             document.getElementById(`${randomCell}`).style.backgroundColor = "gray";
         };
     }, 1000);
-};
-
-if (hitCounterComputer === 9) {
-    alert("Computer wins!");
-    // Game End mechanic to be implemented
 };
