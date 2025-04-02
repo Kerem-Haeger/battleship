@@ -10,6 +10,10 @@ import {
     playerAttack
 } from './events.js';
 
+import {
+    createBoard
+} from './ui.js'
+
 export let shipPosition = []; // This will store the Computer's ship starting points
 export let occupiedCells = new Set(); // To store all occupied cells (for checking overlap and proximity)
 
@@ -144,6 +148,9 @@ export function userPlaceShips() {
         if (playerShipCount >= 3) {
             // Add hover effect on computer board
             document.getElementById("computer-board").classList.add("computer-board-active");
+            // Create computer board once player has placed ships!
+            // Until then, add a text saying "place your ships"
+            createBoard("computer-board");
             playerAttack();
         };
     });
