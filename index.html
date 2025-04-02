@@ -27,34 +27,38 @@
 
     <!-- Main containing game area -->
     <main>
-        <!-- Modal will be called on page load through javascript -->
-        <!-- Modal -->
-        <div role="dialog" class="modal fade" id="static-backdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-            tabindex="-1" aria-labelledby="static-backdrop-label" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h2 class="modal-title fs-5" id="static-backdrop-label">Welcome to Battleship!</h2>
-                    </div>
-                    <div class="modal-body">
-                        <h3>Instructions</h3>
-                        <p>1 - Place your ships! <strong><em>Left clicking</em></strong> on your board places a ship,
-                            <strong><em>right clicking</em></strong>
-                            changes orientation (horizontal/vertical)</p>
-                        <p>2 - Once you have placed all 3 of your ships, you can start to attackt the computer by
-                            clicking on the Computer board!
-                        </p>
-                        <p>3 - After your attack, it's the computer's turn. Once it is done, you can attack again!</p>
-                        <p>4 - The game is won, when one player has sunk all the opponent's ships!</p>
-                    </div>
-                    <div class="modal-footer">
-                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
-                        <button type="button" id="got-it" class="btn btn-secondary start-button">Got it! Start
-                            game!</button>
+        <section class="instruction-modal">
+            <!-- Modal will be called on page load through javascript -->
+            <!-- Modal -->
+            <div role="dialog" class="modal fade" id="static-backdrop" data-bs-backdrop="static"
+                data-bs-keyboard="false" tabindex="-1" aria-labelledby="static-backdrop-label" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h2 class="modal-title fs-5" id="static-backdrop-label">Welcome to Battleship!</h2>
+                        </div>
+                        <div class="modal-body">
+                            <h3>Instructions</h3>
+                            <p>1 - Place your ships! <strong><em>Left clicking</em></strong> on your board places a
+                                ship,
+                                <strong><em>right clicking</em></strong>
+                                changes orientation (horizontal/vertical)</p>
+                            <p>2 - Once you have placed all 3 of your ships, you can start to attackt the computer by
+                                clicking on the Computer board!
+                            </p>
+                            <p>3 - After your attack, it's the computer's turn. Once it is done, you can attack again!
+                            </p>
+                            <p>4 - The game is won, when one player has sunk all the opponent's ships!</p>
+                        </div>
+                        <div class="modal-footer">
+                            <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                            <button type="button" id="got-it" class="btn btn-secondary start-button">Got it! Start
+                                game!</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
         <section>
             <div class="game-area">
