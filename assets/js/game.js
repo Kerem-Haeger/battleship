@@ -167,7 +167,7 @@ export function computerAttack() {
         if (isShipAtCell(randomCell, playerShips)) {
             console.log(`Computer hit your ship at ${randomCell}!`);
             document.getElementById(`${randomCell}`).style.backgroundColor = "red";
-            hitCounterComputer = hitCounterComputer + 1;
+            hitCounterComputer++;
             console.log(`Computer has hit ${hitCounterComputer} cells!`);
 
             // Track computer hits, alert for now, call function later

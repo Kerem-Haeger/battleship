@@ -101,24 +101,29 @@ let hitCounterPlayer = 0; // Track cells hit by player
 export function playerAttackListener(e) {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 
+    // Prevent clicking the same cell twice
+    if (e.target.style.backgroundColor === "red" || e.target.style.backgroundColor === "gray") {
+        alert("Cell already clicked. Choose another cell.");
+        return; // Exit the function to prevent duplicate clicks
+    }
+
     let cellId = e.target.id.replace("computer-board-", ""); // Extract ID without board prefix
 
     // Check if a ship is at the clicked cell
     if (isShipAtCell(cellId, shipPosition)) {
         console.log(`Hit! Ship found at ${cellId}`);
         e.target.style.backgroundColor = "red"; // Example hit effect
-        hitCounterPlayer = hitCounterPlayer + 1;
+        hitCounterPlayer++;
         console.log(`Player has hit ${hitCounterPlayer} cells!`);
 
         // Track ships hit by player and end game (alert for now, call function later)
         if (hitCounterPlayer === 9) {
             alert("Player wins!");
-        };
-
+        }
     } else {
         console.log(`Miss at ${cellId}`);
         e.target.style.backgroundColor = "gray"; // Example miss effect
-    };
+    }
 
     switchTurn();
 };
