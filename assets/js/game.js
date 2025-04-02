@@ -196,13 +196,13 @@ export function computerAttack() {
  * Add adjacent cells of a hit cell to priorityTargets
  */
 function addAdjacentCells(cell) {
-    let letters = "abcdefghij"; // Board row labels
+    let letters = "abcdefghij";
 
     // Remove "player-board-" prefix to get just "a1", "b3", etc.
     let cleanCell = cell.replace("player-board-", "");
 
-    let row = cleanCell[0]; // Letter part of the coordinate
-    let col = parseInt(cleanCell.slice(1)); // Number part of the coordinate
+    let row = cleanCell[0];
+    let col = parseInt(cleanCell.slice(1));
 
     let rowIndex = letters.indexOf(row);
     let possibleCells = [];
@@ -212,13 +212,13 @@ function addAdjacentCells(cell) {
         currentHitChain.push(cell);
     };
 
-    // **If 3 hits are recorded in a row, reset priority targets**
+    // If 3 hits are recorded in a row, reset priority targets
     if (currentHitChain.length === 3) {
-        console.log("Ship sunk! Resetting priority targets.");
-        priorityTargets.length = 0; // Clear priority targets
-        currentHitChain = []; // Reset hit chain tracking
-        hitShipDirection = ""; // Reset ship direction
-        return; // Stop adding new targets
+        console.log("Ship sunk!");
+        priorityTargets.length = 0;
+        currentHitChain = [];
+        hitShipDirection = "";
+        return;
     };
 
     // If two adjacent cells are hit, determine direction (horizontal or vertical)
@@ -227,35 +227,35 @@ function addAdjacentCells(cell) {
         let secondHit = currentHitChain[1].replace("player-board-", "");
 
         if (firstHit[0] === secondHit[0]) {
-            hitShipDirection = 'horizontal'; // Horizontal ship
+            hitShipDirection = 'horizontal';
         } else if (firstHit[1] === secondHit[1]) {
-            hitShipDirection = 'vertical'; // Vertical ship
+            hitShipDirection = 'vertical';
         };
     };
 
     // If two hits are in the same row (horizontal), continue guessing in that row
     if (hitShipDirection === 'horizontal') {
-        if (col > 1) possibleCells.push(`${row}${col - 1}`); // Left
-        if (col < 10) possibleCells.push(`${row}${col + 1}`); // Right
+        if (col > 1) possibleCells.push(`${row}${col - 1}`);
+        if (col < 10) possibleCells.push(`${row}${col + 1}`);
     };
 
     // If two hits are in the same column (vertical), continue guessing in that column
     if (hitShipDirection === 'vertical') {
-        if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`); // Up
-        if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`); // Down
+        if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`);
+        if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`);
     };
 
     // Otherwise, check all four possible adjacent cells
     if (hitShipDirection === "") {
-        if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`); // Up
-        if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`); // Down
-        if (col > 1) possibleCells.push(`${row}${col - 1}`); // Left
-        if (col < 10) possibleCells.push(`${row}${col + 1}`); // Right
+        if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`);
+        if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`);
+        if (col > 1) possibleCells.push(`${row}${col - 1}`);
+        if (col < 10) possibleCells.push(`${row}${col + 1}`);
     };
 
     // Add only unguessed cells to the priority target list with correct ID format
     possibleCells.forEach(adjCell => {
-        let formattedCell = `player-board-${adjCell}`; // Re-add the prefix
+        let formattedCell = `player-board-${adjCell}`; // Re-add the prefix!
         if (!guessedCells.has(formattedCell) && !priorityTargets.includes(formattedCell)) {
             priorityTargets.push(formattedCell);
         };
