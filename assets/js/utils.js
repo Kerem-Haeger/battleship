@@ -93,7 +93,7 @@ export function switchTurn() {
     setTimeout(() => {
         enablePlayerAttack(); // Enable player to attack again after a delay (for the sake of gameplay flow)
         console.log("It's the player's turn again!");
-    }, 1500); // Delay to simulate the computer’s thinking process
+    }, 1010); // Delay to simulate the computer’s thinking process
 };
 
 /**
