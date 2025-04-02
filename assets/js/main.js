@@ -13,7 +13,7 @@ import {
 } from './events.js'
 
 /**
- * On loading the user is presented with an obligatory modal to enter their name
+ * On loading the user is presented with an obligatory modal with instructions
  */
 document.addEventListener("DOMContentLoaded", function () {
     let instructionModal = new bootstrap.Modal(document.getElementById("static-backdrop"));
