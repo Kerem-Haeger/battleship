@@ -10,12 +10,10 @@ export let cells = []; // Array to store references to the cells
 export function createBoard(boardId) {
     const board = document.getElementById(boardId);
     const letters = "abcdefghij";
-
     for (let row = 0; row < 10; row++) {
         for (let col = 1; col <= 10; col++) {
             const cell = document.createElement("div");
             cell.classList.add("cell"); // Add the class cell so it can be styled by CSS
-
             // Add a board-specific prefix to the cell ID (e.g., "player-" or "pc-")
             cell.id = `${boardId}-${letters[row]}${col}`; // e.g., player-a1, pc-a1
             board.appendChild(cell);
