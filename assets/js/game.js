@@ -206,14 +206,11 @@ export function computerAttack() {
 
                 // Add listener for modal close and reset
                 document.getElementById("reset-button").addEventListener("click", (e) => {
-                    // These will be called when the player presses "Start" in the startup/instruction modal
+                    // These will be called when the player presses "Play again" in the game over modal
                     createBoard("player-board");
-                    // Don't create computer board yet, wait for player to place ships
-                    // Replace with a UX element / hint
-                    // createBoard("computer-board");
+
                     computerPlaceShips();
-                    // This should be removed for the game, it is only for debugging!
-                    // colorShipCells("computer-board");
+
                     gameOverModal.hide();
                     highlightUserCells();
                     userPlaceShips();
