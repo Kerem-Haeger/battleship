@@ -79,22 +79,29 @@ export function getRandomCell(boardId) {
 };
 
 export let canPlayerAttack = true; // Control player attack ability
-
+export let currentTurn = "player";
 /**
  * Switch the turn to the computer's turn and disable player attack
  */
 export function switchTurn() {
-    // Disable player attack during computer's turn
-    disablePlayerAttack();
+    if (currentTurn === "player") {
+        // Player's turn ends, switch to computer
+        currentTurn = "computer";
+        updatePrompt("Computer is attacking...");
+        disablePlayerAttack();
 
-    computerAttack();
+        computerAttack();
 
-    // After the computer attacks, switch turn back to player
-    setTimeout(() => {
-        enablePlayerAttack();
-        console.log("It's the player's turn again!");
-    }, 2010); // Delay to simulate the computer’s thinking process
+        // After the computer attacks, switch turn back to player
+        setTimeout(() => {
+            currentTurn = "player";
+            enablePlayerAttack();
+            updatePrompt("It's your turn! Click on a cell to attack.");
+            console.log("It's the player's turn again!");
+        }, 2010); // Delay to simulate the computer’s thinking process
+    };
 };
+
 
 /**
  * Disable player attack
