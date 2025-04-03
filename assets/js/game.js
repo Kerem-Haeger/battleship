@@ -3,13 +3,15 @@ import {
     hasOverlapOrTouch,
     isShipAtCell,
     getRandomCell,
-    updatePrompt
+    updatePrompt,
+    currentTurn
 } from './utils.js'
 
 import {
     placedCells,
     playerAttack,
-    highlightUserCells
+    highlightUserCells,
+    hitCounterPlayer
 } from './events.js';
 
 import {
@@ -159,11 +161,11 @@ export function userPlaceShips() {
     });
 };
 
-let guessedCells = new Set(); // Track already guessed cells
-let hitCounterComputer = 0; // Track cells hit by computer so the game can end
-let priorityTargets = []; // Stores cells to prioritize (adjacent to hits)
-let currentHitChain = []; // Tracks the current ship being hit
-let hitShipDirection = ""; // Will hold the direction (horizontal/vertical) of the hit ship
+export let guessedCells = new Set(); // Track already guessed cells
+export let hitCounterComputer = 0; // Track cells hit by computer so the game can end
+export let priorityTargets = []; // Stores cells to prioritize (adjacent to hits)
+export let currentHitChain = []; // Tracks the current ship being hit
+export let hitShipDirection = ""; // Will hold the direction (horizontal/vertical) of the hit ship
 
 export function computerAttack() {
     setTimeout(() => {
@@ -216,6 +218,15 @@ export function computerAttack() {
                     userPlaceShips();
                     updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
                     // need to still reset all variables!
+                    hitCounterPlayer = 0;
+                    hitCounterComputer = 0;
+                    guessedCells = new Set();
+                    priorityTargets = [];
+                    currentHitChain = [];
+                    hitShipDirection = "";
+                    currentTurn = "player";
+                    playerShipCount = 0;
+
                 });
             };
         } else {

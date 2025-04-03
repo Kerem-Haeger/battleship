@@ -3,14 +3,20 @@ import {
     playerShipCount,
     shipPosition,
     computerPlaceShips,
-    userPlaceShips
+    userPlaceShips,
+    hitCounterComputer,
+    guessedCells,
+    priorityTargets,
+    currentHitChain,
+    hitShipDirection,
 } from './game.js'
 
 import {
     isShipAtCell,
     switchTurn,
     canPlayerAttack,
-    updatePrompt
+    updatePrompt,
+    currentTurn
 } from './utils.js';
 
 import {
@@ -100,7 +106,7 @@ export function playerAttack() {
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };
 
-let hitCounterPlayer = 0; // Track cells hit by player
+export let hitCounterPlayer = 0; // Track cells hit by player
 
 /**
  * Player attack event listener
@@ -148,6 +154,14 @@ export function playerAttackListener(e) {
                 userPlaceShips();
                 updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
                 // need to still reset all variables!
+                hitCounterPlayer = 0;
+                hitCounterComputer = 0;
+                guessedCells = new Set();
+                priorityTargets = [];
+                currentHitChain = [];
+                hitShipDirection = "";
+                currentTurn = "player";
+                playerShipCount = 0;
             });
         };
 
