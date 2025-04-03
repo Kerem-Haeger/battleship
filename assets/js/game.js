@@ -147,6 +147,7 @@ export function userPlaceShips() {
         console.log("Current player ships:", playerShips); // Debugging log
 
         if (playerShipCount >= 3) {
+            updatePrompt("It's your turn! Click on a cell to attack.");
             // Create computer board once player has placed ships!
             // Until then, add a text saying "place your ships"
             createBoard("computer-board");

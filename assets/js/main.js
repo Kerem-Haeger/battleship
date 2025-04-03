@@ -11,6 +11,9 @@ import {
 import {
     highlightUserCells
 } from './events.js'
+import {
+    updatePrompt
+} from './utils.js';
 
 /**
  * On loading the user is presented with an obligatory modal with instructions
@@ -31,5 +34,6 @@ document.addEventListener("DOMContentLoaded", function () {
         instructionModal.hide();
         highlightUserCells();
         userPlaceShips();
+        updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
     });
 });
