@@ -8,7 +8,8 @@ import {
 
 import {
     placedCells,
-    playerAttack
+    playerAttack,
+    highlightUserCells
 } from './events.js';
 
 import {
@@ -190,9 +191,35 @@ export function computerAttack() {
             // Add adjacent cells to priority list (if they haven't been guessed yet)
             addAdjacentCells(targetCell);
 
-            // Track computer hits, alert for now, call function later
+            // Track computer hits, when computer wins, call end game modal
             if (hitCounterComputer === 9) {
-                alert("Computer wins!");
+                let gameOverModal = new bootstrap.Modal(document.getElementById("game-over"));
+                gameOverModal.show();
+                // Get the game board containers by their IDs
+                document.getElementById("show-result").innerText = "Congratulations, you won!";
+                let playerBoard = document.getElementById('player-board');
+                let computerBoard = document.getElementById('computer-board');
+
+                // Clear the boards by removing all child elements
+                playerBoard.innerHTML = '';
+                computerBoard.innerHTML = '';
+
+                // Add listener for modal close and reset
+                document.getElementById("reset-button").addEventListener("click", (e) => {
+                    // These will be called when the player presses "Start" in the startup/instruction modal
+                    createBoard("player-board");
+                    // Don't create computer board yet, wait for player to place ships
+                    // Replace with a UX element / hint
+                    // createBoard("computer-board");
+                    computerPlaceShips();
+                    // This should be removed for the game, it is only for debugging!
+                    // colorShipCells("computer-board");
+                    gameOverModal.hide();
+                    highlightUserCells();
+                    userPlaceShips();
+                    updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
+                    // need to still reset all variables!
+                });
             };
         } else {
             console.log(`Computer missed at ${targetCell}.`);

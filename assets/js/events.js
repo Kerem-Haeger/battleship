@@ -2,13 +2,20 @@ import {
     shipOrientation,
     playerShipCount,
     shipPosition,
+    computerPlaceShips,
+    userPlaceShips
 } from './game.js'
 
 import {
     isShipAtCell,
     switchTurn,
-    canPlayerAttack
+    canPlayerAttack,
+    updatePrompt
 } from './utils.js';
+
+import {
+    createBoard
+} from './ui.js'
 
 // Highlighting cells on hover before placing ships
 
@@ -116,9 +123,35 @@ export function playerAttackListener(e) {
         hitCounterPlayer++;
         console.log(`Player has hit ${hitCounterPlayer} cells!`);
 
-        // Track ships hit by player and end game (alert for now, call function later)
+        // Track ships hit by player and end game
         if (hitCounterPlayer === 9) {
-            alert("Player wins!");
+            let gameOverModal = new bootstrap.Modal(document.getElementById("game-over"));
+            gameOverModal.show();
+            // Get the game board containers by their IDs
+            document.getElementById("show-result").innerText = "Congratulations, you won!";
+            let playerBoard = document.getElementById('player-board');
+            let computerBoard = document.getElementById('computer-board');
+
+            // Clear the boards by removing all child elements
+            playerBoard.innerHTML = '';
+            computerBoard.innerHTML = '';
+
+            // Add listener for modal close and reset
+            document.getElementById("reset-button").addEventListener("click", (e) => {
+                // These will be called when the player presses "Start" in the startup/instruction modal
+                createBoard("player-board");
+                // Don't create computer board yet, wait for player to place ships
+                // Replace with a UX element / hint
+                // createBoard("computer-board");
+                computerPlaceShips();
+                // This should be removed for the game, it is only for debugging!
+                // colorShipCells("computer-board");
+                gameOverModal.hide();
+                highlightUserCells();
+                userPlaceShips();
+                updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
+                // need to still reset all variables!
+            });
         };
 
     } else {

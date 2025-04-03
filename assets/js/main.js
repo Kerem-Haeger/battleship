@@ -11,6 +11,7 @@ import {
 import {
     highlightUserCells
 } from './events.js'
+
 import {
     updatePrompt
 } from './utils.js';

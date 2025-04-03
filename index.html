@@ -78,6 +78,27 @@
             </div>
         </section>
 
+        <!-- Modal to end and restart the game -->
+        <aside role="dialog" class="modal fade" id="game-over" data-bs-backdrop="static" data-bs-keyboard="false"
+            tabindex="-1" aria-labelledby="static-backdrop-label" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h2 class="modal-title fs-5" id="static-backdrop-label">Game Over!</h2>
+                    </div>
+                    <div class="modal-body">
+                        <h3 id="show-result"></h3>
+                        <p></p>
+                    </div>
+                    <div class="modal-footer">
+                        <!--<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>-->
+                        <button type="button" id="reset-button" class="btn btn-secondary start-button">Play
+                            again!</button>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
     </main>
 
     <!-- Footer for copyright -->
