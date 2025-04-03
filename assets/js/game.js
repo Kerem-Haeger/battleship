@@ -2,7 +2,8 @@ import {
     isValidPlacement,
     hasOverlapOrTouch,
     isShipAtCell,
-    getRandomCell
+    getRandomCell,
+    updatePrompt
 } from './utils.js'
 
 import {
@@ -152,6 +153,7 @@ export function userPlaceShips() {
             // Add hover effect on computer board
             document.getElementById("computer-board").classList.add("computer-board-active");
             playerAttack();
+            updatePrompt("It's your turn to attack!");
         };
     });
 };
@@ -163,6 +165,7 @@ let currentHitChain = []; // Tracks the current ship being hit
 let hitShipDirection = ""; // Will hold the direction (horizontal/vertical) of the hit ship
 
 export function computerAttack() {
+    updatePrompt("Computer is attacking!");
     setTimeout(() => {
         let targetCell;
 
@@ -196,7 +199,7 @@ export function computerAttack() {
             console.log(`Computer missed at ${targetCell}.`);
             document.getElementById(`${targetCell}`).style.backgroundColor = "gray";
         };
-    }, 1000);
+    }, 2000);
 };
 
 /**

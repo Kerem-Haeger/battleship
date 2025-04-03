@@ -93,7 +93,7 @@ export function switchTurn() {
     setTimeout(() => {
         enablePlayerAttack();
         console.log("It's the player's turn again!");
-    }, 1010); // Delay to simulate the computer’s thinking process
+    }, 2010); // Delay to simulate the computer’s thinking process
 };
 
 /**
@@ -112,6 +112,9 @@ export function enablePlayerAttack() {
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };
 
+/**
+ * Update prompt displayed to user
+ */
 export function updatePrompt(message) {
     document.getElementById("prompt-text").textContent = message;
 };

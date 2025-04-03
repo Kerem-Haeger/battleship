@@ -100,13 +100,13 @@ main h2 {
     text-align: center;
 }
 
-.start-game {
-    letter-spacing: 0.05em;
-    font-size: 1.5em;
-    border-radius: 0;
-    background-color: darkslategray;
-    margin: 1.5em auto;
-    display: block;
+.message-display {
+    display: flex;
+    justify-content: center;
+}
+
+.message-display p {
+    font-size: 1.3em;
 }
 
 /* Footer */
