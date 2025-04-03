@@ -111,3 +111,7 @@ export function enablePlayerAttack() {
     canPlayerAttack = true;
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };
+
+export function updatePrompt(message) {
+    document.getElementById("prompt-text").textContent = message;
+};

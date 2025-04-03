@@ -29,8 +29,7 @@ document.addEventListener("DOMContentLoaded", function () {
         // This should be removed for the game, it is only for debugging!
         // colorShipCells("computer-board");
         instructionModal.hide();
+        highlightUserCells();
+        userPlaceShips();
     });
 });
-
-highlightUserCells();
-userPlaceShips();
