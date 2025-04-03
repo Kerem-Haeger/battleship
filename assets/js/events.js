@@ -153,7 +153,7 @@ export function playerAttackListener(e) {
                 highlightUserCells();
                 userPlaceShips();
                 updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
-                // need to still reset all variables!
+                // need to still reset all variables! put all this in a function instead of doing it here!
                 hitCounterPlayer = 0;
                 hitCounterComputer = 0;
                 guessedCells = new Set();
@@ -162,6 +162,7 @@ export function playerAttackListener(e) {
                 hitShipDirection = "";
                 currentTurn = "player";
                 playerShipCount = 0;
+                shipPosition = [];
             });
         };
 

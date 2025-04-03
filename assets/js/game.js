@@ -226,6 +226,7 @@ export function computerAttack() {
                     hitShipDirection = "";
                     currentTurn = "player";
                     playerShipCount = 0;
+                    shipPosition = [];
 
                 });
             };
