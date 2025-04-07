@@ -20,6 +20,7 @@ import {
 
 export let shipPosition = []; // This will store the Computer's ship starting points
 export let occupiedCells = new Set(); // To store all occupied cells (for checking overlap and proximity)
+let newShipComputer
 
 /**
  * Computer to place ships at random
@@ -36,14 +37,13 @@ export function computerPlaceShips() { // To add later: difficulty can be change
         while (!placed) {
             let horizontal = letters[Math.floor(Math.random() * 10)];
             let vertical = Math.floor(Math.random() * 10) + 1;
-            let newShip = [];
 
             if (shipDirection === 0) { // Horizontal ship placement
                 let horizontalIndex = letters.indexOf(horizontal);
 
                 // Ensure the horizontal ship doesn't go out of bounds (must fit 3 tiles)
                 if (horizontalIndex <= 7) { // There must be enough space for 3 cells
-                    newShip = [
+                    newShipComputer = [
                         `${horizontal}${vertical}`,
                         `${letters[horizontalIndex + 1]}${vertical}`,
                         `${letters[horizontalIndex + 2]}${vertical}`
@@ -52,7 +52,7 @@ export function computerPlaceShips() { // To add later: difficulty can be change
             } else { // Vertical ship placement
                 // Ensure the vertical ship doesn't go out of bounds (must fit 3 tiles)
                 if (vertical <= 8) {
-                    newShip = [
+                    newShipComputer = [
                         `${horizontal}${vertical}`,
                         `${horizontal}${vertical + 1}`,
                         `${horizontal}${vertical + 2}`
@@ -61,13 +61,13 @@ export function computerPlaceShips() { // To add later: difficulty can be change
             };
 
             // Check if the new ship overlaps or touches another ship
-            if (newShip.length === 3 && !hasOverlapOrTouch(newShip)) {
+            if (newShipComputer.length === 3 && !hasOverlapOrTouch(newShipComputer)) {
                 // If no overlap or touching, place the ship
-                shipPosition[i] = newShip;
+                shipPosition[i] = newShipComputer;
                 // Mark the cells as occupied
-                newShip.forEach(cell => occupiedCells.add(cell));
+                newShipComputer.forEach(cell => occupiedCells.add(cell));
                 placed = true; // Valid placement
-                console.log("Ship placed at:", newShip);
+                console.log("Ship placed at:", newShipComputer);
             };
         };
     };
@@ -76,7 +76,7 @@ export function computerPlaceShips() { // To add later: difficulty can be change
 export let playerShips = []; // Stores player ship positions
 export let playerShipCount = 0; // Tracks how many ships have been placed
 export let shipOrientation = "horizontal"; // Default orientation
-export let newShip = []; // Used to check for overlap or out of bounds
+let newShipPlayer = [];
 let listenerAdded = false; // Ensure listeners don't get added multiple times on reset
 
 /**
@@ -117,13 +117,13 @@ export function userPlaceShips() {
                     console.log("Invalid placement! Ship goes out of bounds horizontally.");
                     return;
                 };
-                newShip = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
+                newShipPlayer = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
             } else { // Vertical placement
                 if (rowIndex > 7) { // Prevent vertical overflow (since ship is 3 cells long)
                     console.log("Invalid placement! Ship goes out of bounds vertically.");
                     return;
                 };
-                newShip = [
+                newShipPlayer = [
                     `${letters[rowIndex]}${col}`,
                     `${letters[rowIndex + 1]}${col}`,
                     `${letters[rowIndex + 2]}${col}`
@@ -131,13 +131,13 @@ export function userPlaceShips() {
             };
 
             // Check if ship placement is valid (no overlap)
-            if (!isValidPlacement(newShip)) {
+            if (!isValidPlacement(newShipPlayer)) {
                 console.log("Invalid placement! Overlapping or out of bounds.");
                 return;
             };
 
             // Place the ship (color the cells)
-            newShip.forEach(cell => {
+            newShipPlayer.forEach(cell => {
                 let shipCell = document.getElementById(`player-board-${cell}`);
                 if (shipCell) {
                     // To be changed to an image or something!
@@ -146,10 +146,10 @@ export function userPlaceShips() {
                 };
             });
 
-            playerShips.push(newShip); // Add new ship to player ships array
+            playerShips.push(newShipPlayer); // Add new ship to player ships array
 
             playerShipCount++; // Increment the ship count after placing a ship
-            console.log(`Ship ${playerShipCount}/3 placed at:`, newShip);
+            console.log(`Ship ${playerShipCount}/3 placed at:`, newShipPlayer);
             console.log("Current player ships:", playerShips); // Debugging log
 
             if (playerShipCount >= 3) {
@@ -207,12 +207,11 @@ export function computerAttack() {
                 let playerBoard = document.getElementById('player-board');
                 let computerBoard = document.getElementById('computer-board');
 
-                // Clear the boards by removing all child elements
-                playerBoard.innerHTML = '';
-                computerBoard.innerHTML = '';
-
                 // Add listener for modal close and reset
                 document.getElementById("reset-button").addEventListener("click", (e) => {
+                    // Clear the boards by removing all child elements
+                    playerBoard.innerHTML = '';
+                    computerBoard.innerHTML = '';
                     // These will be called when the player presses "Play again" in the game over modal
                     createBoard("player-board");
 
@@ -322,5 +321,7 @@ export function resetGame() {
     hitShipDirection = "";
     playerShipCount = 0;
     shipPosition = [];
-    newShip.length = 0;
+    playerShips.length = 0;
+    newShipPlayer.length = 0;
+    newShipComputer.length = 0;
 };

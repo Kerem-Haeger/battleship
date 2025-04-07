@@ -134,12 +134,11 @@ export function playerAttackListener(e) {
             let playerBoard = document.getElementById('player-board');
             let computerBoard = document.getElementById('computer-board');
 
-            // Clear the boards by removing all child elements
-            playerBoard.innerHTML = '';
-            computerBoard.innerHTML = '';
-
             // Add listener for modal close and reset
             document.getElementById("reset-button").addEventListener("click", (e) => {
+                // Clear the boards by removing all child elements
+                playerBoard.innerHTML = '';
+                computerBoard.innerHTML = '';
                 // These will be called when the player presses "Play again" in the game over modal
                 createBoard("player-board");
 

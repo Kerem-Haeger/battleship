@@ -131,4 +131,5 @@ export function updatePrompt(message) {
  */
 export function resetCurrentTurn() {
     currentTurn = "player";
+    placedCells.length = 0;
 };
