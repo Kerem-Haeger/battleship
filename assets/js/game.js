@@ -4,14 +4,14 @@ import {
     isShipAtCell,
     getRandomCell,
     updatePrompt,
-    currentTurn
+    resetCurrentTurn
 } from './utils.js'
 
 import {
     placedCells,
     playerAttack,
     highlightUserCells,
-    hitCounterPlayer
+    resetHitCounter
 } from './events.js';
 
 import {
@@ -218,16 +218,9 @@ export function computerAttack() {
                     userPlaceShips();
                     updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
                     // need to still reset all variables!
-                    hitCounterPlayer = 0;
-                    hitCounterComputer = 0;
-                    guessedCells = new Set();
-                    priorityTargets = [];
-                    currentHitChain = [];
-                    hitShipDirection = "";
-                    currentTurn = "player";
-                    playerShipCount = 0;
-                    shipPosition = [];
-
+                    resetGame();
+                    resetHitCounter();
+                    resetCurrentTurn();
                 });
             };
         } else {
@@ -305,4 +298,17 @@ function addAdjacentCells(cell) {
             priorityTargets.push(formattedCell);
         };
     });
+};
+
+/**
+ * Function to reset game when one player wins
+ */
+export function resetGame() {
+    hitCounterComputer = 0;
+    guessedCells = new Set();
+    priorityTargets = [];
+    currentHitChain = [];
+    hitShipDirection = "";
+    playerShipCount = 0;
+    shipPosition = [];
 };

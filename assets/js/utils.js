@@ -125,3 +125,10 @@ export function enablePlayerAttack() {
 export function updatePrompt(message) {
     document.getElementById("prompt-text").textContent = message;
 };
+
+/**
+ * Reset currentTurn as it was declared here
+ */
+export function resetCurrentTurn() {
+    currentTurn = "player";
+};

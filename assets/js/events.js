@@ -4,11 +4,7 @@ import {
     shipPosition,
     computerPlaceShips,
     userPlaceShips,
-    hitCounterComputer,
-    guessedCells,
-    priorityTargets,
-    currentHitChain,
-    hitShipDirection,
+    resetGame
 } from './game.js'
 
 import {
@@ -16,7 +12,7 @@ import {
     switchTurn,
     canPlayerAttack,
     updatePrompt,
-    currentTurn
+    resetCurrentTurn
 } from './utils.js';
 
 import {
@@ -154,15 +150,9 @@ export function playerAttackListener(e) {
                 userPlaceShips();
                 updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
                 // need to still reset all variables! put all this in a function instead of doing it here!
-                hitCounterPlayer = 0;
-                hitCounterComputer = 0;
-                guessedCells = new Set();
-                priorityTargets = [];
-                currentHitChain = [];
-                hitShipDirection = "";
-                currentTurn = "player";
-                playerShipCount = 0;
-                shipPosition = [];
+                resetGame();
+                resetHitCounter();
+                resetCurrentTurn();
             });
         };
 
@@ -172,4 +162,11 @@ export function playerAttackListener(e) {
     };
 
     switchTurn();
+};
+
+/**
+ * Resetting hit counter here as it was declared here
+ */
+export function resetHitCounter() {
+    hitCounterPlayer = 0;
 };
