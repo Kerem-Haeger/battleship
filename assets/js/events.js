@@ -143,16 +143,21 @@ export function playerAttackListener(e) {
                 // These will be called when the player presses "Play again" in the game over modal
                 createBoard("player-board");
 
-                computerPlaceShips();
-
-                gameOverModal.hide();
-                highlightUserCells();
-                userPlaceShips();
-                updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
-                // need to still reset all variables! put all this in a function instead of doing it here!
+                // Reset all variables to restart game
                 resetGame();
                 resetHitCounter();
                 resetCurrentTurn();
+
+                // Computer to place ships again
+                computerPlaceShips();
+
+                gameOverModal.hide();
+
+                // Start game again
+                highlightUserCells();
+                userPlaceShips();
+                updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
+
             });
         };
 
