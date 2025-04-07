@@ -127,7 +127,7 @@ export function updatePrompt(message) {
 };
 
 /**
- * Reset currentTurn as it was declared here
+ * Reset currentTurn and placedCells as it was declared here
  */
 export function resetCurrentTurn() {
     currentTurn = "player";
