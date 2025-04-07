@@ -112,7 +112,7 @@ export function playerAttackListener(e) {
 
     // Prevent clicking the same cell twice
     if (e.target.style.backgroundColor === "red" || e.target.style.backgroundColor === "gray" || e.target.style.backgroundImage !== "") {
-        alert("Cell already clicked. Choose another cell.");
+        updatePrompt("You already attacked there - choose another cell!");
         return; // Exit the function to prevent duplicate clicks
     };
 
