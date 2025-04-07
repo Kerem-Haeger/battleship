@@ -159,6 +159,7 @@ export function playerAttackListener(e) {
                 updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
 
             });
+            return; // prevent game from continuing
         };
 
     } else {
