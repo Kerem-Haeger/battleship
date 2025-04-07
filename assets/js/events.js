@@ -121,7 +121,9 @@ export function playerAttackListener(e) {
     // Check if a ship is at the clicked cell
     if (isShipAtCell(cellId, shipPosition)) {
         console.log(`Hit! Ship found at ${cellId}`);
-        e.target.style.backgroundColor = "red"; // Example hit effect
+        e.target.style.backgroundImage = "url('/images/hit.png')";
+        e.target.style.backgroundSize = "cover";
+        e.target.style.backgroundPosition = "center";
         hitCounterPlayer++;
         console.log(`Player has hit ${hitCounterPlayer} cells!`);
 
