@@ -2,6 +2,10 @@ import {
     shipPosition
 } from './game.js';
 
+import {
+    updatePrompt
+} from './utils.js'
+
 export let cells = []; // Array to store references to the cells
 
 /**
@@ -77,3 +81,16 @@ export function colorShipCells(boardId) {
         });
     });
 };
+
+export function adjustUIForScreenSize() {
+    const isMobile = window.matchMedia("(max-width: 768px)").matches;
+
+    if (isMobile) {
+        let modalBody = document.getElementById("place-ships");
+        if (modalBody) modalBody.innerHTML = "1 - Place your ships! Use a <strong><em>long press</strong></em> to rotate your ships.";
+
+        updatePrompt("Tap to place your ships. Long press to rotate.");
+    } else {
+        updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
+    }
+}
