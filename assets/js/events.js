@@ -133,31 +133,6 @@ export function playerAttackListener(e) {
             document.getElementById("show-result").innerText = "Congratulations, you won!";
             let playerBoard = document.getElementById('player-board');
             let computerBoard = document.getElementById('computer-board');
-
-            // Add listener for modal close and reset
-            document.getElementById("reset-button").addEventListener("click", (e) => {
-                // Clear the boards by removing all child elements
-                playerBoard.innerHTML = '';
-                computerBoard.innerHTML = '';
-                // These will be called when the player presses "Play again" in the game over modal
-                createBoard("player-board");
-
-                // Reset all variables to restart game
-                resetGame();
-                resetHitCounter();
-                resetCurrentTurn();
-
-                // Computer to place ships again
-                computerPlaceShips();
-
-                gameOverModal.hide();
-
-                // Start game again
-                highlightUserCells();
-                userPlaceShips();
-                updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
-
-            });
             return; // prevent game from continuing
         }
 

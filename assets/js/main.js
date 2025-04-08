@@ -6,12 +6,19 @@ import {
 
 import {
     computerPlaceShips,
-    userPlaceShips
+    userPlaceShips,
+    resetGame
 } from './game.js';
 
 import {
-    highlightUserCells
+    highlightUserCells,
+    resetHitCounter
 } from './events.js';
+
+import {
+    resetCurrentTurn,
+    updatePrompt
+} from './utils.js';
 
 /**
  * On loading the user is presented with an obligatory modal with instructions
@@ -32,4 +39,31 @@ document.addEventListener("DOMContentLoaded", function () {
         highlightUserCells();
         userPlaceShips();
     });
+});
+
+// When the game is over, the player can restart/reset the game
+document.getElementById("reset-button").addEventListener("click", () => {
+    // Clear the boards by removing all child elements
+    document.getElementById("player-board").innerHTML = '';
+    document.getElementById("computer-board").innerHTML = '';
+
+    // Recreate the player board
+    createBoard("player-board");
+
+    // Reset all variables to restart game
+    resetGame();
+    resetHitCounter();
+    resetCurrentTurn();
+
+    // Computer places ships again
+    computerPlaceShips();
+
+    // Hide the modal
+    const gameOverModal = bootstrap.Modal.getInstance(document.getElementById("game-over"));
+    gameOverModal.hide();
+
+    // Re-init game flow
+    highlightUserCells();
+    userPlaceShips();
+    updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
 });

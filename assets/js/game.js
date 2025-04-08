@@ -270,39 +270,9 @@ export function computerAttack() {
             // Track computer hits, when computer wins, call end game modal
             if (hitCounterComputer === 9) {
                 let gameOverModal = new bootstrap.Modal(document.getElementById("game-over"));
-                gameOverModal.show();
-                // Get the game board containers by their IDs
                 document.getElementById("show-result").innerText = "Game over - the computer won!";
-                let playerBoard = document.getElementById('player-board');
-                let computerBoard = document.getElementById('computer-board');
-
-                // Add listener for modal close and reset
-                document.getElementById("reset-button").addEventListener("click", (e) => {
-                    // Clear the boards by removing all child elements
-                    playerBoard.innerHTML = '';
-                    computerBoard.innerHTML = '';
-                    document.getElementById("player-wrapper").innerHTML = "";
-                    document.getElementById("computer-wrapper").innerHTML = "";
-                    // These will be called when the player presses "Play again" in the game over modal
-                    createBoard("player-board");
-
-                    // Reset all variables to restart game
-                    resetGame();
-                    resetHitCounter();
-                    resetCurrentTurn();
-
-                    // Computer to place ships again
-                    computerPlaceShips();
-
-                    gameOverModal.hide();
-
-                    // Start game again
-                    highlightUserCells();
-                    userPlaceShips();
-                    updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
-
-                });
-                return; // prevent game from continuing
+                gameOverModal.show();
+                return; // prevent further actions in this function
             }
         } else {
             console.log(`Computer missed at ${targetCell}.`);
