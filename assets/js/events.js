@@ -98,7 +98,7 @@ export function highlightUserCells() {
  */
 export function playerAttack() {
     if (!canPlayerAttack) return; // Prevent attack if it's not the player's turn
-
+    document.getElementById("computer-board").focus();
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
 };
 

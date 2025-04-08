@@ -85,6 +85,7 @@ let listenerAdded = false; // Ensure listeners don't get added multiple times on
  */
 export function userPlaceShips() {
     const playerBoard = document.getElementById("player-board");
+    playerBoard.focus();
 
     if (!listenerAdded) {
         // Toggle orientation when right-clicked

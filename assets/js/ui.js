@@ -9,6 +9,10 @@ export let cells = []; // Array to store references to the cells
  */
 export function createBoard(boardId) {
     const board = document.getElementById(boardId);
+
+    // Make board programmatically focusable
+    board.setAttribute("tabindex", "-1");
+
     const letters = "abcdefghij";
     for (let row = 0; row < 10; row++) {
         for (let col = 1; col <= 10; col++) {
