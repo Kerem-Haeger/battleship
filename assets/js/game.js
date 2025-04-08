@@ -295,7 +295,8 @@ export function computerAttack() {
             };
         } else {
             console.log(`Computer missed at ${targetCell}.`);
-            document.getElementById(`${targetCell}`).style.backgroundColor = "gray";
+            document.getElementById(`${targetCell}`).style.backgroundColor = "rgb(102, 187, 216)";
+            document.getElementById(`${targetCell}`).classList.add("missed-cell");
         };
     }, 2000);
 };

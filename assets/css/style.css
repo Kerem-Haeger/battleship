@@ -23,12 +23,6 @@ h1 {
 }
 
 /* Modal style */
-
-#player-name {
-    display: block;
-    margin: 0 auto;
-}
-
 .start-button {
     letter-spacing: 0.05em;
     border-radius: 0;
@@ -64,15 +58,15 @@ main h2 {
 }
 
 .computer-board-active .cell:hover {
-    background-color: gray;
+    background-color: lightgray;
 }
 
-/* Color ship cells when they are red */
+/* Smooth transition when coloring cells */
 #computer-board .cell {
     transition: background-color 0.1s ease;
-    /* Smooth color transition */
 }
 
+/* Game area style */
 .game-container {
     display: flex;
     justify-content: center;
@@ -97,9 +91,7 @@ main h2 {
 .board-wrapper {
     display: grid;
     grid-template-columns: 30px auto;
-    /* 30px for vertical labels */
     grid-template-rows: 30px auto;
-    /* 30px for horizontal labels */
     margin: 20px;
 }
 
@@ -140,8 +132,7 @@ main h2 {
     pointer-events: none;
 }
 
-/* End Legend */
-
+/* Style cells when there is an action on them */
 .hit-cell {
     background-image: url('../images/hit.png');
     background-size: cover;
@@ -149,7 +140,14 @@ main h2 {
     background-repeat: no-repeat;
 }
 
-/* Ship styles */
+.missed-cell {
+    background-image: url('../images/miss.png');
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Ship images */
 .ship-segment {
     background-size: cover;
     background-repeat: no-repeat;
@@ -182,6 +180,7 @@ main h2 {
     transform: rotate(90deg);
 }
 
+/* Prompt box styles */
 .message-display {
     display: flex;
     justify-content: center;

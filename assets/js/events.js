@@ -163,7 +163,8 @@ export function playerAttackListener(e) {
 
     } else {
         console.log(`Miss at ${cellId}`);
-        e.target.style.backgroundColor = "gray"; // Example miss effect
+        e.target.style.backgroundColor = "rgb(102, 187, 216)";
+        e.target.classList.add("missed-cell");
     };
 
     switchTurn();
