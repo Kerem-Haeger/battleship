@@ -101,7 +101,7 @@ main h2 {
 }
 
 .hit-cell {
-    background-image: url('/assets/images/hit.png');
+    background-image: url('../images/hit.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
