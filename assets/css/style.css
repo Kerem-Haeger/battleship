@@ -227,9 +227,13 @@ footer {
 .game-area,
 .game-container,
 .board-container,
-.board,
-.cell {
+.board {
     user-select: none;
     -webkit-tap-highlight-color: transparent;
     touch-action: manipulation;
+}
+
+.cell {
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
