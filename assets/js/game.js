@@ -15,7 +15,8 @@ import {
 } from './events.js';
 
 import {
-    createBoard
+    createBoard,
+    createBoardLabels
 } from './ui.js'
 
 export let shipPosition = []; // This will store the Computer's ship starting points
@@ -169,6 +170,7 @@ export function userPlaceShips() {
                 // Create computer board once player has placed ships!
                 // Until then, add a text saying "place your ships"
                 createBoard("computer-board");
+                createBoardLabels(document.querySelector("#computer-board").parentElement);
                 // Add hover effect on computer board
                 document.getElementById("computer-board").classList.add("computer-board-active");
                 playerAttack();
@@ -226,7 +228,7 @@ export function computerAttack() {
                 let gameOverModal = new bootstrap.Modal(document.getElementById("game-over"));
                 gameOverModal.show();
                 // Get the game board containers by their IDs
-                document.getElementById("show-result").innerText = "Congratulations, you won!";
+                document.getElementById("show-result").innerText = "Game over - the computer won!";
                 let playerBoard = document.getElementById('player-board');
                 let computerBoard = document.getElementById('computer-board');
 

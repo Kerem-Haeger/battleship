@@ -24,6 +24,30 @@ export function createBoard(boardId) {
 };
 
 /**
+ * Creates the legend for the boards
+ */
+export function createBoardLabels(wrapperElement) {
+    const topLabels = wrapperElement.querySelector(".board-labels-top");
+    const leftLabels = wrapperElement.querySelector(".board-labels-left");
+
+    const letters = "ABCDEFGHIJ";
+
+    // Create top labels (1 to 10)
+    for (let i = 1; i <= 10; i++) {
+        const label = document.createElement("div");
+        label.textContent = i;
+        topLabels.appendChild(label);
+    }
+
+    // Create left labels (A to J)
+    for (let i = 0; i < 10; i++) {
+        const label = document.createElement("div");
+        label.textContent = letters[i];
+        leftLabels.appendChild(label);
+    }
+};
+
+/**
  * Function to color ship cells
  * 
  * this is temporary but might be called when the game is over to reveal the board
