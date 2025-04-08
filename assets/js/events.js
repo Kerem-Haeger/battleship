@@ -111,7 +111,7 @@ export function playerAttackListener(e) {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 
     // Prevent clicking the same cell twice
-    if (e.target.style.backgroundColor === "red" || e.target.style.backgroundColor === "gray" || e.target.classList.contains("hit-cell")) {
+    if (e.target.classList.contains("missed-cell") || e.target.classList.contains("hit-cell")) {
         updatePrompt("You already attacked there - choose another cell!");
         return; // Exit the function to prevent duplicate clicks
     };
