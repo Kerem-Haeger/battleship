@@ -111,11 +111,15 @@ export function userPlaceShips() {
                 console.log("Orientation switched (long-press):", shipOrientation);
                 updatePrompt(`Orientation switched to: ${shipOrientation}`);
             }, 600);
+        }, {
+            passive: false
         });
 
         // Cancel long press if finger moves
         playerBoard.addEventListener("touchmove", () => {
             clearTimeout(longPressTimer);
+        }, {
+            passive: false
         });
 
         // Handle touchend
@@ -127,6 +131,8 @@ export function userPlaceShips() {
                 return;
             };
 
+        }, {
+            passive: false
         });
 
         // Place ship on left-click (Limited to 3 ships)
