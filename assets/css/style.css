@@ -222,3 +222,12 @@ footer {
     text-align: center;
     padding: 1em;
 }
+
+/* Prevend selection of cells on mobile */
+.game-area,
+.game-container,
+.board-container,
+.board,
+.cell {
+    user-select: none;
+}
