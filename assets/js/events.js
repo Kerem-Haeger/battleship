@@ -1,23 +1,15 @@
 import {
     shipOrientation,
     playerShipCount,
-    shipPosition,
-    computerPlaceShips,
-    userPlaceShips,
-    resetGame
+    shipPosition
 } from './game.js'
 
 import {
     isShipAtCell,
     switchTurn,
     canPlayerAttack,
-    updatePrompt,
-    resetCurrentTurn
+    updatePrompt
 } from './utils.js';
-
-import {
-    createBoard
-} from './ui.js';
 
 // Highlighting cells on hover before placing ships
 

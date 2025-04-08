@@ -4,15 +4,12 @@ import {
     isShipAtCell,
     getRandomCell,
     updatePrompt,
-    resetCurrentTurn,
     flashOrientationHint
 } from './utils.js';
 
 import {
     placedCells,
-    playerAttack,
-    highlightUserCells,
-    resetHitCounter
+    playerAttack
 } from './events.js';
 
 import {
