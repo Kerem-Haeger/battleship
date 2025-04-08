@@ -222,18 +222,3 @@ footer {
     text-align: center;
     padding: 1em;
 }
-
-/* Mobile adjustment to avoid default behaviour */
-.game-area,
-.game-container,
-.board-container,
-.board {
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-}
-
-.cell {
-    user-select: none;
-    -webkit-tap-highlight-color: transparent;
-}

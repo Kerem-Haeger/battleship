@@ -102,10 +102,10 @@ export function userPlaceShips() {
 
         // Mobile: long press toggles orientation
         playerBoard.addEventListener("touchstart", (e) => {
-            e.preventDefault();
             longPressTriggered = false;
 
             longPressTimer = setTimeout(() => {
+                e.preventDefault();
                 longPressTriggered = true;
                 shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal";
                 flashOrientationHint(shipOrientation);
@@ -126,11 +126,10 @@ export function userPlaceShips() {
 
         // Handle touchend
         playerBoard.addEventListener("touchend", (e) => {
-            e.preventDefault();
             clearTimeout(longPressTimer);
 
             if (longPressTriggered) {
-                e.preventDefault();
+                e.stopImmediatePropagation();
                 return;
             };
 
