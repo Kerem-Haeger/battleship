@@ -102,6 +102,7 @@ export function userPlaceShips() {
 
         // Mobile: long press toggles orientation
         playerBoard.addEventListener("touchstart", (e) => {
+            e.preventDefault();
             longPressTriggered = false;
 
             longPressTimer = setTimeout(() => {
@@ -117,6 +118,7 @@ export function userPlaceShips() {
 
         // Cancel long press if finger moves
         playerBoard.addEventListener("touchmove", () => {
+            e.preventDefault();
             clearTimeout(longPressTimer);
         }, {
             passive: false
@@ -124,6 +126,7 @@ export function userPlaceShips() {
 
         // Handle touchend
         playerBoard.addEventListener("touchend", (e) => {
+            e.preventDefault();
             clearTimeout(longPressTimer);
 
             if (longPressTriggered) {
