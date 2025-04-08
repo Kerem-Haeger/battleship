@@ -191,9 +191,7 @@ export function computerAttack() {
 
         if (isShipAtCell(targetCell, playerShips)) {
             console.log(`Computer hit your ship at ${targetCell}!`);
-            document.getElementById(`${targetCell}`).style.backgroundImage = "url('/battleship/assets/images/hit.png')";
-            document.getElementById(`${targetCell}`).style.backgroundSize = "cover";
-            document.getElementById(`${targetCell}`).style.backgroundPosition = "center";
+            document.getElementById(`${targetCell}`).classList.add("hit-cell");
             hitCounterComputer++;
             console.log(`Computer has hit ${hitCounterComputer} cells!`);
 

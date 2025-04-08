@@ -111,7 +111,7 @@ export function playerAttackListener(e) {
     if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
 
     // Prevent clicking the same cell twice
-    if (e.target.style.backgroundColor === "red" || e.target.style.backgroundColor === "gray" || e.target.style.backgroundImage !== "") {
+    if (e.target.style.backgroundColor === "red" || e.target.style.backgroundColor === "gray" || e.target.classList.contains("hit-cell")) {
         updatePrompt("You already attacked there - choose another cell!");
         return; // Exit the function to prevent duplicate clicks
     };
@@ -121,9 +121,7 @@ export function playerAttackListener(e) {
     // Check if a ship is at the clicked cell
     if (isShipAtCell(cellId, shipPosition)) {
         console.log(`Hit! Ship found at ${cellId}`);
-        e.target.style.backgroundImage = "url('/battleship/assets/images/hit.png')";
-        e.target.style.backgroundSize = "cover";
-        e.target.style.backgroundPosition = "center";
+        e.target.classList.add("hit-cell");
         hitCounterPlayer++;
         console.log(`Player has hit ${hitCounterPlayer} cells!`);
 
