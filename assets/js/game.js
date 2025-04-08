@@ -203,6 +203,17 @@ export function computerAttack() {
 
         if (isShipAtCell(targetCell, playerShips)) {
             console.log(`Computer hit your ship at ${targetCell}!`);
+            // Remove ship graphic before applying hit graphic
+            document.getElementById(`${targetCell}`).classList.remove(
+                "ship-segment",
+                "ship-horizontal-front",
+                "ship-horizontal-middle",
+                "ship-horizontal-back",
+                "ship-vertical-front",
+                "ship-vertical-middle",
+                "ship-vertical-back"
+            );
+            document.getElementById(`${targetCell}`).style.backgroundColor = 'rgb(102, 187, 216)';
             document.getElementById(`${targetCell}`).classList.add("hit-cell");
             hitCounterComputer++;
             console.log(`Computer has hit ${hitCounterComputer} cells!`);
