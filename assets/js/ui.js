@@ -32,19 +32,24 @@ export function createBoardLabels(wrapperElement) {
 
     const letters = "ABCDEFGHIJ";
 
+    // Check if labels have already been created
+    if (topLabels.children.length > 0 || leftLabels.children.length > 0) {
+        return;
+    };
+
     // Create top labels (1 to 10)
     for (let i = 1; i <= 10; i++) {
         const label = document.createElement("div");
         label.textContent = i;
         topLabels.appendChild(label);
-    }
+    };
 
     // Create left labels (A to J)
     for (let i = 0; i < 10; i++) {
         const label = document.createElement("div");
         label.textContent = letters[i];
         leftLabels.appendChild(label);
-    }
+    };
 };
 
 /**

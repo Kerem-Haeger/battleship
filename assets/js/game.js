@@ -237,6 +237,8 @@ export function computerAttack() {
                     // Clear the boards by removing all child elements
                     playerBoard.innerHTML = '';
                     computerBoard.innerHTML = '';
+                    document.getElementById("player-wrapper").innerHTML = "";
+                    document.getElementById("computer-wrapper").innerHTML = "";
                     // These will be called when the player presses "Play again" in the game over modal
                     createBoard("player-board");
 
