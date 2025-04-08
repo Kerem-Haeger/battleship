@@ -185,10 +185,12 @@ main h2 {
 .message-display {
     display: flex;
     justify-content: center;
+    margin-bottom: 3rem;
 }
 
 .message-display p {
     font-size: 1.3em;
+    padding: 1.5em;
 }
 
 /* Footer */
