@@ -74,6 +74,3 @@ export function adjustUIForScreenSize() {
         updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
     };
 };
-
-// Ensure that everything is displayed correctly if the screen is resized
-window.addEventListener("resize", adjustUIForScreenSize);
