@@ -27,8 +27,8 @@
     <main>
         <!-- Modal will be called on page load through javascript -->
         <!-- Modal -->
-        <aside role="dialog" class="modal fade" id="static-backdrop" data-bs-backdrop="static" data-bs-keyboard="false"
-            tabindex="-1" aria-labelledby="static-backdrop-label" aria-hidden="true">
+        <aside class="modal fade" id="static-backdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="static-backdrop-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
@@ -81,25 +81,23 @@
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Prompt area to display messages to the user -->
-        <section class="prompt">
+            <!-- Prompt area to display messages to the user -->
             <div class="message-display">
                 <p id="prompt-text"></p>
             </div>
         </section>
 
         <!-- Modal to end and restart the game -->
-        <aside role="dialog" class="modal fade" id="game-over" data-bs-backdrop="static" data-bs-keyboard="false"
-            tabindex="-1" aria-labelledby="static-backdrop-label" aria-hidden="true">
+        <aside class="modal fade" id="game-over" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="static-backdrop-label" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h2 class="modal-title fs-5" id="static-backdrop-label">Game Over!</h2>
+                        <h2 class="modal-title fs-5">Game Over!</h2>
                     </div>
                     <div class="modal-body">
-                        <h3 id="show-result"></h3>
+                        <h3 id="show-result">Result</h3>
                         <p></p>
                     </div>
                     <div class="modal-footer">
