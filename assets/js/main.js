@@ -2,7 +2,6 @@ import {
     createBoard,
     createBoardLabels,
     adjustUIForScreenSize,
-    colorShipCells // leave for now, but needs removing later
 } from './ui.js';
 
 import {

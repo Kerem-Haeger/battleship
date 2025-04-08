@@ -60,37 +60,20 @@ export function createBoardLabels(wrapperElement) {
     };
 };
 
-/**
- * Function to color ship cells
- * 
- * this is temporary but might be called when the game is over to reveal the board
- */
-export function colorShipCells(boardId) {
-    const board = document.getElementById(boardId);
-
-    // Loop over the shipPosition array, which contains the ships' coordinates
-    shipPosition.forEach(ship => {
-        ship.forEach(cellId => {
-            // Update the cell ID to include the boardId prefix
-            const cell = document.getElementById(`${boardId}-${cellId}`);
-
-            // Only color the cell if it's part of the specified board
-            if (cell && board.contains(cell)) {
-                cell.style.backgroundColor = "red";
-            };
-        });
-    });
-};
-
 export function adjustUIForScreenSize() {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
 
+    let modalBody = document.getElementById("place-ships");
+
     if (isMobile) {
-        let modalBody = document.getElementById("place-ships");
         if (modalBody) modalBody.innerHTML = "1 - Place your ships! Use a <strong><em>long press</strong></em> to rotate your ships.";
 
         updatePrompt("Tap to place your ships. Long press to rotate.");
     } else {
+        if (modalBody) modalBody.innerHTML = "1 - Place your ships! <strong><em>Left clicking</em></strong> on your board places a ship, <strong><em>right clicking</em></strong> changes orientation (horizontal/vertical)";
         updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
-    }
-}
+    };
+};
+
+// Ensure that everything is displayed correctly if the screen is resized
+window.addEventListener("resize", adjustUIForScreenSize);

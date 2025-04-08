@@ -62,7 +62,8 @@ export function computerPlaceShips() { // To add later: difficulty can be change
             };
 
             // Check if the new ship overlaps or touches another ship
-            if (newShipComputer.length === 3 && !hasOverlapOrTouch(newShipComputer)) {
+            // Array.isArray ensures no error thrown on page load
+            if (Array.isArray(newShipComputer) && newShipComputer.length === 3 && !hasOverlapOrTouch(newShipComputer)) {
                 // If no overlap or touching, place the ship
                 shipPosition[i] = newShipComputer;
                 // Mark the cells as occupied
