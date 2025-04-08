@@ -117,7 +117,7 @@ export function userPlaceShips() {
         });
 
         // Cancel long press if finger moves
-        playerBoard.addEventListener("touchmove", () => {
+        playerBoard.addEventListener("touchmove", (e) => {
             e.preventDefault();
             clearTimeout(longPressTimer);
         }, {
@@ -129,6 +129,7 @@ export function userPlaceShips() {
             clearTimeout(longPressTimer);
 
             if (longPressTriggered) {
+                e.preventDefault();
                 e.stopImmediatePropagation();
                 return;
             };
