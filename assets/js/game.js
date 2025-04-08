@@ -95,6 +95,37 @@ export function userPlaceShips() {
             console.log("Orientation switched to:", shipOrientation);
         });
 
+        let longPressTimer;
+        let longPressTriggered = false;
+
+        // Mobile: long press toggles orientation
+        playerBoard.addEventListener("touchstart", (e) => {
+            longPressTriggered = false;
+
+            longPressTimer = setTimeout(() => {
+                longPressTriggered = true;
+                shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal";
+                console.log("Orientation switched (long-press):", shipOrientation);
+                updatePrompt(`Orientation switched to: ${shipOrientation}`);
+            }, 600);
+        });
+
+        // Cancel long press if finger moves
+        playerBoard.addEventListener("touchmove", () => {
+            clearTimeout(longPressTimer);
+        });
+
+        // Handle touchend
+        playerBoard.addEventListener("touchend", (e) => {
+            clearTimeout(longPressTimer);
+
+            if (longPressTriggered) {
+                e.preventDefault();
+                return;
+            };
+
+        });
+
         // Place ship on left-click (Limited to 3 ships)
         playerBoard.addEventListener("click", (e) => {
             if (!e.target.classList.contains("cell")) return; // Ensure a cell is clicked
