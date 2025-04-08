@@ -225,6 +225,8 @@ footer {
 
 /* Mobile adjustment to avoid default behaviour */
 .game-area,
+.game-container,
+.board-container,
 .board,
 .cell {
     user-select: none;
