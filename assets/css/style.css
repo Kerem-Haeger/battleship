@@ -23,6 +23,10 @@ h1 {
 }
 
 /* Modal style */
+.modal-content {
+    border-radius: 0;
+}
+
 .start-button {
     letter-spacing: 0.05em;
     border-radius: 0;
@@ -30,10 +34,17 @@ h1 {
     margin: auto;
 }
 
+h3 {
+    font-size: 1.3em;
+}
+
+.modal-body {
+    letter-spacing: 0.03em;
+}
+
 /* Style board and game area */
 main h2 {
     padding-top: 1em;
-    letter-spacing: 0.05em;
 }
 
 .board {
@@ -221,13 +232,4 @@ footer {
     width: 100%;
     text-align: center;
     padding: 1em;
-}
-
-/* Prevend selection of cells on mobile */
-.game-area,
-.game-container,
-.board-container,
-.board,
-.cell {
-    user-select: none;
 }
