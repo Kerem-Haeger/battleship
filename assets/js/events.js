@@ -128,11 +128,9 @@ export function playerAttackListener(e) {
         // Track ships hit by player and end game
         if (hitCounterPlayer === 9) {
             let gameOverModal = new bootstrap.Modal(document.getElementById("game-over"));
-            gameOverModal.show();
             // Get the game board containers by their IDs
             document.getElementById("show-result").innerText = "Congratulations, you won!";
-            let playerBoard = document.getElementById('player-board');
-            let computerBoard = document.getElementById('computer-board');
+            gameOverModal.show();
             return; // prevent game from continuing
         }
 
