@@ -137,14 +137,26 @@ export function userPlaceShips() {
             };
 
             // Place the ship (color the cells)
-            newShipPlayer.forEach(cell => {
+            newShipPlayer.forEach((cell, index) => {
                 let shipCell = document.getElementById(`player-board-${cell}`);
                 if (shipCell) {
-                    // To be changed to an image or something!
-                    shipCell.style.backgroundColor = "blue";
+                    shipCell.classList.add("ship-segment");
+
+                    if (shipOrientation === "horizontal") {
+                        if (index === 0) shipCell.classList.add("ship-horizontal-back");
+                        else if (index === 1) shipCell.classList.add("ship-horizontal-middle");
+                        else shipCell.classList.add("ship-horizontal-front");
+                    } else {
+                        if (index === 0) shipCell.classList.add("ship-vertical-back");
+                        else if (index === 1) shipCell.classList.add("ship-vertical-middle");
+                        else shipCell.classList.add("ship-vertical-front");
+                    }
+
                     placedCells.push(cell);
-                };
+                }
             });
+
+
 
             playerShips.push(newShipPlayer); // Add new ship to player ships array
 
@@ -153,7 +165,7 @@ export function userPlaceShips() {
             console.log("Current player ships:", playerShips); // Debugging log
 
             if (playerShipCount >= 3) {
-                updatePrompt("It's your turn! Click on a cell to attack.");
+                updatePrompt("It's your turn! Click on a cell on the computer board to attack.");
                 // Create computer board once player has placed ships!
                 // Until then, add a text saying "place your ships"
                 createBoard("computer-board");

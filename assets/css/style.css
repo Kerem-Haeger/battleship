@@ -21,13 +21,7 @@ h1 {
     text-align: center;
 }
 
-header span {
-    font-size: 2em;
-    align-self: center;
-}
-
 /* Modal style */
-
 
 #player-name {
     display: block;
@@ -39,16 +33,6 @@ header span {
     border-radius: 0;
     background-color: darkslategray;
     margin: auto;
-}
-
-/* Header style */
-.options-wheel {
-    transition: transform 0.5s ease;
-}
-
-/* Rotate options wheel on mouseover */
-.options-wheel:hover {
-    transform: rotate(120deg);
 }
 
 /* Style board and game area */
@@ -68,7 +52,7 @@ main h2 {
 }
 
 .cell {
-    background-color: lightblue;
+    background-color: rgb(102, 187, 216);
     width: 30px;
     height: 30px;
     border: 1px solid black;
@@ -105,6 +89,39 @@ main h2 {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+}
+
+/* Ship styles */
+.ship-segment {
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.ship-horizontal-front {
+    background-image: url('../images/boat-front.png');
+}
+
+.ship-horizontal-middle {
+    background-image: url('../images/boat-middle.png');
+}
+
+.ship-horizontal-back {
+    background-image: url('../images/boat-back.png');
+}
+
+.ship-vertical-front {
+    background-image: url('../images/boat-front.png');
+    transform: rotate(90deg);
+}
+
+.ship-vertical-middle {
+    background-image: url('../images/boat-middle.png');
+    transform: rotate(90deg);
+}
+
+.ship-vertical-back {
+    background-image: url('../images/boat-back.png');
+    transform: rotate(90deg);
 }
 
 .message-display {
