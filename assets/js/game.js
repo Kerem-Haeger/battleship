@@ -4,7 +4,8 @@ import {
     isShipAtCell,
     getRandomCell,
     updatePrompt,
-    resetCurrentTurn
+    resetCurrentTurn,
+    flashOrientationHint
 } from './utils.js'
 
 import {
@@ -106,6 +107,7 @@ export function userPlaceShips() {
             longPressTimer = setTimeout(() => {
                 longPressTriggered = true;
                 shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal";
+                flashOrientationHint(shipOrientation);
                 console.log("Orientation switched (long-press):", shipOrientation);
                 updatePrompt(`Orientation switched to: ${shipOrientation}`);
             }, 600);

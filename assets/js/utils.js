@@ -133,3 +133,22 @@ export function resetCurrentTurn() {
     currentTurn = "player";
     placedCells.length = 0;
 };
+
+/**
+ * Flash a hint that orientation has changed on mobile
+ */
+export function flashOrientationHint(orientation) {
+    const hint = document.getElementById("orientation-hint");
+    if (!hint) return;
+
+    hint.textContent = orientation === "horizontal" ? "↔ Horizontal" : "↕ Vertical";
+    hint.classList.add("visible");
+
+    if (navigator.vibrate) {
+        navigator.vibrate(100);
+    };
+
+    setTimeout(() => {
+        hint.classList.remove("visible");
+    }, 2000);
+};
