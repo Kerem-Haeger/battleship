@@ -6,7 +6,7 @@ import {
 import {
     occupiedCells,
     computerAttack
-} from './game.js'
+} from './game.js';
 
 /**
  * Function to check if the new ship overlaps or touches another ship
@@ -16,8 +16,8 @@ export function hasOverlapOrTouch(newShip) {
     for (let cell of newShip) {
         if (occupiedCells.has(cell)) {
             return true; // Overlap detected
-        };
-    };
+        }
+    }
 
     // Check if any of the surrounding cells (buffer zone) are occupied (to avoid ships touching each other)
     for (let cell of newShip) {
@@ -37,14 +37,14 @@ export function hasOverlapOrTouch(newShip) {
                     let bufferCell = `${newLetter}${newNumber}`;
                     if (occupiedCells.has(bufferCell)) {
                         return true; // Touching detected
-                    };
-                };
-            };
-        };
-    };
+                    }
+                }
+            }
+        }
+    }
 
     return false; // No overlap or touching
-};
+}
 
 /**
  * Function to check if the placement is valid (no overlap)
@@ -54,10 +54,10 @@ export function isValidPlacement(ship) {
     for (let cell of ship) {
         if (placedCells.includes(cell)) {
             return false;
-        };
-    };
+        }
+    }
     return true;
-};
+}
 
 /**
  * Checks if a given cell contains a ship.
@@ -65,7 +65,7 @@ export function isValidPlacement(ship) {
 export function isShipAtCell(cellId, shipArray) {
     let cell = cellId.replace('player-board-', ''); // Remove board specific prefix to match values...
     return shipArray.some(ship => ship.includes(cell)); // Returns true if the cell exists in any ship
-};
+}
 
 /**
  * Generates a random cell ID for the game board.
@@ -76,7 +76,7 @@ export function getRandomCell(boardId) {
     const randomNumber = Math.floor(Math.random() * 10) + 1;
 
     return `${boardId}-${randomLetter}${randomNumber}`;
-};
+}
 
 export let canPlayerAttack = true; // Control player attack ability
 export let currentTurn = "player";
@@ -99,8 +99,8 @@ export function switchTurn() {
             updatePrompt("It's your turn! Click on a cell on the computer board to attack.");
             console.log("It's the player's turn again!");
         }, 2010); // Delay to simulate the computer’s thinking process
-    };
-};
+    }
+}
 
 
 /**
@@ -109,7 +109,7 @@ export function switchTurn() {
 export function disablePlayerAttack() {
     canPlayerAttack = false;
     document.getElementById("computer-board").removeEventListener("click", playerAttackListener);
-};
+}
 
 /**
  * Enable player attack
@@ -117,14 +117,14 @@ export function disablePlayerAttack() {
 export function enablePlayerAttack() {
     canPlayerAttack = true;
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
-};
+}
 
 /**
  * Update prompt displayed to user
  */
 export function updatePrompt(message) {
     document.getElementById("prompt-text").textContent = message;
-};
+}
 
 /**
  * Reset currentTurn and placedCells as it was declared here
@@ -132,7 +132,7 @@ export function updatePrompt(message) {
 export function resetCurrentTurn() {
     currentTurn = "player";
     placedCells.length = 0;
-};
+}
 
 /**
  * Flash a hint that orientation has changed on mobile
@@ -146,9 +146,9 @@ export function flashOrientationHint(orientation) {
 
     if (navigator.vibrate) {
         navigator.vibrate(100);
-    };
+    }
 
     setTimeout(() => {
         hint.classList.remove("visible");
     }, 2000);
-};
+}

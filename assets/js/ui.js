@@ -1,10 +1,6 @@
 import {
-    shipPosition
-} from './game.js';
-
-import {
     updatePrompt
-} from './utils.js'
+} from './utils.js';
 
 export let cells = []; // Array to store references to the cells
 
@@ -17,7 +13,7 @@ export function createBoard(boardId) {
     // Make board programmatically focusable
     if (board) {
         board.setAttribute("tabindex", "-1");
-    };
+    }
 
     const letters = "abcdefghij";
     for (let row = 0; row < 10; row++) {
@@ -29,9 +25,9 @@ export function createBoard(boardId) {
             board.appendChild(cell);
             // Store the cell in the array
             cells.push(cell);
-        };
-    };
-};
+        }
+    }
+}
 
 /**
  * Creates the legend for the boards
@@ -45,22 +41,22 @@ export function createBoardLabels(wrapperElement) {
     // Check if labels have already been created
     if (topLabels.children.length > 0 || leftLabels.children.length > 0) {
         return;
-    };
+    }
 
     // Create top labels (1 to 10)
     for (let i = 1; i <= 10; i++) {
         const label = document.createElement("div");
         label.textContent = i;
         topLabels.appendChild(label);
-    };
+    }
 
     // Create left labels (A to J)
     for (let i = 0; i < 10; i++) {
         const label = document.createElement("div");
         label.textContent = letters[i];
         leftLabels.appendChild(label);
-    };
-};
+    }
+}
 
 export function adjustUIForScreenSize() {
     const isMobile = window.matchMedia("(max-width: 768px)").matches;
@@ -74,5 +70,5 @@ export function adjustUIForScreenSize() {
     } else {
         if (modalBody) modalBody.innerHTML = "1 - Place your ships! <strong><em>Left clicking</em></strong> on your board places a ship, <strong><em>right clicking</em></strong> changes orientation (horizontal/vertical)";
         updatePrompt("Place your ships on your board by left-clicking (right-clicking changes orientation).");
-    };
-};
+    }
+}

@@ -11,7 +11,7 @@ import {
 
 import {
     highlightUserCells
-} from './events.js'
+} from './events.js';
 
 /**
  * On loading the user is presented with an obligatory modal with instructions

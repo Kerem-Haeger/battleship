@@ -6,7 +6,7 @@ import {
     updatePrompt,
     resetCurrentTurn,
     flashOrientationHint
-} from './utils.js'
+} from './utils.js';
 
 import {
     placedCells,
@@ -18,11 +18,11 @@ import {
 import {
     createBoard,
     createBoardLabels
-} from './ui.js'
+} from './ui.js';
 
 export let shipPosition = []; // This will store the Computer's ship starting points
 export let occupiedCells = new Set(); // To store all occupied cells (for checking overlap and proximity)
-let newShipComputer
+let newShipComputer;
 
 /**
  * Computer to place ships at random
@@ -50,7 +50,7 @@ export function computerPlaceShips() { // To add later: difficulty can be change
                         `${letters[horizontalIndex + 1]}${vertical}`,
                         `${letters[horizontalIndex + 2]}${vertical}`
                     ];
-                };
+                }
             } else { // Vertical ship placement
                 // Ensure the vertical ship doesn't go out of bounds (must fit 3 tiles)
                 if (vertical <= 8) {
@@ -59,8 +59,8 @@ export function computerPlaceShips() { // To add later: difficulty can be change
                         `${horizontal}${vertical + 1}`,
                         `${horizontal}${vertical + 2}`
                     ];
-                };
-            };
+                }
+            }
 
             // Check if the new ship overlaps or touches another ship
             // Array.isArray ensures no error thrown on page load
@@ -71,10 +71,10 @@ export function computerPlaceShips() { // To add later: difficulty can be change
                 newShipComputer.forEach(cell => occupiedCells.add(cell));
                 placed = true; // Valid placement
                 console.log("Ship placed at:", newShipComputer);
-            };
-        };
-    };
-};
+            }
+        }
+    }
+}
 
 export let playerShips = []; // Stores player ship positions
 export let playerShipCount = 0; // Tracks how many ships have been placed
@@ -132,7 +132,7 @@ export function userPlaceShips() {
                 e.preventDefault();
                 e.stopImmediatePropagation();
                 return;
-            };
+            }
 
         }, {
             passive: false
@@ -161,25 +161,25 @@ export function userPlaceShips() {
                 if (col > 8) { // Prevent horizontal overflow (since ship is 3 cells long)
                     console.log("Invalid placement! Ship goes out of bounds horizontally.");
                     return;
-                };
+                }
                 newShipPlayer = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
             } else { // Vertical placement
                 if (rowIndex > 7) { // Prevent vertical overflow (since ship is 3 cells long)
                     console.log("Invalid placement! Ship goes out of bounds vertically.");
                     return;
-                };
+                }
                 newShipPlayer = [
                     `${letters[rowIndex]}${col}`,
                     `${letters[rowIndex + 1]}${col}`,
                     `${letters[rowIndex + 2]}${col}`
                 ];
-            };
+            }
 
             // Check if ship placement is valid (no overlap)
             if (!isValidPlacement(newShipPlayer)) {
                 console.log("Invalid placement! Overlapping or out of bounds.");
                 return;
-            };
+            }
 
             // Place the ship (color the cells)
             newShipPlayer.forEach((cell, index) => {
@@ -218,11 +218,11 @@ export function userPlaceShips() {
                 // Add hover effect on computer board
                 document.getElementById("computer-board").classList.add("computer-board-active");
                 playerAttack();
-            };
+            }
         });
         listenerAdded = true;
-    };
-};
+    }
+}
 
 export let guessedCells = new Set(); // Track already guessed cells
 export let hitCounterComputer = 0; // Track cells hit by computer so the game can end
@@ -242,7 +242,7 @@ export function computerAttack() {
             do {
                 targetCell = getRandomCell("player-board");
             } while (guessedCells.has(targetCell));
-        };
+        }
 
         // Mark the cell as guessed
         guessedCells.add(targetCell);
@@ -303,14 +303,14 @@ export function computerAttack() {
 
                 });
                 return; // prevent game from continuing
-            };
+            }
         } else {
             console.log(`Computer missed at ${targetCell}.`);
             document.getElementById(`${targetCell}`).style.backgroundColor = "rgb(102, 187, 216)";
             document.getElementById(`${targetCell}`).classList.add("missed-cell");
-        };
+        }
     }, 2000);
-};
+}
 
 /**
  * Add adjacent cells of a hit cell to priorityTargets
@@ -330,7 +330,7 @@ function addAdjacentCells(cell) {
     // Track hits in the current ship chain
     if (!currentHitChain.includes(cell)) {
         currentHitChain.push(cell);
-    };
+    }
 
     // If 3 hits are recorded in a row, reset priority targets
     if (currentHitChain.length === 3) {
@@ -339,7 +339,7 @@ function addAdjacentCells(cell) {
         currentHitChain = [];
         hitShipDirection = "";
         return;
-    };
+    }
 
     // If two adjacent cells are hit, determine direction (horizontal or vertical)
     if (currentHitChain.length === 2) {
@@ -350,20 +350,20 @@ function addAdjacentCells(cell) {
             hitShipDirection = 'horizontal';
         } else if (firstHit[1] === secondHit[1]) {
             hitShipDirection = 'vertical';
-        };
-    };
+        }
+    }
 
     // If two hits are in the same row (horizontal), continue guessing in that row
     if (hitShipDirection === 'horizontal') {
         if (col > 1) possibleCells.push(`${row}${col - 1}`);
         if (col < 10) possibleCells.push(`${row}${col + 1}`);
-    };
+    }
 
     // If two hits are in the same column (vertical), continue guessing in that column
     if (hitShipDirection === 'vertical') {
         if (rowIndex > 0) possibleCells.push(`${letters[rowIndex - 1]}${col}`);
         if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`);
-    };
+    }
 
     // Otherwise, check all four possible adjacent cells
     if (hitShipDirection === "") {
@@ -371,16 +371,16 @@ function addAdjacentCells(cell) {
         if (rowIndex < 9) possibleCells.push(`${letters[rowIndex + 1]}${col}`);
         if (col > 1) possibleCells.push(`${row}${col - 1}`);
         if (col < 10) possibleCells.push(`${row}${col + 1}`);
-    };
+    }
 
     // Add only unguessed cells to the priority target list with correct ID format
     possibleCells.forEach(adjCell => {
         let formattedCell = `player-board-${adjCell}`; // Re-add the prefix!
         if (!guessedCells.has(formattedCell) && !priorityTargets.includes(formattedCell)) {
             priorityTargets.push(formattedCell);
-        };
+        }
     });
-};
+}
 
 /**
  * Function to reset game when one player wins
@@ -396,4 +396,4 @@ export function resetGame() {
     playerShips.length = 0;
     newShipPlayer.length = 0;
     newShipComputer.length = 0;
-};
+}

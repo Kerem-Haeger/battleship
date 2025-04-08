@@ -17,7 +17,7 @@ import {
 
 import {
     createBoard
-} from './ui.js'
+} from './ui.js';
 
 // Highlighting cells on hover before placing ships
 
@@ -45,8 +45,8 @@ export function highlightUserCells() {
                 let highlightedCell = document.getElementById(`player-board-${cell}`);
                 if (highlightedCell) {
                     highlightedCell.style.backgroundColor = ""; // Reset the color
-                };
-            };
+                }
+            }
         });
 
         // Reset the array of highlighted cells
@@ -61,8 +61,8 @@ export function highlightUserCells() {
                 let cellToHighlight = document.getElementById(`player-board-${newCell}`);
                 if (cellToHighlight && !placedCells.includes(newCell)) {
                     cellToHighlight.style.backgroundColor = "lightgray"; // Highlight potential cells
-                };
-            };
+                }
+            }
         } else if (shipOrientation === "vertical") {
             // Highlight 3 vertical cells (even beyond the board)
             let letters = "abcdefghij";
@@ -74,9 +74,9 @@ export function highlightUserCells() {
                 let cellToHighlight = document.getElementById(`player-board-${newCell}`);
                 if (cellToHighlight && !placedCells.includes(newCell)) {
                     cellToHighlight.style.backgroundColor = "lightgray"; // Highlight potential cells
-                };
-            };
-        };
+                }
+            }
+        }
     });
 
     // Reset all cells when mouse leaves the board
@@ -87,11 +87,11 @@ export function highlightUserCells() {
                 let highlightedCell = document.getElementById(`player-board-${cell}`);
                 if (highlightedCell) {
                     highlightedCell.style.backgroundColor = ""; // Reset color
-                };
-            };
+                }
+            }
         });
-    });
-};
+    })
+}
 
 /** 
  * Player attack function
@@ -100,7 +100,7 @@ export function playerAttack() {
     if (!canPlayerAttack) return; // Prevent attack if it's not the player's turn
     document.getElementById("computer-board").focus();
     document.getElementById("computer-board").addEventListener("click", playerAttackListener);
-};
+}
 
 export let hitCounterPlayer = 0; // Track cells hit by player
 
@@ -114,7 +114,7 @@ export function playerAttackListener(e) {
     if (e.target.classList.contains("missed-cell") || e.target.classList.contains("hit-cell")) {
         updatePrompt("You already attacked there - choose another cell!");
         return; // Exit the function to prevent duplicate clicks
-    };
+    }
 
     let cellId = e.target.id.replace("computer-board-", ""); // Extract ID without board prefix
 
@@ -159,20 +159,20 @@ export function playerAttackListener(e) {
 
             });
             return; // prevent game from continuing
-        };
+        }
 
     } else {
         console.log(`Miss at ${cellId}`);
         e.target.style.backgroundColor = "rgb(102, 187, 216)";
         e.target.classList.add("missed-cell");
-    };
+    }
 
     switchTurn();
-};
+}
 
 /**
  * Resetting hit counter here as it was declared here
  */
 export function resetHitCounter() {
     hitCounterPlayer = 0;
-};
+}
