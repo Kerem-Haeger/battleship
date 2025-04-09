@@ -19,7 +19,7 @@ import {
 
 export let shipPosition = []; // This will store the Computer's ship starting points
 export let occupiedCells = new Set(); // To store all occupied cells (for checking overlap and proximity)
-let newShipComputer;
+export let newShipComputer = [];
 
 /**
  * Computer to place ships at random
@@ -34,6 +34,8 @@ export function computerPlaceShips() { // To add later: difficulty can be change
 
         // Try until a valid position is found
         while (!placed) {
+            newShipComputer.length = 0;
+
             let horizontal = letters[Math.floor(Math.random() * 10)];
             let vertical = Math.floor(Math.random() * 10) + 1;
 
@@ -354,12 +356,13 @@ function addAdjacentCells(cell) {
  */
 export function resetGame() {
     hitCounterComputer = 0;
-    guessedCells = new Set();
-    priorityTargets = [];
-    currentHitChain = [];
+    guessedCells.clear();
+    occupiedCells.clear();
+    priorityTargets.length = 0;
+    currentHitChain.length = 0;
     hitShipDirection = "";
     playerShipCount = 0;
-    shipPosition = [];
+    shipPosition.length = 0;
     playerShips.length = 0;
     newShipPlayer.length = 0;
     newShipComputer.length = 0;
