@@ -34,8 +34,6 @@ export function computerPlaceShips() { // To add later: difficulty can be change
 
         // Try until a valid position is found
         while (!placed) {
-            newShipComputer.length = 0;
-
             let horizontal = letters[Math.floor(Math.random() * 10)];
             let vertical = Math.floor(Math.random() * 10) + 1;
 
@@ -65,7 +63,7 @@ export function computerPlaceShips() { // To add later: difficulty can be change
             // Array.isArray ensures no error thrown on page load
             if (Array.isArray(newShipComputer) && newShipComputer.length === 3 && !hasOverlapOrTouch(newShipComputer)) {
                 // If no overlap or touching, place the ship
-                shipPosition[i] = newShipComputer;
+                shipPosition[i] = [...newShipComputer];
                 // Mark the cells as occupied
                 newShipComputer.forEach(cell => occupiedCells.add(cell));
                 placed = true; // Valid placement
