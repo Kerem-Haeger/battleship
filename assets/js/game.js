@@ -26,7 +26,7 @@ export let newShipComputer = [];
  * 
  * Ships can only be placed if they fully fit on the board (placed is false by default)
  */
-export function computerPlaceShips() { // To add later: difficulty can be changed with more or less ships
+export function computerPlaceShips() {
     for (let i = 0; i <= 2; i++) { // Loop for 3 ships
         let shipDirection = Math.floor(Math.random() * 2); // 0 for horizontal, 1 for vertical
         let letters = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j"];
@@ -203,7 +203,6 @@ export function userPlaceShips() {
             if (playerShipCount >= 3) {
                 updatePrompt("It's your turn! Click on a cell on the computer board to attack.");
                 // Create computer board once player has placed ships!
-                // Until then, add a text saying "place your ships"
                 createBoard("computer-board");
                 createBoardLabels(document.querySelector("#computer-board").parentElement);
                 document.getElementById("computer-wrapper").style.visibility = "visible";
