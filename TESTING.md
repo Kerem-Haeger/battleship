@@ -71,7 +71,7 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 
   ![CSS Validator](documentation/css_validator.png)
     
-    - The following warning was shown, when the code was copied and validated, as line 2 contains the link to the Google Font:
+    - The following warning was shown when the code was copied and validated, as line 2 contains the link to the Google Font:
 
   ![CSS Validator errors](documentation/css_validator_warning.png)
   
@@ -125,20 +125,28 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 ​
 ## Bugs
 + ### Solved bugs
-    1. The testimonials pictures had a square shape in Brave browser on a mobile phone when the border radius had been set to 50%. It was due to the outline properties settings instead of the border
+    1. On restart, the game wouldn't reset properly, throwing different errors.
     
-        *Solutions:* Outline was replaced with border properties.
+        *Solutions:* When resetting variables, arrays, and sets, they had to be reset in the file where they were declared. Thus, the resetGame function had to be split into multiple function, all called on when the player clicks "Play Again!".
+        Ensure arrays were cleared correctly to be used again.
     
-    1. The gallery image descriptions were not appearing on the picture when hovering it as the position of the .image_content was set to fixed.
+    2. Event Listeners were added multiple times after restart, not allowing proper rotation of ships.
         
-        *Solution:* The .image_content position was set to absolute, with the top: 0, left: 0, and added padding on the .image_content. 
+        *Solution:* Check for listeners already added and only add them, when there weren't any detected.
 
-    1. Footer on the contact page was reducing the size of the screen and shrank the contact form as the height of the background image was set to calc(100vh-the size of the footer)
+    3. Ships weren't stored properly. The chosen variables were reassigned within a loop and therefore not retaining the correct positions.
         
-        *Solution:* The height of the image was set to 100hv, and the display of the footer was set to fixed.
+        *Solution:* Declared ship arrays globally and cleared them using `.length = 0`
+
+    4. On reset, the legend/label duplicated and `.appendChild()` threw multiple errors.
+
+        *Solution:* Instead of clearing the div with `.innerHTML = ''`, they are made temporarily invisible until they are used again.
 
 + ### Unsolved bugs
 
-    - None.
+    - On mobile, when rotating ships, the default option (highlighting cells up to the selected one) could not be prevented, neither via JavaScript nor CSS.
+
+        *Workaround:* The player is prompted to play on a larger screen, if possible.
+        The rotation of ships still works, but isn't as smooth as it could be.
 
 ---
