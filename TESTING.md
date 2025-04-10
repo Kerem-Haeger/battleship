@@ -5,7 +5,7 @@
 
 In order to confirm the correct functionality, responsiveness, and appearance:
 
-+ The website was tested on the following browsers: Chrome, Firefox, Brave.
++ The website was tested on the following browsers: Chrome, Firefox, Opera.
 
     - Chrome:
 
