@@ -47,7 +47,7 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 | **End Game Modal** | | | | | |
 | Reset Button | Click on "Play again!" button | The game resets completely, allowing a clean restart | Yes | Yes | - |
 |  | Clicking outside of the modal | No significant action should occur, the modal cannot be closed this way | Yes | Yes | - |
-| Footer | | | | | |
+| **Footer** | | | | | |
 | Link to GitHub | Click on "GitHub Page here" | The user is redirected to the GitHub page | Yes | Yes | - |
 | GitHub Icon | Click on the GitHub icon | The user is redirected to the GitHub page | Yes | Yes | - |
 | **Computer Logic** | | | | | |
@@ -60,63 +60,66 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 ---
 ## Validator testing
 + ### HTML
-  #### Home Page
-    - No errors or warnings were found when passing through the official W3C validator.
-
-
-    ![Home Page HTML Validator](documentation/w3_validator_home_page.png)
-    
-  #### Gallery Page
-    - No errors or warnings were found when passing through the official W3C validator.
-
-    ![Gallery Page HTML Validator](documentation/w3_validator_gallery_page.png)
-
-  #### Contact Page
-    - No errors or warnings were found when passing through the official W3C validator.
-
-    ![Contact Page HTML Validator](documentation/w3_validator_contact_page.png)
-
-  #### Response Page
-    - No errors or warnings were found when passing through the official W3C validator.
-
-    ![Response Page HTML Validator](documentation/w3_validator_response_page.png)
-    
-+ ### CSS
-  No errors or warnings were found when passing through the official W3C (Jigsaw) validator except:
-    
-    - 3 errors regarding *all: unset*: "Property all doesn't exist. The closest matching property name is fill : unset".
-
-    - Even though this error is present, I don't believe it is 100% accurate, and more information can be found [here](https://developer.mozilla.org/en-US/docs/Web/CSS/all)
-
-  ![CSS Validator errors](documentation/w3_validator_css_errors.png)
   
-    - 43 warning regarding the use of *:root variables*: "Due to their dynamic nature, CSS variables are currently not statically checked".
+    - No errors or warnings were found when passing through the official W3C validator.
+
+    ![HTML Validator](documentation/html_validator.png)
+
+
++ ### CSS
+  - No errors were found when passing through the official W3C (Jigsaw) validator.
+
+  ![CSS Validator](documentation/css_validator.png)
     
-  ![CSS Validator errors](documentation/w3_validator_css_warnings.png)
+    - The following warning was shown, when the code was copied and validated, as line 2 contains the link to the Google Font:
+
+  ![CSS Validator errors](documentation/css_validator_warning.png)
+  
+  - When the link was used to validate, no errors were shown:
+  
+  ![CSS Validator Link](documentation/css_validator_link.png)
+  
+    - 434 warnings were detected this way, all of them on line 5 (the universal selector). This has to do with the usage of Bootstrap:
+    
+  ![CSS Validator Link errors](documentation/css_validator_link_warnings.png)
 
 + ### JavaScript
 
+- [JSHint](https://jshint.com/) was used to validate JavaScript. `/* jshint esversion: 6 */` was added to ensure compatibility with ES6 (due to using module to call JavaScript files):
 
+  - [main.js](assets/js/game.js) passed with no errors, except that bootstrap is not recognised as a defined variable:
+
+  ![JSHint Main](documentation/jshint_main.png)
+
+  *This could be avoided by adding ` /* global bootstrap */`*
+
+  - [ui.js](assets/js/ui.js) passed with no errors:
+
+  ![JSHint UI](documentation/jshint_ui.png)
+
+  - [game.js](assets/js/game.js) passed with no errors, except that bootstrap is not recognised as a defined variable as well as the following warning:
+
+  ![JSHint Game](documentation/jshint_game.png)
+
+  *This could be avoided by adding ` /* global bootstrap */`*
+
+  *Due to using `let` to define variables, this can be ignored, as `let` is block-scoped. Further, this warning is especially meant for older versions (pre-ES6)*
+
+  - [events.js](assets/js/events.js) passed with no errors, except that bootstrap is not recognised as a defined variable:
+
+  ![JSHint Events](documentation/jshint_events.png)
+
+  *This could be avoided by adding ` /* global bootstrap */`*
+
+  - [utils.js](assets/js/utils.js) passed with no errors:
+
+  ![JSHint Utils](documentation/jshint_utils.png)
 
 + ## LightHouse report
 
-    - Using lighthouse in devtools I confirmed that the website is performing well, accessible and colors and fonts chosen are readable.
+    - Using lighthouse confirms the game/page performs well, follows best practices and is accessible:
     
-  ### Home page
-
-  ![Home Page Lighthouse](documentation/lighthouse_home_page.png)
-
-  ### Gallery page
-
-  ![Gallery Page Lighthouse](documentation/lighthouse_gallery_page.png)
-
-  ### Contact page
-
-  ![Contact Page Lighthouse](documentation/lighthouse_contact_page.png)
-
-  ### Response page
-
-  ![Response Page Lighthouse](documentation/lighthouse_response_page.png)
+  ![Lighthouse](documentation/lighthouse_chrome.png)
 
 ---
 ​
@@ -133,11 +136,9 @@ In order to confirm the correct functionality, responsiveness, and appearance:
     1. Footer on the contact page was reducing the size of the screen and shrank the contact form as the height of the background image was set to calc(100vh-the size of the footer)
         
         *Solution:* The height of the image was set to 100hv, and the display of the footer was set to fixed.
-    ---
+
 + ### Unsolved bugs
+
     - None.
-+ ### Mistakes
-    - Mistakes were made while committing changes. I used past simple tense in commits due to the habit when I just started working on this project.
-    - While progressing in my code I learned to use present simple tense in commits.
 
 ---
