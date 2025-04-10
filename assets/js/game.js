@@ -67,7 +67,9 @@ export function computerPlaceShips() { // To add later: difficulty can be change
                 // Mark the cells as occupied
                 newShipComputer.forEach(cell => occupiedCells.add(cell));
                 placed = true; // Valid placement
-                // Log newShipComputer here for debugging!
+
+                // Log newShipComputer here for debugging! (Will reveal ships placed by computer)
+
             }
         }
     }

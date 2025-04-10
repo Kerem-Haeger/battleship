@@ -132,6 +132,11 @@ export function playerAttackListener(e) {
     switchTurn();
 }
 
+// Ensure contextmenu does not disturb playing experience when right clicking on computer board
+document.getElementById("computer-board").addEventListener("contextmenu", (e) => {
+    e.preventDefault();
+});
+
 /**
  * Resetting hit counter here as it was declared here
  */
