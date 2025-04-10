@@ -67,7 +67,7 @@ export function computerPlaceShips() { // To add later: difficulty can be change
                 // Mark the cells as occupied
                 newShipComputer.forEach(cell => occupiedCells.add(cell));
                 placed = true; // Valid placement
-                console.log("Ship placed at:", newShipComputer);
+                // Log newShipComputer here for debugging!
             }
         }
     }
