@@ -129,7 +129,7 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 
     1. On restart, the game wouldn't reset properly, throwing different errors.
     
-        *Solutions:* When resetting variables, arrays, and sets, they had to be reset in the file where they were declared. Thus, the resetGame function had to be split into multiple function, all called on when the player clicks "Play Again!".
+        *Solutions:* When resetting variables, arrays, and sets, they had to be reset in the file where they were declared. Thus, the resetGame function had to be split into multiple functions, all called on when the player clicks "Play Again!".
         Ensure arrays were cleared correctly to be used again.
     
     2. Event Listeners were added multiple times after restart, not allowing proper rotation of ships.
