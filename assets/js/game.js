@@ -91,7 +91,6 @@ export function userPlaceShips() {
         playerBoard.addEventListener("contextmenu", (e) => {
             e.preventDefault();
             shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal"; // Toggle orientation
-            console.log("Orientation switched to:", shipOrientation);
         });
 
         let longPressTimer;
@@ -106,7 +105,6 @@ export function userPlaceShips() {
                 longPressTriggered = true;
                 shipOrientation = shipOrientation === "horizontal" ? "vertical" : "horizontal";
                 flashOrientationHint(shipOrientation);
-                console.log("Orientation switched (long-press):", shipOrientation);
                 updatePrompt(`Orientation switched to: ${shipOrientation}`);
             }, 600);
         }, {
@@ -141,7 +139,6 @@ export function userPlaceShips() {
 
             // Check if the player has already placed 3 ships
             if (playerShipCount >= 3) {
-                console.log("You have already placed all 3 ships!");
                 return; // Stop further placements if the player has placed 3 ships
             };
 
@@ -156,13 +153,11 @@ export function userPlaceShips() {
             // **Out-of-bounds check**
             if (shipOrientation === "horizontal") {
                 if (col > 8) { // Prevent horizontal overflow (since ship is 3 cells long)
-                    console.log("Invalid placement! Ship goes out of bounds horizontally.");
                     return;
                 }
                 newShipPlayer = [`${row}${col}`, `${row}${col + 1}`, `${row}${col + 2}`];
             } else { // Vertical placement
                 if (rowIndex > 7) { // Prevent vertical overflow (since ship is 3 cells long)
-                    console.log("Invalid placement! Ship goes out of bounds vertically.");
                     return;
                 }
                 newShipPlayer = [
@@ -174,7 +169,6 @@ export function userPlaceShips() {
 
             // Check if ship placement is valid (no overlap)
             if (!isValidPlacement(newShipPlayer)) {
-                console.log("Invalid placement! Overlapping or out of bounds.");
                 return;
             }
 
@@ -203,8 +197,6 @@ export function userPlaceShips() {
             playerShips.push(newShipPlayer); // Add new ship to player ships array
 
             playerShipCount++; // Increment the ship count after placing a ship
-            console.log(`Ship ${playerShipCount}/3 placed at:`, newShipPlayer);
-            console.log("Current player ships:", playerShips); // Debugging log
 
             if (playerShipCount >= 3) {
                 updatePrompt("It's your turn! Click on a cell on the computer board to attack.");
@@ -246,7 +238,6 @@ export function computerAttack() {
         guessedCells.add(targetCell);
 
         if (isShipAtCell(targetCell, playerShips)) {
-            console.log(`Computer hit your ship at ${targetCell}!`);
             // Remove ship graphic before applying hit graphic
             document.getElementById(`${targetCell}`).classList.remove(
                 "ship-segment",
@@ -260,7 +251,6 @@ export function computerAttack() {
             document.getElementById(`${targetCell}`).style.backgroundColor = 'rgb(102, 187, 216)';
             document.getElementById(`${targetCell}`).classList.add("hit-cell");
             hitCounterComputer++;
-            console.log(`Computer has hit ${hitCounterComputer} cells!`);
 
             // Add adjacent cells to priority list (if they haven't been guessed yet)
             addAdjacentCells(targetCell);
@@ -273,7 +263,6 @@ export function computerAttack() {
                 return; // prevent further actions in this function
             }
         } else {
-            console.log(`Computer missed at ${targetCell}.`);
             document.getElementById(`${targetCell}`).style.backgroundColor = "rgb(102, 187, 216)";
             document.getElementById(`${targetCell}`).classList.add("missed-cell");
         }
@@ -302,7 +291,6 @@ function addAdjacentCells(cell) {
 
     // If 3 hits are recorded in a row, reset priority targets
     if (currentHitChain.length === 3) {
-        console.log("Ship sunk!");
         priorityTargets.length = 0;
         currentHitChain = [];
         hitShipDirection = "";

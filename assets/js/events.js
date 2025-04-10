@@ -112,10 +112,8 @@ export function playerAttackListener(e) {
 
     // Check if a ship is at the clicked cell
     if (isShipAtCell(cellId, shipPosition)) {
-        console.log(`Hit! Ship found at ${cellId}`);
         e.target.classList.add("hit-cell");
         hitCounterPlayer++;
-        console.log(`Player has hit ${hitCounterPlayer} cells!`);
 
         // Track ships hit by player and end game
         if (hitCounterPlayer === 9) {
@@ -127,7 +125,6 @@ export function playerAttackListener(e) {
         }
 
     } else {
-        console.log(`Miss at ${cellId}`);
         e.target.style.backgroundColor = "rgb(102, 187, 216)";
         e.target.classList.add("missed-cell");
     }

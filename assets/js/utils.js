@@ -97,7 +97,6 @@ export function switchTurn() {
             currentTurn = "player";
             enablePlayerAttack();
             updatePrompt("It's your turn! Click on a cell on the computer board to attack.");
-            console.log("It's the player's turn again!");
         }, 2010); // Delay to simulate the computer’s thinking process
     }
 }
