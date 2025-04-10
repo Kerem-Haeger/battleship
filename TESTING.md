@@ -124,7 +124,9 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 ---
 ​
 ## Bugs
+
 + ### Solved bugs
+
     1. On restart, the game wouldn't reset properly, throwing different errors.
     
         *Solutions:* When resetting variables, arrays, and sets, they had to be reset in the file where they were declared. Thus, the resetGame function had to be split into multiple function, all called on when the player clicks "Play Again!".
@@ -138,15 +140,12 @@ In order to confirm the correct functionality, responsiveness, and appearance:
         
         *Solution:* Declared ship arrays globally and cleared them using `.length = 0`
 
-    4. On reset, the legend/label duplicated and `.appendChild()` threw multiple errors.
+    4. On reset, the legend/label duplicated and `.appendChild()` threw an error.
 
         *Solution:* Instead of clearing the div with `.innerHTML = ''`, they are made temporarily invisible until they are used again.
 
 + ### Unsolved bugs
 
-    - On mobile, when rotating ships, the default option (highlighting cells up to the selected one) could not be prevented, neither via JavaScript nor CSS.
-
-        *Workaround:* The player is prompted to play on a larger screen, if possible.
-        The rotation of ships still works, but isn't as smooth as it could be.
+    - None.
 
 ---
