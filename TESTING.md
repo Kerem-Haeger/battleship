@@ -9,79 +9,41 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 
     - Chrome:
 
-    ![Chrome](documentation/browsers_google.gif)
+    ![Chrome](documentation/chrome_testing_game.png)
 
     - FireFox:
 
-    ![FireFox](documentation/browsers_firefox.gif)
+    ![FireFox](documentation/firefox_testing_game.png)
 
-    - Brave:
+    - Opera:
 
-    ![Brave](documentation/browsers_brave.gif)
+    ![Opera](documentation/opera_testing_game.png)
 
 ## Responsiveness
 
 
-+ The website was checked by devtools implemented in Firefox and Chrome browsers.
++ The website was checked using DevTools in browsers during development, but further using [Responsive Viewer](https://responsiveviewer.org/):
 
-    - Main Page:
+![Performance Startup](documentation/device_performance.png)
+![Performance Game](documentation/device_performance_game.png)
 
-    ![Main Page](documentation/responsiveness_main_page.gif)
-
-    - Gallery Page:
-
-    ![Gallery Page](documentation/responsiveness_gallery_page.gif)
-
-    - Contact Page:
-
-    ![Contact Page](documentation/responsiveness_contact_page.gif)
-
-    - Response Page:
-
-    ![Response Page](documentation/responsiveness_response_page.gif)
-
-+ The website was checked with [Responsive Website Design Tester](https://responsivedesignchecker.com/).
-
-    - Desktop Screens:
-
-    ![Desktop 1024x600](documentation/desktop_1024_600.gif)
-    ![Desktop 1024x800](documentation/desktop_1024_800.gif)
-    ![Desktop 1366x768](documentation/desktop_1366_768.gif)
-    ![Desktop 1440x900](documentation/desktop_1440_900.gif)
-    ![Desktop 1600x900](documentation/desktop_1600_900.gif)
-    ![Desktop 1680x1050](documentation/desktop_1680_1050.gif)
-    ![Desktop 1920x1080](documentation/desktop_1920_1080.gif)
-    ![Desktop 1920x1200](documentation/desktop_1920_1200.gif)
-
-    - Tablet Screens:
-
-    ![Tablet 600x960](documentation/tablet_600_960.gif)
-    ![Tablet 768x1024](documentation/tablet_768_1024.gif)
-    ![Tablet 800x1280](documentation/tablet_800_1280.gif)
-    ![Tablet 1024x768](documentation/tablet_1024_768.gif)
-    ![Tablet 1366x1024](documentation/tablet_1366_1024.gif)
-    ![Tablet Kindle 768x1024](documentation/tablet_kindle_768_1024.gif)
-
-    - Mobile Screens:
-
-    ![Mobile 320x480](documentation/mobile_320_480.gif)
-    ![Mobile 320x568](documentation/mobile_320_568.gif)
-    ![Mobile 360x640](documentation/mobile_360_640.gif)
-    ![Mobile 375x667](documentation/mobile_375_667.gif)
-    ![Mobile 384x640](documentation/mobile_384_640.gif)
-    ![Mobile 411x731](documentation/mobile_411_731.gif)
-    ![Mobile 414x736](documentation/mobile_414_736.gif)
-
-+ The functionality of the links in the website was checked as well by different users.
++ The functionality of the GitHub Link was checked and opened the correct page in a new tab.
 
 ## Manual testing
 
-| feature | action | expected result | tested | passed | comments |
+| Feature | Action | Expected Result | Tested | Passed | Comments |
 | --- | --- | --- | --- | --- | --- |
-| Navbar | | | | | |
-| Home | Click on the "Home" link | The user is redirected to the main page | Yes | Yes | - |
-| Gallery | Click on the "Gallery" link | The user is redirected to the gallery page | Yes | Yes | - |
-| Contact | Click on the "Contact" link | The user is redirected to the contact page | Yes | Yes | - |
+| Instruction Modal | | | | | |
+| Start Button | Click on the button | The modal is hidden and the game starts, first creating the player board | Yes | Yes | - |
+|  | Clicking outside of the modal | No significant action shoudl occur, the modal cannot be closed this way | Yes | Yes | - |
+| Main Game | | | | | |
+| Legend/Labels/Page | Click anywhere but the intended game area | Nothing should happen, elements outside the board should not be clickable | Yes | Yes | - |
+| Player Board | Left-click on the board | Places player ship | Yes | Yes | - |
+| Player Board | Hovering over the player board | Shows outline of ship, to indicate where it would be placed | Yes | Yes | - |
+| Player Board | Right-click on the board | Rotates ship orientation (in hover) | Yes | Yes | Occasionally the mouse needs to be moved slightly for the effect to update |
+| Computer Board | Left-click on the board | "Attacks" the computer, prompting either a hit or a miss and the corresponding graphic - This ends the player's turn| Yes | Yes | - |
+| Computer Board | Left-click on a previously "attacked" cell | Player prompt updates, notifying the player to choose another cell - This does not end the player's turn | Yes | Yes | - |
+| Computer Board | Right-click on the board | Nothing relevant to the game should happen | Yes | Yes | - |
 | Footer | | | | | |
 | Instagram icon in the footer | Click on the Instagram icon | The user is redirected to the Instagram page | Yes | Yes | - |
 | Facebook icon in the footer | Click on the Facebook icon | The user is redirected to the Facebook page | Yes | Yes | - |
@@ -142,7 +104,7 @@ In order to confirm the correct functionality, responsiveness, and appearance:
   ![CSS Validator errors](documentation/w3_validator_css_warnings.png)
 
 + ### JavaScript
-  
+
 
 
 + ## LightHouse report
