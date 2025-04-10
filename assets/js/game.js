@@ -212,6 +212,7 @@ export function userPlaceShips() {
                 // Until then, add a text saying "place your ships"
                 createBoard("computer-board");
                 createBoardLabels(document.querySelector("#computer-board").parentElement);
+                document.getElementById("computer-wrapper").style.visibility = "visible";
                 // Add hover effect on computer board
                 document.getElementById("computer-board").classList.add("computer-board-active");
                 playerAttack();

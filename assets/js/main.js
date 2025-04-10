@@ -46,6 +46,7 @@ document.getElementById("reset-button").addEventListener("click", () => {
     // Clear the boards by removing all child elements
     document.getElementById("player-board").innerHTML = '';
     document.getElementById("computer-board").innerHTML = '';
+    document.getElementById("computer-wrapper").style.visibility = "hidden";
 
     // Recreate the player board
     createBoard("player-board");
