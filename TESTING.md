@@ -103,7 +103,7 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 
   *This could be avoided by adding ` /* global bootstrap */`*
 
-  *Due to using `let` to define variables, this can be ignored, as `let` is block-scoped. Further, this warning is especially meant for older versions (pre-ES6)*
+  *Due to using `let` to define variables, the warning on line 70 can be ignored, as `let` is block-scoped. Further, this warning is especially meant for older versions (pre-ES6)*
 
   - [events.js](assets/js/events.js) passed with no errors, except that bootstrap is not recognised as a defined variable:
 
