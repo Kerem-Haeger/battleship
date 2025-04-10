@@ -33,37 +33,28 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 
 | Feature | Action | Expected Result | Tested | Passed | Comments |
 | --- | --- | --- | --- | --- | --- |
-| Instruction Modal | | | | | |
+| **Instruction Modal** | | | | | |
 | Start Button | Click on the button | The modal is hidden and the game starts, first creating the player board | Yes | Yes | - |
-|  | Clicking outside of the modal | No significant action shoudl occur, the modal cannot be closed this way | Yes | Yes | - |
-| Main Game | | | | | |
+|  | Clicking outside of the modal | No significant action should occur, the modal cannot be closed this way | Yes | Yes | - |
+| **Main Game** | | | | | |
 | Legend/Labels/Page | Click anywhere but the intended game area | Nothing should happen, elements outside the board should not be clickable | Yes | Yes | - |
 | Player Board | Left-click on the board | Places player ship | Yes | Yes | - |
 | Player Board | Hovering over the player board | Shows outline of ship, to indicate where it would be placed | Yes | Yes | - |
 | Player Board | Right-click on the board | Rotates ship orientation (in hover) | Yes | Yes | Occasionally the mouse needs to be moved slightly for the effect to update |
 | Computer Board | Left-click on the board | "Attacks" the computer, prompting either a hit or a miss and the corresponding graphic - This ends the player's turn| Yes | Yes | - |
 | Computer Board | Left-click on a previously "attacked" cell | Player prompt updates, notifying the player to choose another cell - This does not end the player's turn | Yes | Yes | - |
-| Computer Board | Right-click on the board | Nothing relevant to the game should happen | Yes | Yes | - |
+| Computer Board | Right-click on the board | Nothing should happen, default prevented | Yes | Yes | - |
+| **End Game Modal** | | | | | |
+| Reset Button | Click on "Play again!" button | The game resets completely, allowing a clean restart | Yes | Yes | - |
+|  | Clicking outside of the modal | No significant action should occur, the modal cannot be closed this way | Yes | Yes | - |
 | Footer | | | | | |
-| Instagram icon in the footer | Click on the Instagram icon | The user is redirected to the Instagram page | Yes | Yes | - |
-| Facebook icon in the footer | Click on the Facebook icon | The user is redirected to the Facebook page | Yes | Yes | - |
-| Twitter icon in the footer | Click on the Twitter icon | The user is redirected to the Twitter page | Yes | Yes | - |
-| YouTube icon in the footer | Click on the YouTube icon | The user is redirected to the YouTube page | Yes | Yes | - |
-| Home page | | | | | |
-| "Contact Us" button in Hero section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
-| "Contact Us" button in Call to action section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
-| Gallery page | | | | | |
-| "Contact Us" button in Hero section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
-| Image in the gallery | User hover the image | Pet's name and description appear on the image | Yes | Yes | - |
-| "Contact Us" button in Call to action section | Click on the "Contact Us" button | The user is redirected to the contact page | Yes | Yes | - |
-| Contact page | | | | | |
-| First name input | Enter the first name | The first name is entered | Yes | Yes | If user doesn't enter the first name, the error message appears |
-| Last name input | Enter the last name | The last name is entered | Yes | Yes | If user doesn't enter the last name, the error message appears |
-| Email input | Enter the email | The email is entered | Yes | Yes | If user doesn't enter the email, the error message appears. If user enters not valid email, the error message appears |
-| Adopt and donate checkbox | Click on the checkbox | The checkbox is checked | Yes | Yes | These checkboxes are not required as the user can choose not to adopt or donate and other reasons for contacting |
-| "Submit" button | Click on the "Submit" button | The user is redirected to the response page | Yes | Yes | - |
-| Response page | | | | | |
-| Response message | The user will be automatically redirected to the home page after 10 seconds | The user is redirected to the home page | Yes | Yes | - |
+| Link to GitHub | Click on "GitHub Page here" | The user is redirected to the GitHub page | Yes | Yes | - |
+| GitHub Icon | Click on the GitHub icon | The user is redirected to the GitHub page | Yes | Yes | - |
+| **Computer Logic** | | | | | |
+| Computer Attack | - | The computer randomly attacks a cell, the relevant graphic is shown, the prompt is updated while the computer attacks | Yes | Yes | - |
+| Computer Miss | - | The "miss" graphic is shown, the game continues as before | Yes | Yes | - |
+| Computer Hit | - | The "hit" graphic is shown, the computer prioritises cells surrounding the hit cell for the next attacks, until the ship (3 cells) have been sunk | Yes | Yes | - |
+| Computer Sinks Ship | - | The priority on adjecent cells gets reset and the computer continues to attack randomly | Yes | Yes | - |
 
 
 ---
