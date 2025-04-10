@@ -2,7 +2,7 @@ import {
     shipOrientation,
     playerShipCount,
     shipPosition
-} from './game.js'
+} from './game.js';
 
 import {
     isShipAtCell,
@@ -82,7 +82,7 @@ export function highlightUserCells() {
                 }
             }
         });
-    })
+    });
 }
 
 /** 

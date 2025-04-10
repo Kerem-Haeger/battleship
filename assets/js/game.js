@@ -140,7 +140,7 @@ export function userPlaceShips() {
             // Check if the player has already placed 3 ships
             if (playerShipCount >= 3) {
                 return; // Stop further placements if the player has placed 3 ships
-            };
+            }
 
             // Get the cell ID
             let cellId = e.target.id.replace("player-board-", "");

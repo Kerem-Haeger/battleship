@@ -141,6 +141,9 @@ In order to confirm the correct functionality, responsiveness, and appearance:
     
   ![CSS Validator errors](documentation/w3_validator_css_warnings.png)
 
++ ### JavaScript
+  
+
 
 + ## LightHouse report
 
