@@ -40,7 +40,7 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 | Legend/Labels/Page | Click anywhere but the intended game area | Nothing should happen, elements outside the board should not be clickable | Yes | Yes | - |
 | Player Board | Left-click on the board | Places player ship | Yes | Yes | - |
 | Player Board | Hovering over the player board | Shows outline of ship, to indicate where it would be placed | Yes | Yes | - |
-| Player Board | Right-click on the board | Rotates ship orientation (in hover) | Yes | Yes | Occasionally the mouse needs to be moved slightly for the effect to update |
+| Player Board | Right-click on the board (Long press on mobile) | Changes ship orientation (displayed also via the highlighted cells on hover) | Yes | Yes | Occasionally the mouse needs to be moved slightly for the effect to update |
 | Computer Board | Left-click on the board | "Attacks" the computer, prompting either a hit or a miss and the corresponding graphic - This ends the player's turn| Yes | Yes | - |
 | Computer Board | Left-click on a previously "attacked" cell | Player prompt updates, notifying the player to choose another cell - This does not end the player's turn | Yes | Yes | - |
 | Computer Board | Right-click on the board | Nothing should happen, default prevented | Yes | Yes | - |
