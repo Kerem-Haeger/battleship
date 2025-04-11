@@ -1,7 +1,8 @@
 import {
     shipOrientation,
     playerShipCount,
-    shipPosition
+    shipPosition,
+    computerScore
 } from './game.js';
 
 import {
@@ -95,6 +96,7 @@ export function playerAttack() {
 }
 
 export let hitCounterPlayer = 0; // Track cells hit by player
+export let playerScore = 0; // Track score for replay
 
 /**
  * Player attack event listener
@@ -120,6 +122,10 @@ export function playerAttackListener(e) {
             let gameOverModal = new bootstrap.Modal(document.getElementById("game-over"));
             // Get the game board containers by their IDs
             document.getElementById("show-result").innerText = "Congratulations, you won!";
+
+            playerScore++;
+            document.getElementById("score").innerHTML = `Player: ${playerScore}  Computer: ${computerScore}`;
+
             gameOverModal.show();
             return; // prevent game from continuing
         }

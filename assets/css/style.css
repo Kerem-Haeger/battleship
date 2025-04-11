@@ -83,7 +83,7 @@ main h2 {
     justify-content: center;
     gap: 40px;
     flex-wrap: wrap;
-    padding-bottom: 75px;
+    padding-bottom: 20px;
 }
 
 .board-container {
@@ -217,12 +217,24 @@ main h2 {
 .message-display {
     display: flex;
     justify-content: center;
-    margin-bottom: 3rem;
 }
 
-.message-display p {
+.message-display p,
+.score-display p {
     font-size: 1.3em;
-    padding: 1.5em;
+    padding: 1em;
+    margin-bottom: 0;
+}
+
+.score-display {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1rem;
+}
+
+.space-between {
+    display: inline-block;
+    width: 3rem;
 }
 
 /* Footer */

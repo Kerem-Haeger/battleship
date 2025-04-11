@@ -9,7 +9,8 @@ import {
 
 import {
     placedCells,
-    playerAttack
+    playerAttack,
+    playerScore
 } from './events.js';
 
 import {
@@ -220,6 +221,7 @@ export let hitCounterComputer = 0; // Track cells hit by computer so the game ca
 export let priorityTargets = []; // Stores cells to prioritize (adjacent to hits)
 export let currentHitChain = []; // Tracks the current ship being hit
 export let hitShipDirection = ""; // Will hold the direction (horizontal/vertical) of the hit ship
+export let computerScore = 0; // Track score on for replay
 
 export function computerAttack() {
     setTimeout(() => {
@@ -260,6 +262,10 @@ export function computerAttack() {
             if (hitCounterComputer === 9) {
                 let gameOverModal = new bootstrap.Modal(document.getElementById("game-over"));
                 document.getElementById("show-result").innerText = "Game over - the computer won!";
+
+                computerScore++;
+                document.getElementById("score").innerHTML = `Player: ${playerScore}  Computer: ${computerScore}`;
+
                 gameOverModal.show();
                 return; // prevent further actions in this function
             }
