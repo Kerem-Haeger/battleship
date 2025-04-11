@@ -54,7 +54,7 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 | **Computer Logic** | | | | | |
 | Computer Attack | - | The computer randomly attacks a cell, the relevant graphic is shown, the prompt is updated while the computer attacks | Yes | Yes | - |
 | Computer Miss | - | The "miss" graphic is shown, the game continues as before | Yes | Yes | - |
-| Computer Hit | - | The "hit" graphic is shown, the computer prioritises cells surrounding the hit cell for the next attacks, until the ship (3 cells) have been sunk | Yes | Yes | - |
+| Computer Hit | - | The "hit" graphic is shown, the computer prioritises cells surrounding the hit cell for the next attacks, until the ship (3 cells) has been sunk | Yes | Yes | - |
 | Computer Sinks Ship | - | The priority on adjecent cells gets reset and the computer continues to attack randomly | Yes | Yes | - |
 
 
