@@ -44,6 +44,7 @@ In order to confirm the correct functionality, responsiveness, and appearance:
 | Computer Board | Left-click on the board | "Attacks" the computer, prompting either a hit or a miss and the corresponding graphic - This ends the player's turn| Yes | Yes | - |
 | Computer Board | Left-click on a previously "attacked" cell | Player prompt updates, notifying the player to choose another cell - This does not end the player's turn | Yes | Yes | - |
 | Computer Board | Right-click on the board | Nothing should happen, default prevented | Yes | Yes | - |
+|  | Player or Computer wins | The score is updated | Yes | Yes | - |
 | **End Game Modal** | | | | | |
 | Reset Button | Click on "Play again!" button | The game resets completely, allowing a clean restart | Yes | Yes | - |
 |  | Clicking outside of the modal | No significant action should occur, the modal cannot be closed this way | Yes | Yes | - |
