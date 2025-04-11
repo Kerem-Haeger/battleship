@@ -124,7 +124,7 @@ export function playerAttackListener(e) {
             document.getElementById("show-result").innerText = "Congratulations, you won!";
 
             playerScore++;
-            document.getElementById("score").innerHTML = `Player: ${playerScore}  Computer: ${computerScore}`;
+            document.getElementById("score").innerHTML = `Player: ${playerScore} <span class="space-between"></span> Computer: ${computerScore}`;
 
             gameOverModal.show();
             return; // prevent game from continuing

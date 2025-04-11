@@ -264,7 +264,7 @@ export function computerAttack() {
                 document.getElementById("show-result").innerText = "Game over - the computer won!";
 
                 computerScore++;
-                document.getElementById("score").innerHTML = `Player: ${playerScore}  Computer: ${computerScore}`;
+                document.getElementById("score").innerHTML = `Player: ${playerScore} <span class="space-between"></span> Computer: ${computerScore}`;
 
                 gameOverModal.show();
                 return; // prevent further actions in this function
